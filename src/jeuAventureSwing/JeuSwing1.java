@@ -9,12 +9,14 @@ public class JeuSwing1 {
 
     JFrame window;
     Container container;
-    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel;
-    JLabel titleNameLabel;
+    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
+    JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 42);
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
     JButton startButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
+    int playerHp;
+    String playerWeapon;
 
     TitleScreenHandler tsHandler = new TitleScreenHandler();
 
@@ -49,6 +51,7 @@ public class JeuSwing1 {
         startButton.setForeground(Color.black);
         startButton.setFont(normalFont);
         startButton.addActionListener(tsHandler);
+       // startButton.setFocusPainted(false);
 
         titleNamePanel.add(titleNameLabel);
         startButtonPanel.add(startButton);
@@ -85,6 +88,7 @@ public class JeuSwing1 {
         choice1.setBackground(Color.black);
         choice1.setForeground(Color.white);
         choice1.setFont(normalFont);
+        choice1.setFocusPainted(false);
         choiceButtonPanel.add(choice1);
         choice2 = new JButton("choix 2");
         choice2.setBackground(Color.black);
@@ -102,6 +106,37 @@ public class JeuSwing1 {
         choice4.setFont(normalFont);
         choiceButtonPanel.add(choice4);
 
+        playerPanel = new JPanel();
+        playerPanel.setBounds(100,15,600,50);
+        playerPanel.setBackground(Color.black);
+        playerPanel.setLayout(new GridLayout(1,4));
+        container.add(playerPanel);
+        hpLabel = new JLabel("PV : ");
+        hpLabel.setFont(normalFont);
+        hpLabel.setForeground(Color.white);
+        playerPanel.add(hpLabel);
+        hpLabelNumber = new JLabel();
+        hpLabelNumber.setFont(normalFont);
+        hpLabelNumber.setForeground(Color.white);
+        playerPanel.add(hpLabelNumber);
+        weaponLabel = new JLabel("Arme : ");
+        weaponLabel.setFont(normalFont);
+        weaponLabel.setForeground(Color.white);
+        playerPanel.add(weaponLabel);
+        weaponLabelName = new JLabel();
+        weaponLabelName.setFont(normalFont);
+        weaponLabelName.setForeground(Color.white);
+        playerPanel.add(weaponLabelName);
+
+        playerSetup();
+
+    }
+
+    public void playerSetup() {
+        playerHp = 15;
+        playerWeapon = "Couteau";
+        weaponLabelName.setText(playerWeapon);
+        hpLabelNumber.setText(""+playerHp);
     }
 
     public class TitleScreenHandler implements ActionListener {
