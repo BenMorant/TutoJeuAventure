@@ -1,9 +1,9 @@
 package jeuAventureSwing;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
 public class JeuSwing1 {
 
@@ -16,9 +16,10 @@ public class JeuSwing1 {
     JButton startButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
     int playerHp;
-    String playerWeapon;
+    String playerWeapon, position;
 
     TitleScreenHandler tsHandler = new TitleScreenHandler();
+    ChoiceHandler choiceHandler = new ChoiceHandler();
 
     public static void main(String[] args) {
 
@@ -51,7 +52,7 @@ public class JeuSwing1 {
         startButton.setForeground(Color.black);
         startButton.setFont(normalFont);
         startButton.addActionListener(tsHandler);
-       // startButton.setFocusPainted(false);
+        startButton.setFocusPainted(false);
 
         titleNamePanel.add(titleNameLabel);
         startButtonPanel.add(startButton);
@@ -89,30 +90,38 @@ public class JeuSwing1 {
         choice1.setForeground(Color.white);
         choice1.setFont(normalFont);
         choice1.setFocusPainted(false);
+        choice1.addActionListener(choiceHandler);
+        choice1.setActionCommand("c1");
         choiceButtonPanel.add(choice1);
         choice2 = new JButton("choix 2");
         choice2.setBackground(Color.black);
         choice2.setForeground(Color.white);
         choice2.setFont(normalFont);
-        choice1.setFocusPainted(false);
+        choice2.setFocusPainted(false);
+        choice2.addActionListener(choiceHandler);
+        choice2.setActionCommand("c2");
         choiceButtonPanel.add(choice2);
         choice3 = new JButton("choix 3");
         choice3.setBackground(Color.black);
         choice3.setForeground(Color.white);
         choice3.setFont(normalFont);
-        choice1.setFocusPainted(false);
+        choice3.setFocusPainted(false);
+        choice3.addActionListener(choiceHandler);
+        choice3.setActionCommand("c3");
         choiceButtonPanel.add(choice3);
         choice4 = new JButton("choix 4");
         choice4.setBackground(Color.black);
         choice4.setForeground(Color.white);
         choice4.setFont(normalFont);
-        choice1.setFocusPainted(false);
+        choice4.setFocusPainted(false);
+        choice4.addActionListener(choiceHandler);
+        choice4.setActionCommand("c4");
         choiceButtonPanel.add(choice4);
 
         playerPanel = new JPanel();
-        playerPanel.setBounds(100,15,600,50);
+        playerPanel.setBounds(100, 15, 600, 50);
         playerPanel.setBackground(Color.black);
-        playerPanel.setLayout(new GridLayout(1,4));
+        playerPanel.setLayout(new GridLayout(1, 4));
         container.add(playerPanel);
         hpLabel = new JLabel("PV : ");
         hpLabel.setFont(normalFont);
@@ -145,12 +154,21 @@ public class JeuSwing1 {
     }
 
     public void townGate() {
+        position = "Aux portes de la ville";
         mainTextArea.setText("Vous êtes à la porte de la Cité. Un garde se tient debout devant vous. \n Qu'est-ce que vous voulez faire ? \n \n \n ");
-        System.out.println("1. Parler au garde");
-        System.out.println("2. Attaquer le garde");
-        System.out.println("3. Partir de là");
-        System.out.println("--------------------------------------  \n");
+        choice1.setText("Parler au garde");
+        choice2.setText("Attaquer le garde");
+        choice3.setText("Partir de là");
+        choice3.setText("");
+    }
 
+    public void talkGuard() {
+        position = "avec le garde";
+        mainTextArea.setText("Garde: \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. Désolé mais nous ne pouvons pas laisser un étranger dans notre ville \"");
+        choice1.setText(">");
+        choice2.setText("");
+        choice3.setText("");
+        choice3.setText("");
     }
 
     public class TitleScreenHandler implements ActionListener {
@@ -159,6 +177,14 @@ public class JeuSwing1 {
         public void actionPerformed(ActionEvent event) {
 
             createGameScreen();
+
+        }
+    }
+
+    public class ChoiceHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
 
         }
     }
