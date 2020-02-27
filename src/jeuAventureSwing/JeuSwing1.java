@@ -94,16 +94,19 @@ public class JeuSwing1 {
         choice2.setBackground(Color.black);
         choice2.setForeground(Color.white);
         choice2.setFont(normalFont);
+        choice1.setFocusPainted(false);
         choiceButtonPanel.add(choice2);
         choice3 = new JButton("choix 3");
         choice3.setBackground(Color.black);
         choice3.setForeground(Color.white);
         choice3.setFont(normalFont);
+        choice1.setFocusPainted(false);
         choiceButtonPanel.add(choice3);
         choice4 = new JButton("choix 4");
         choice4.setBackground(Color.black);
         choice4.setForeground(Color.white);
         choice4.setFont(normalFont);
+        choice1.setFocusPainted(false);
         choiceButtonPanel.add(choice4);
 
         playerPanel = new JPanel();
@@ -137,6 +140,17 @@ public class JeuSwing1 {
         playerWeapon = "Couteau";
         weaponLabelName.setText(playerWeapon);
         hpLabelNumber.setText(""+playerHp);
+
+        townGate();
+    }
+
+    public void townGate() {
+        mainTextArea.setText("Vous êtes à la porte de la Cité. Un garde se tient debout devant vous. \n Qu'est-ce que vous voulez faire ? \n \n \n ");
+        System.out.println("1. Parler au garde");
+        System.out.println("2. Attaquer le garde");
+        System.out.println("3. Partir de là");
+        System.out.println("--------------------------------------  \n");
+
     }
 
     public class TitleScreenHandler implements ActionListener {
