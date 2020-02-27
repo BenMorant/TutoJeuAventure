@@ -154,7 +154,7 @@ public class JeuSwing1 {
     }
 
     public void townGate() {
-        position = "Aux portes de la ville";
+        position = "townGate";
         mainTextArea.setText("Vous êtes à la porte de la Cité. Un garde se tient debout devant vous. \n Qu'est-ce que vous voulez faire ? \n \n \n ");
         choice1.setText("Parler au garde");
         choice2.setText("Attaquer le garde");
@@ -163,7 +163,7 @@ public class JeuSwing1 {
     }
 
     public void talkGuard() {
-        position = "avec le garde";
+        position = "talkGuard";
         mainTextArea.setText("Garde: \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. Désolé mais nous ne pouvons pas laisser un étranger dans notre ville \"");
         choice1.setText(">");
         choice2.setText("");
@@ -177,7 +177,6 @@ public class JeuSwing1 {
         public void actionPerformed(ActionEvent event) {
 
             createGameScreen();
-
         }
     }
 
@@ -186,6 +185,22 @@ public class JeuSwing1 {
         @Override
         public void actionPerformed(ActionEvent event) {
 
+            String yourChoice = event.getActionCommand();
+
+            switch (position) {
+                case "townGate":
+                    switch (yourChoice) {
+                        case "c1":
+                            talkGuard();
+                            break;
+                        case "c2":
+                            break;
+                        case "c3":
+                            break;
+                        case "c4":
+                            break;
+                    }
+            }
         }
     }
 }
