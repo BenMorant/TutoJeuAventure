@@ -21,7 +21,6 @@ public class TutoJeuSwing1 {
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ChoiceHandler choiceHandler = new ChoiceHandler();
 
-
     public TutoJeuSwing1() {
 
         window = new JFrame();

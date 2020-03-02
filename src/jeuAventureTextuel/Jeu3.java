@@ -142,7 +142,7 @@ public class Jeu3 {
 
     public void west() {
         System.out.println("--------------------------------------  \n");
-        System.out.println("Vous tombez nez à nez sur un goblin ! \n");
+        System.out.println("Vous tombez nez à nez sur un gobelin ! \n");
         System.out.println("1. Vous combattez");
         System.out.println("2. Vous fuyez");
         System.out.println("--------------------------------------  \n");
