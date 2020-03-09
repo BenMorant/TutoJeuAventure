@@ -1,4 +1,4 @@
-package JeuAventureSwingClassesMultiples;
+package JeuAventureSwingClassesMultiples.package01;
 
 import javax.swing.*;
 import java.awt.*;
