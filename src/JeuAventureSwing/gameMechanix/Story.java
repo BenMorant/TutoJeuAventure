@@ -6,6 +6,8 @@ import JeuAventureSwing.monsterz.SuperMonster;
 import JeuAventureSwing.weaponz.LongSword;
 import JeuAventureSwing.weaponz.WeaponKnife;
 
+import java.util.Random;
+
 public class Story {
 
     Game game;
@@ -175,7 +177,7 @@ public class Story {
 
     public void west() {
 
-        int i = new java.util.Random().nextInt(100) + 1;
+        int i = new Random().nextInt(100) + 1;
 
         if (i < 60) {
             monster = new Goblin();
@@ -208,7 +210,7 @@ public class Story {
     }
 
     public void playerAttack() {
-        int playerDamage = new java.util.Random().nextInt(player.currentWeapon.damage);
+        int playerDamage = new Random().nextInt(player.currentWeapon.damage);
 
         ui.mainTextArea.setText("Vous attaquez le monstre et lui donnez " + playerDamage + " de dommage!");
 
@@ -234,7 +236,7 @@ public class Story {
 
     public void monsterAttack() {
 
-        int monsterDamage = new java.util.Random().nextInt(monster.attack);
+        int monsterDamage = new Random().nextInt(monster.attack);
 
         ui.mainTextArea.setText(monster.attackMessage + "\nLe " + monster.name + " vous attaque et vous donne " + monsterDamage + " de dommage!");
 
