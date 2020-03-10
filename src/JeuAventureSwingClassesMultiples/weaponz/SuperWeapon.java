@@ -1,4 +1,4 @@
-package JeuAventureSwingClassesMultiples.package02;
+package JeuAventureSwingClassesMultiples.weaponz;
 
 public class SuperWeapon {
 
