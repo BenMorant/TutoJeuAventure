@@ -1,4 +1,4 @@
-package JeuAventureSwingClassesMultiples.monsterz;
+package JeuAventureSwing.monsterz;
 
 public class Goblin extends SuperMonster {
 

@@ -1,10 +1,10 @@
-package JeuAventureSwingClassesMultiples.gameMechanix;
+package JeuAventureSwing.gameMechanix;
 
-import JeuAventureSwingClassesMultiples.monsterz.Goblin;
-import JeuAventureSwingClassesMultiples.monsterz.Mandragore;
-import JeuAventureSwingClassesMultiples.monsterz.SuperMonster;
-import JeuAventureSwingClassesMultiples.weaponz.LongSword;
-import JeuAventureSwingClassesMultiples.weaponz.WeaponKnife;
+import JeuAventureSwing.monsterz.Goblin;
+import JeuAventureSwing.monsterz.Mandragore;
+import JeuAventureSwing.monsterz.SuperMonster;
+import JeuAventureSwing.weaponz.LongSword;
+import JeuAventureSwing.weaponz.WeaponKnife;
 
 public class Story {
 

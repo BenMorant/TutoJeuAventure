@@ -1,4 +1,4 @@
-package JeuAventureSwingClassesMultiples.monsterz;
+package JeuAventureSwing.monsterz;
 
 public class Mandragore extends SuperMonster {
 

@@ -1,4 +1,4 @@
-package JeuAventureSwingClassesMultiples.gameMechanix;
+package JeuAventureSwing.gameMechanix;
 
 import javax.swing.*;
 import java.awt.*;

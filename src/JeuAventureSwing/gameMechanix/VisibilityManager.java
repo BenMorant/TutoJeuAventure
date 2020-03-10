@@ -1,4 +1,4 @@
-package JeuAventureSwingClassesMultiples.gameMechanix;
+package JeuAventureSwing.gameMechanix;
 
 public class VisibilityManager {
     UI ui;

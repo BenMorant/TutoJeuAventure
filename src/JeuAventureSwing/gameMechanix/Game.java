@@ -1,4 +1,4 @@
-package JeuAventureSwingClassesMultiples.gameMechanix;
+package JeuAventureSwing.gameMechanix;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
