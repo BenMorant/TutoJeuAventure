@@ -1,5 +1,6 @@
 package JeuAventureSwingClassesMultiples.package01;
 
+import JeuAventureSwingClassesMultiples.package02.LongSword;
 import JeuAventureSwingClassesMultiples.package02.WeaponKnife;
 
 public class Story {
@@ -27,6 +28,29 @@ public class Story {
 
     public void selectNextPosition(String nextPosition) {
 
+        switch (nextPosition) {
+            case "townGate":
+                townGate();
+                break;
+            case "talkGuard":
+                talkGuard();
+                break;
+            case "attackGuard":
+                attackGuard();
+                break;
+            case "crossRoad":
+                crossRoad();
+                break;
+            case "north":
+                north();
+                break;
+            case "east":
+                east();
+                break;
+            case "west":
+                west();
+                break;
+        }
     }
 
     public void townGate() {
@@ -39,64 +63,84 @@ public class Story {
 
         game.nextPosition1 = "talkGuard";
         game.nextPosition2 = "attackGuard";
-        game.getNextPosition3 = "crossroad";
+        game.nextPosition3 = "crossRoad";
+        game.nextPosition4 = "";
     }
 
     public void talkGuard() {
-        //position = "talkGuard";
         ui.mainTextArea.setText("Garde: \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. \n Je suis désolé mais nous ne pouvons pas laisser  \n un étranger dans notre ville \"");
         ui.choice1.setText(">");
         ui.choice2.setText("");
         ui.choice3.setText("");
         ui.choice4.setText("");
+
+        game.nextPosition1 = "townGate";
+        game.nextPosition2 = "";
+        game.nextPosition3 = "";
+        game.nextPosition4 = "";
     }
 
     public void attackGuard() {
-        //position = "attackGuard";
         ui.mainTextArea.setText("Garde: \"Hey ! Ne soyez pas stupide!\" \n Vous vous battez bravement mais le garde vous frappe fort \net vous recevez trois points de dommage");
-        //ui.playerHp = playerHp - 3;
-        //ui.hpLabelNumber.setText("" + playerHp);
+        player.hp = player.hp - 3;
+        ui.hpLabelNumber.setText("" + player.hp);
         ui.choice1.setText(">");
         ui.choice2.setText("");
         ui.choice3.setText("");
         ui.choice4.setText("");
+
+        game.nextPosition1 = "townGate";
+        game.nextPosition2 = "";
+        game.nextPosition3 = "";
+        game.nextPosition4 = "";
     }
 
     public void crossRoad() {
-        //position = "crossRoad";
         ui.mainTextArea.setText("Vous êtes à un carrefour. \nSi vous allez au sud, vous serez de retour aux portes de la Cité. \n  Vous choisissez d'aller :");
         ui.choice1.setText("au Nord");
         ui.choice2.setText("à l'Est");
         ui.choice3.setText("au Sud");
         ui.choice4.setText("à l'Ouest");
 
+        game.nextPosition1 = "north";
+        game.nextPosition2 = "east";
+        game.nextPosition3 = "townGate";
+        game.nextPosition4 = "west";
+
     }
 
     public void north() {
-        //position = "north";
-        ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés");
-        //playerHp = playerHp + 2;
-        //hpLabelNumber.setText("" + playerHp);
+        ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+2)");
+        player.hp = player.hp + 2;
+        ui.hpLabelNumber.setText("" + player.hp);
         ui.choice1.setText("Vous allez au Sud");
         ui.choice2.setText("");
         ui.choice3.setText("");
         ui.choice4.setText("");
+
+        game.nextPosition1 = "crossRoad";
+        game.nextPosition2 = "";
+        game.nextPosition3 = "";
+        game.nextPosition4 = "";
     }
 
     public void east() {
-        //position = "east";
         ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée.");
-        // playerWeapon = "Longue épée";
-        //weaponLabelName.setText(playerWeapon);
+        player.currentWeapon = new LongSword();
+        ui.weaponLabelName.setText(player.currentWeapon.name);
         ui.choice1.setText("Vous allez à l'Ouest");
         ui.choice2.setText("");
         ui.choice3.setText("");
         ui.choice4.setText("");
 
+        game.nextPosition1 = "crossRoad";
+        game.nextPosition2 = "";
+        game.nextPosition3 = "";
+        game.nextPosition4 = "";
+
     }
 
     public void west() {
-        // position = "west";
         ui.mainTextArea.setText("Vous tombez nez à nez sur un gobelin ! ");
         ui.choice1.setText("Vous le combattez");
         ui.choice2.setText("Vous fuyez");
@@ -105,7 +149,6 @@ public class Story {
     }
 
     public void fight() {
-        // position = "fight";
         //    ui.mainTextArea.setText("HP du Monstre : " + monsterHp + "\n\nQue faîtes vous ?");
         ui.choice1.setText("Vous attaquez");
         ui.choice2.setText("Vous fuyez");
