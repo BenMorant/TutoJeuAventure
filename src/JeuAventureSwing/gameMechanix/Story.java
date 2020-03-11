@@ -184,7 +184,7 @@ public class Story {
         } else {
             monster = new Mandragore();
         }
-        ui.mainTextArea.setText("Vous tombez nez à nez sur " + monster.name + "! ");
+        ui.mainTextArea.setText("Vous tombez nez à nez sur " + monster.aName + "! ");
         ui.choice1.setText("Vous le combattez");
         ui.choice2.setText("Vous fuyez");
         ui.choice3.setText("");
@@ -197,7 +197,7 @@ public class Story {
     }
 
     public void fight() {
-        ui.mainTextArea.setText("PV du " + monster.name + " : " + monster.hp + "\n\nQue faîtes vous ?");
+        ui.mainTextArea.setText("PV " + monster.ofTheName + " : " + monster.hp + "\n\nQue faîtes vous ?");
         ui.choice1.setText("Vous attaquez");
         ui.choice2.setText("Vous fuyez");
         ui.choice3.setText("");
@@ -212,7 +212,7 @@ public class Story {
     public void playerAttack() {
         int playerDamage = new Random().nextInt(player.currentWeapon.damage);
 
-        ui.mainTextArea.setText("Vous attaquez le monstre et lui donnez " + playerDamage + " de dommage!");
+        ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage!");
 
         monster.hp = monster.hp - playerDamage;
 
@@ -238,7 +238,7 @@ public class Story {
 
         int monsterDamage = new Random().nextInt(monster.attack);
 
-        ui.mainTextArea.setText(monster.attackMessage + "\nLe " + monster.name + " vous attaque et vous donne " + monsterDamage + " de dommage!");
+        ui.mainTextArea.setText(monster.attackMessage + "\n " + monster.theName + " vous attaque et vous donne " + monsterDamage + " de dommage!");
 
         player.hp = player.hp - monsterDamage;
         ui.hpLabelNumber.setText("" + player.hp);
@@ -262,7 +262,7 @@ public class Story {
     }
 
     public void win() {
-        ui.mainTextArea.setText("Vous avez battu le " + monster.name + " !\nLe " + monster.name + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
+        ui.mainTextArea.setText("Vous avez battu " + monster.theName + " !\n" + monster.theName + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
 
         silverRing = true;
 
@@ -295,7 +295,7 @@ public class Story {
 
     public void ending() {
 
-        ui.mainTextArea.setText("Garde: \"Oh vous avez tué ce " + monster.name + " !!??? Super !\nVous êtes notre heros!\nBienvenue dans notre Cité!\"\n\nTHE END");
+        ui.mainTextArea.setText("Garde: \"Oh vous avez tué " + monster.theName + " !!??? Super !\nVous êtes notre heros!\nBienvenue dans notre Cité!\"\n\nTHE END");
 
         ui.choice1.setText("Revenir à l'écran tître");
         ui.choice2.setVisible(false);
