@@ -2,6 +2,7 @@ package JeuAventureSwing.gameMechanix;
 
 import JeuAventureSwing.monsterz.Goblin;
 import JeuAventureSwing.monsterz.Mandragore;
+import JeuAventureSwing.monsterz.PetitDragon;
 import JeuAventureSwing.monsterz.SuperMonster;
 import JeuAventureSwing.weaponz.LongSword;
 import JeuAventureSwing.weaponz.WeaponKnife;
@@ -84,7 +85,7 @@ public class Story {
 
     public void townGate() {
 
-        ui.mainTextArea.setText("Vous êtes à la porte de la Cité. \n Un garde se tient debout devant vous. \n Que voulez vous faire ? \n \n \n ");
+        ui.mainTextArea.setText("Vous êtes aux portes de la Cité. \n Un garde se tient debout devant vous. \n Que voulez vous faire ? \n \n \n ");
         ui.choice1.setText("Parler au garde");
         ui.choice2.setText("Attaquer le garde");
         ui.choice3.setText("Partir de là");
@@ -181,10 +182,13 @@ public class Story {
 
         if (i < 60) {
             monster = new Goblin();
-        } else {
+        } else if (i < 90) {
             monster = new Mandragore();
+        } else {
+            monster = new PetitDragon();
         }
-        ui.mainTextArea.setText("Vous tombez nez à nez sur " + monster.aName + "! ");
+
+        ui.mainTextArea.setText("Vous tombez nez à nez sur " + monster.aName + " !");
         ui.choice1.setText("Vous le combattez");
         ui.choice2.setText("Vous fuyez");
         ui.choice3.setText("");
