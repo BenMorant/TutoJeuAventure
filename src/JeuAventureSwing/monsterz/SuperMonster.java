@@ -8,4 +8,5 @@ public class SuperMonster {
     public int hp;
     public int attack;
     public String attackMessage;
+    public String image;
 }

@@ -5,6 +5,6 @@ public class WeaponKnife extends SuperWeapon {
     public WeaponKnife() {
 
         name = "couteau";
-        damage = 3;
+        damageMax = 3;
     }
 }

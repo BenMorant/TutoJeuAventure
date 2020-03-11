@@ -9,6 +9,7 @@ public class PetitDragon extends SuperMonster {
         hp = 60;
         attack = 8;
         attackMessage = "Le petit dragon crache un jet de flammes par ses narines !";
+        image = "petit_dragon.jpg";
 
     }
 }

@@ -6,25 +6,26 @@ import java.awt.*;
 public class UI {
 
     JFrame window;
-    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
-    JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName;
-    Font titleFont = new Font("Times New Roman", Font.BOLD, 42);
-    Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
+    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, imagePanel;
+    JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, imageLabel;
+    Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
+    Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
     JButton startButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
+    ImageIcon image;
 
     public void createUI(Game.ChoiceHandler choiceHandler) {
 
         //fenêtre
         window = new JFrame();
-        window.setSize(800, 600);
+        window.setSize(1280, 960);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
         window.setLayout(null);
 
         //écran tître
         titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(100, 100, 600, 150);
+        titleNamePanel.setBounds(250, 250, 800, 150);
         titleNamePanel.setBackground(Color.black);
         titleNameLabel = new JLabel("L'AVENTURE N'ATTEND PAS");
         titleNameLabel.setForeground(Color.white);
@@ -32,7 +33,7 @@ public class UI {
         titleNamePanel.add(titleNameLabel);
 
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(300, 400, 200, 100);
+        startButtonPanel.setBounds(500, 600, 250, 120);
         startButtonPanel.setBackground(Color.black);
 
         startButton = new JButton("C'EST PARTI !");
@@ -47,14 +48,23 @@ public class UI {
         window.add(titleNamePanel);
         window.add(startButtonPanel);
 
+        //image
+        imagePanel = new JPanel();
+        imagePanel.setBounds(50, 60, 700, 500);
+        imagePanel.setBackground(Color.black);
+
+        imageLabel = new JLabel("");
+        imagePanel.add(imageLabel);
+        window.add(imagePanel);
+
         //écran jeu
         mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(100, 100, 600, 250);
+        mainTextPanel.setBounds(50, 650, 550, 350);
         mainTextPanel.setBackground(Color.black);
         window.add(mainTextPanel);
 
         mainTextArea = new JTextArea("Yo");
-        mainTextArea.setBounds(100, 100, 600, 250);
+        mainTextArea.setBounds(50, 650, 550, 350);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(normalFont);
@@ -64,7 +74,7 @@ public class UI {
         mainTextPanel.add(mainTextArea);
 
         choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(250, 350, 300, 150);
+        choiceButtonPanel.setBounds(800, 650, 350, 200);
         choiceButtonPanel.setBackground(Color.black);
         choiceButtonPanel.setLayout(new GridLayout(4, 1));
         window.add(choiceButtonPanel);
@@ -103,9 +113,9 @@ public class UI {
         choiceButtonPanel.add(choice4);
 
         playerPanel = new JPanel();
-        playerPanel.setBounds(100, 15, 600, 50);
+        playerPanel.setBounds(850, 120, 350, 120);
         playerPanel.setBackground(Color.black);
-        playerPanel.setLayout(new GridLayout(1, 4));
+        playerPanel.setLayout(new GridLayout(2, 2));
         window.add(playerPanel);
         hpLabel = new JLabel("PV : ");
         hpLabel.setFont(normalFont);
@@ -126,5 +136,10 @@ public class UI {
 
         window.setVisible(true);
 
+    }
+
+    public void getImage(String filename) {
+        image = new ImageIcon(".//resources//" + filename);
+        imageLabel.setIcon(image);
     }
 }

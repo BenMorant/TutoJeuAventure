@@ -28,11 +28,12 @@ public class Story {
     public void defaultSetup() {
 
         player.hp = 10;
-        ui.hpLabelNumber.setText("" + player.hp);
+        player.hpMax = 10;
+        ui.hpLabelNumber.setText("" + player.hp + " / " + player.hpMax + " max");
         silverRing = false;
 
         player.currentWeapon = new WeaponKnife();
-        ui.weaponLabelName.setText((player.currentWeapon.name));
+        ui.weaponLabelName.setText(player.currentWeapon.name);
     }
 
     public void selectNextPosition(String nextPosition) {
@@ -84,7 +85,7 @@ public class Story {
     }
 
     public void townGate() {
-
+        ui.getImage("cite.jpg");
         ui.mainTextArea.setText("Vous êtes aux portes de la Cité. \n Un garde se tient debout devant vous. \n Que voulez vous faire ? \n \n \n ");
         ui.choice1.setText("Parler au garde");
         ui.choice2.setText("Attaquer le garde");
@@ -98,7 +99,7 @@ public class Story {
     }
 
     public void talkGuard() {
-
+        ui.getImage("garde.png");
         if (!silverRing) {
             ui.mainTextArea.setText("Garde: \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. \n Je suis désolé mais nous ne pouvons pas laisser  \n un étranger dans notre ville \"");
             ui.choice1.setText(">");
@@ -117,6 +118,7 @@ public class Story {
 
 
     public void attackGuard() {
+        ui.getImage("garde.png");
         ui.mainTextArea.setText("Garde: \"Hey ! Ne soyez pas stupide!\" \n Vous vous battez bravement mais le garde vous frappe fort \net vous recevez trois points de dommage");
         player.hp = player.hp - 3;
         ui.hpLabelNumber.setText("" + player.hp);
@@ -132,6 +134,7 @@ public class Story {
     }
 
     public void crossRoad() {
+        ui.getImage("crossroad.jpg");
         ui.mainTextArea.setText("Vous êtes à un carrefour. \nSi vous allez au sud, vous serez de retour aux portes de la Cité. \n  Vous choisissez d'aller :");
         ui.choice1.setText("au Nord");
         ui.choice2.setText("à l'Est");
@@ -146,9 +149,15 @@ public class Story {
     }
 
     public void north() {
-        ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+2)");
-        player.hp = player.hp + 2;
-        ui.hpLabelNumber.setText("" + player.hp);
+        ui.getImage("riviere.jpeg");
+        if (player.hp < player.hpMax) {
+            player.hp = player.hp + 2;
+            ui.hpLabelNumber.setText("" + player.hp);
+            ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+2)");
+        } else {
+            ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont au maximum.");
+        }
+
         ui.choice1.setText("Vous allez au Sud");
         ui.choice2.setText("");
         ui.choice3.setText("");
@@ -161,9 +170,10 @@ public class Story {
     }
 
     public void east() {
-        ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée.");
+        ui.getImage("epee.jpg");
         player.currentWeapon = new LongSword();
         ui.weaponLabelName.setText(player.currentWeapon.name);
+        ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( " + player.currentWeapon.damageMax + " dommage max )");
         ui.choice1.setText("Vous allez à l'Ouest");
         ui.choice2.setText("");
         ui.choice3.setText("");
@@ -173,11 +183,9 @@ public class Story {
         game.nextPosition2 = "";
         game.nextPosition3 = "";
         game.nextPosition4 = "";
-
     }
 
     public void west() {
-
         int i = new Random().nextInt(100) + 1;
 
         if (i < 60) {
@@ -187,7 +195,7 @@ public class Story {
         } else {
             monster = new PetitDragon();
         }
-
+        ui.getImage(monster.image);
         ui.mainTextArea.setText("Vous tombez nez à nez sur " + monster.aName + " !");
         ui.choice1.setText("Vous le combattez");
         ui.choice2.setText("Vous fuyez");
@@ -201,6 +209,7 @@ public class Story {
     }
 
     public void fight() {
+        ui.getImage(monster.image);
         ui.mainTextArea.setText("PV " + monster.ofTheName + " : " + monster.hp + "\n\nQue faîtes vous ?");
         ui.choice1.setText("Vous attaquez");
         ui.choice2.setText("Vous fuyez");
@@ -214,11 +223,13 @@ public class Story {
     }
 
     public void playerAttack() {
-        int playerDamage = new Random().nextInt(player.currentWeapon.damage);
+        ui.getImage(monster.image);
+        int playerDamage = new Random().nextInt(player.currentWeapon.damageMax);
 
-        ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage!");
 
         monster.hp = monster.hp - playerDamage;
+
+        ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage!");
 
         ui.choice1.setText(">");
         ui.choice2.setText("");
@@ -239,13 +250,14 @@ public class Story {
     }
 
     public void monsterAttack() {
-
+        ui.getImage(monster.image);
         int monsterDamage = new Random().nextInt(monster.attack);
 
-        ui.mainTextArea.setText(monster.attackMessage + "\n " + monster.theName + " vous attaque et vous donne " + monsterDamage + " de dommage!");
 
         player.hp = player.hp - monsterDamage;
         ui.hpLabelNumber.setText("" + player.hp);
+
+        ui.mainTextArea.setText(monster.attackMessage + "\n " + monster.theName + " vous attaque et vous donne " + monsterDamage + " de dommage!");
 
         ui.choice1.setText(">");
         ui.choice2.setText("");
@@ -266,9 +278,9 @@ public class Story {
     }
 
     public void win() {
-        ui.mainTextArea.setText("Vous avez battu " + monster.theName + " !\n" + monster.theName + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
-
+        ui.getImage("anneau.jpg");
         silverRing = true;
+        ui.mainTextArea.setText("Vous avez battu " + monster.theName + " !\n" + monster.theName + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
 
         ui.choice1.setText("Vous allez à l'Est");
         ui.choice2.setText("");
@@ -283,7 +295,7 @@ public class Story {
     }
 
     public void lose() {
-
+        ui.getImage("");
         ui.mainTextArea.setText("Vous êtes mort !\n\n GAME OVER");
 
         ui.choice1.setText("Revenir à l'écran tître");
@@ -298,7 +310,7 @@ public class Story {
     }
 
     public void ending() {
-
+        ui.getImage("garde.jpg");
         ui.mainTextArea.setText("Garde: \"Oh vous avez tué " + monster.theName + " !!??? Super !\nVous êtes notre heros!\nBienvenue dans notre Cité!\"\n\nTHE END");
 
         ui.choice1.setText("Revenir à l'écran tître");

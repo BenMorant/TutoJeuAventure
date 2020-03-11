@@ -9,6 +9,7 @@ public class Mandragore extends SuperMonster {
         hp = 25;
         attack = 4;
         attackMessage = "La mandragore pousse son cri mortel !";
+        image = "mandragore.jpg";
 
     }
 }

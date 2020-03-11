@@ -9,6 +9,7 @@ public class Goblin extends SuperMonster {
         hp = 20;
         attack = 6;
         attackMessage = "Le gobelin vous touche avec son baton !";
+        image = "gobelin.jpg";
 
     }
 }
