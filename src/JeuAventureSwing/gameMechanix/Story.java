@@ -1,6 +1,7 @@
 package JeuAventureSwing.gameMechanix;
 
 import JeuAventureSwing.monsterz.Goblin;
+import JeuAventureSwing.monsterz.Guard;
 import JeuAventureSwing.monsterz.Mandragore;
 import JeuAventureSwing.monsterz.PetitDragon;
 import JeuAventureSwing.monsterz.SuperMonster;
@@ -85,7 +86,7 @@ public class Story {
     }
 
     public void townGate() {
-        ui.getImage("cite.jpg");
+        ui.getImage("places//cite.jpg");
         ui.mainTextArea.setText("Vous êtes aux portes de la Cité. \n Un garde se tient debout devant vous. \n Que voulez vous faire ? \n \n \n ");
         ui.choice1.setText("Parler au garde");
         ui.choice2.setText("Attaquer le garde");
@@ -99,7 +100,8 @@ public class Story {
     }
 
     public void talkGuard() {
-        ui.getImage("garde.png");
+        monster = new Guard();
+        ui.getImage(monster.image);
         if (!silverRing) {
             ui.mainTextArea.setText("Garde: \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. \n Je suis désolé mais nous ne pouvons pas laisser  \n un étranger dans notre ville \"");
             ui.choice1.setText(">");
@@ -118,8 +120,9 @@ public class Story {
 
 
     public void attackGuard() {
-        ui.getImage("garde.png");
-        ui.mainTextArea.setText("Garde: \"Hey ! Ne soyez pas stupide!\" \n Vous vous battez bravement mais le garde vous frappe fort \net vous recevez trois points de dommage");
+        monster = new Guard();
+        ui.getImage(monster.image);
+        ui.mainTextArea.setText(monster.name + " : \"Hey ! Ne soyez pas stupide!\" \n Vous vous battez bravement mais " + monster.theName + " vous frappe fort \net vous recevez trois points de dommage");
         player.hp = player.hp - 3;
         ui.hpLabelNumber.setText("" + player.hp);
         ui.choice1.setText(">");
@@ -134,7 +137,7 @@ public class Story {
     }
 
     public void crossRoad() {
-        ui.getImage("crossroad.jpg");
+        ui.getImage("places/crossroad.jpg");
         ui.mainTextArea.setText("Vous êtes à un carrefour. \nSi vous allez au sud, vous serez de retour aux portes de la Cité. \n  Vous choisissez d'aller :");
         ui.choice1.setText("au Nord");
         ui.choice2.setText("à l'Est");
@@ -149,7 +152,7 @@ public class Story {
     }
 
     public void north() {
-        ui.getImage("riviere.jpeg");
+        ui.getImage("places/riviere.jpeg");
         if (player.hp < player.hpMax) {
             player.hp = player.hp + 2;
             ui.hpLabelNumber.setText("" + player.hp);
@@ -170,8 +173,8 @@ public class Story {
     }
 
     public void east() {
-        ui.getImage("epee.jpg");
         player.currentWeapon = new LongSword();
+        ui.getImage(player.currentWeapon.image);
         ui.weaponLabelName.setText(player.currentWeapon.name);
         ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( " + player.currentWeapon.damageMax + " dommage max )");
         ui.choice1.setText("Vous allez à l'Ouest");
