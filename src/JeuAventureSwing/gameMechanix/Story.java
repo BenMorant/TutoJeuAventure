@@ -156,7 +156,7 @@ public class Story {
 
     public void north() {
         ui.getImage("places/riviere.jpeg");
-        
+
         if (player.hp < player.hpMax) {
             player.hp = player.hp + 2;
             ui.hpLabelNumber.setText("" + player.hp);
