@@ -7,7 +7,7 @@ public class UI {
 
     JFrame window;
     JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, imagePanel;
-    JLabel titleNameLabel, hpLabel, hpLabelNumber, weaponLabel, weaponLabelName, imageLabel;
+    JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabel;
     Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
     JButton startButton, choice1, choice2, choice3, choice4;
@@ -113,11 +113,11 @@ public class UI {
         choiceButtonPanel.add(choice4);
 
         playerPanel = new JPanel();
-        playerPanel.setBounds(850, 120, 350, 120);
+        playerPanel.setBounds(850, 120, 450, 120);
         playerPanel.setBackground(Color.black);
-        playerPanel.setLayout(new GridLayout(2, 2));
+        playerPanel.setLayout(new GridLayout(4, 2));
         window.add(playerPanel);
-        hpLabel = new JLabel("PV : ");
+        hpLabel = new JLabel("HP : ");
         hpLabel.setFont(normalFont);
         hpLabel.setForeground(Color.white);
         playerPanel.add(hpLabel);
@@ -125,6 +125,14 @@ public class UI {
         hpLabelNumber.setFont(normalFont);
         hpLabelNumber.setForeground(Color.white);
         playerPanel.add(hpLabelNumber);
+        hpMaxLabel = new JLabel("HP max : ");
+        hpMaxLabel.setFont(normalFont);
+        hpMaxLabel.setForeground(Color.yellow);
+        playerPanel.add(hpMaxLabel);
+        hpMaxLabelNumber = new JLabel();
+        hpMaxLabelNumber.setFont(normalFont);
+        hpMaxLabelNumber.setForeground(Color.yellow);
+        playerPanel.add(hpMaxLabelNumber);
         weaponLabel = new JLabel("Arme : ");
         weaponLabel.setFont(normalFont);
         weaponLabel.setForeground(Color.white);
@@ -133,6 +141,14 @@ public class UI {
         weaponLabelName.setFont(normalFont);
         weaponLabelName.setForeground(Color.white);
         playerPanel.add(weaponLabelName);
+        weaponLabelDamageMax = new JLabel("Dommage Max : ");
+        weaponLabelDamageMax.setFont(normalFont);
+        weaponLabelDamageMax.setForeground(Color.orange);
+        playerPanel.add(weaponLabelDamageMax);
+        weaponLabelDamageMaxNumber = new JLabel();
+        weaponLabelDamageMaxNumber.setFont(normalFont);
+        weaponLabelDamageMaxNumber.setForeground(Color.orange);
+        playerPanel.add(weaponLabelDamageMaxNumber);
 
         window.setVisible(true);
 

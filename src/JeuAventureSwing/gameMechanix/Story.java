@@ -28,13 +28,16 @@ public class Story {
 
     public void defaultSetup() {
 
-        player.hp = 10;
-        player.hpMax = 10;
-        ui.hpLabelNumber.setText("" + player.hp + " / " + player.hpMax + " max");
+        player.hpMax = new Random().nextInt(15) + 1;
+        player.hp = player.hpMax;
+
+        ui.hpLabelNumber.setText("" + player.hp);
+        ui.hpMaxLabelNumber.setText("" + player.hpMax);
         silverRing = false;
 
         player.currentWeapon = new WeaponKnife();
         ui.weaponLabelName.setText(player.currentWeapon.name);
+        ui.weaponLabelDamageMaxNumber.setText("" + player.currentWeapon.damageMax);
     }
 
     public void selectNextPosition(String nextPosition) {
@@ -103,7 +106,7 @@ public class Story {
         monster = new Guard();
         ui.getImage(monster.image);
         if (!silverRing) {
-            ui.mainTextArea.setText("Garde: \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. \n Je suis désolé mais nous ne pouvons pas laisser  \n un étranger dans notre ville \"");
+            ui.mainTextArea.setText(monster.name + ": \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. \n Je suis désolé mais nous ne pouvons pas laisser  \n un étranger dans notre ville \"");
             ui.choice1.setText(">");
             ui.choice2.setText("");
             ui.choice3.setText("");
@@ -153,6 +156,7 @@ public class Story {
 
     public void north() {
         ui.getImage("places/riviere.jpeg");
+        
         if (player.hp < player.hpMax) {
             player.hp = player.hp + 2;
             ui.hpLabelNumber.setText("" + player.hp);
@@ -281,7 +285,8 @@ public class Story {
     }
 
     public void win() {
-        ui.getImage("anneau.jpg");
+
+        ui.getImage("objects/anneau.jpg");
         silverRing = true;
         ui.mainTextArea.setText("Vous avez battu " + monster.theName + " !\n" + monster.theName + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
 

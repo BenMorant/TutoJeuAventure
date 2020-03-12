@@ -5,9 +5,10 @@ import JeuAventureSwing.monsterz.SuperMonster;
 public class Silverring extends SuperMonster {
 
     public Silverring() {
-        aName = "un petit dragon";
-        theName = "le petit dragon";
-        ofTheName = "du petit dragon";
+        name = "anneau d'argent";
+        aName = "un anneau d'argent";
+        theName = "l'anneau d'argent";
+        ofTheName = "de l'anneau d'argent";
         image = "objects/anneau.jpg";
 
     }
