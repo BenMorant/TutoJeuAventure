@@ -28,7 +28,7 @@ public class Story {
 
     public void defaultSetup() {
 
-        player.hpMax = new Random().nextInt(15) + 1;
+        player.hpMax = 6 + new Random().nextInt(10) + 1;
         player.hp = player.hpMax;
 
         ui.hpLabelNumber.setText("" + player.hp);
@@ -204,7 +204,7 @@ public class Story {
         }
         ui.getImage(monster.image);
         ui.mainTextArea.setText("Vous tombez nez à nez sur " + monster.aName + " !");
-        ui.choice1.setText("Vous le combattez");
+        ui.choice1.setText("Vous combattez");
         ui.choice2.setText("Vous fuyez");
         ui.choice3.setText("");
         ui.choice4.setText("");
