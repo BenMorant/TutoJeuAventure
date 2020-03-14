@@ -6,10 +6,10 @@ import java.awt.*;
 public class UI {
 
     JFrame window;
-    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, imagePanel;
-    JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabel;
+    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, imagePanelPrincipal, imagePanelPortrait;
+    JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabelPrincipal, imageLabelPortrait, habilityLabel, strengthLabel, mpLabel, mpLabelNumber, mpMaxLabel, mpMaxLabelNumber, strengthLabelNumber, habilityLabelNumber;
     Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
-    Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
+    Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
     JButton startButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
     ImageIcon image;
@@ -48,23 +48,30 @@ public class UI {
         window.add(titleNamePanel);
         window.add(startButtonPanel);
 
-        //image
-        imagePanel = new JPanel();
-        imagePanel.setBounds(50, 60, 700, 500);
-        imagePanel.setBackground(Color.black);
+        //image Principale
+        imagePanelPrincipal = new JPanel();
+        imagePanelPrincipal.setBounds(40, 70, 750, 550);
+        imagePanelPrincipal.setBackground(Color.black);
+        imageLabelPrincipal = new JLabel("");
+        imagePanelPrincipal.add(imageLabelPrincipal);
+        window.add(imagePanelPrincipal);
 
-        imageLabel = new JLabel("");
-        imagePanel.add(imageLabel);
-        window.add(imagePanel);
+        //portrait du personnage
+        imagePanelPortrait = new JPanel();
+        imagePanelPortrait.setBounds(960, 70, 140, 175);
+        imagePanelPortrait.setBackground(Color.black);
+        imageLabelPortrait = new JLabel("");
+        imagePanelPortrait.add(imageLabelPortrait);
+        window.add(imagePanelPortrait);
 
         //écran jeu
         mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(50, 650, 550, 350);
+        mainTextPanel.setBounds(40, 650, 750, 550);
         mainTextPanel.setBackground(Color.black);
         window.add(mainTextPanel);
 
         mainTextArea = new JTextArea("Yo");
-        mainTextArea.setBounds(50, 650, 550, 350);
+        mainTextArea.setBounds(40, 650, 750, 350);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(normalFont);
@@ -74,7 +81,7 @@ public class UI {
         mainTextPanel.add(mainTextArea);
 
         choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(800, 650, 350, 200);
+        choiceButtonPanel.setBounds(850, 650, 400, 200);
         choiceButtonPanel.setBackground(Color.black);
         choiceButtonPanel.setLayout(new GridLayout(4, 1));
         window.add(choiceButtonPanel);
@@ -113,9 +120,9 @@ public class UI {
         choiceButtonPanel.add(choice4);
 
         playerPanel = new JPanel();
-        playerPanel.setBounds(850, 120, 450, 120);
+        playerPanel.setBounds(850, 260, 400, 320);
         playerPanel.setBackground(Color.black);
-        playerPanel.setLayout(new GridLayout(4, 2));
+        playerPanel.setLayout(new GridLayout(8, 2));
         window.add(playerPanel);
         hpLabel = new JLabel("HP : ");
         hpLabel.setFont(normalFont);
@@ -133,6 +140,22 @@ public class UI {
         hpMaxLabelNumber.setFont(normalFont);
         hpMaxLabelNumber.setForeground(Color.yellow);
         playerPanel.add(hpMaxLabelNumber);
+        mpLabel = new JLabel("MP : ");
+        mpLabel.setFont(normalFont);
+        mpLabel.setForeground(Color.lightGray);
+        playerPanel.add(mpLabel);
+        mpLabelNumber = new JLabel();
+        mpLabelNumber.setFont(normalFont);
+        mpLabelNumber.setForeground(Color.lightGray);
+        playerPanel.add(mpLabelNumber);
+        mpMaxLabel = new JLabel("MP max : ");
+        mpMaxLabel.setFont(normalFont);
+        mpMaxLabel.setForeground(Color.darkGray);
+        playerPanel.add(mpMaxLabel);
+        mpMaxLabelNumber = new JLabel();
+        mpMaxLabelNumber.setFont(normalFont);
+        mpMaxLabelNumber.setForeground(Color.darkGray);
+        playerPanel.add(mpMaxLabelNumber);
         weaponLabel = new JLabel("Arme : ");
         weaponLabel.setFont(normalFont);
         weaponLabel.setForeground(Color.white);
@@ -149,13 +172,29 @@ public class UI {
         weaponLabelDamageMaxNumber.setFont(normalFont);
         weaponLabelDamageMaxNumber.setForeground(Color.orange);
         playerPanel.add(weaponLabelDamageMaxNumber);
+        strengthLabel = new JLabel("Force : ");
+        strengthLabel.setFont(normalFont);
+        strengthLabel.setForeground(Color.white);
+        playerPanel.add(strengthLabel);
+        strengthLabelNumber = new JLabel();
+        strengthLabelNumber.setFont(normalFont);
+        strengthLabelNumber.setForeground(Color.white);
+        playerPanel.add(strengthLabelNumber);
+        habilityLabel = new JLabel("Habileté : ");
+        habilityLabel.setFont(normalFont);
+        habilityLabel.setForeground(Color.white);
+        playerPanel.add(habilityLabel);
+        habilityLabelNumber = new JLabel();
+        habilityLabelNumber.setFont(normalFont);
+        habilityLabelNumber.setForeground(Color.white);
+        playerPanel.add(habilityLabelNumber);
 
         window.setVisible(true);
 
     }
 
-    public void getImage(String filename) {
+    public void getImage(JLabel imageLabelToDefine, String filename) {
         image = new ImageIcon(".//resources//" + filename);
-        imageLabel.setIcon(image);
+        imageLabelToDefine.setIcon(image);
     }
 }

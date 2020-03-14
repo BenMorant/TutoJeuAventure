@@ -2,6 +2,7 @@ package JeuAventureSwing.gameMechanix;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Game {
 
@@ -48,6 +49,10 @@ public class Game {
             }
 
         }
+    }
+
+    public static int getRandomNumberBetweenTwoBounds(int min, int max) {
+        return min + new Random().nextInt(max - min) + 1;
     }
 
     public static void main(String[] args) {

@@ -21,6 +21,10 @@ public class VisibilityManager {
         ui.choiceButtonPanel.setVisible(false);
         ui.playerPanel.setVisible(false);
 
+        //cache les images
+
+        ui.imageLabelPrincipal.setVisible(false);
+        ui.imageLabelPortrait.setVisible(false);
     }
 
     public void titleToTown() {
@@ -34,6 +38,13 @@ public class VisibilityManager {
         ui.mainTextPanel.setVisible(true);
         ui.choiceButtonPanel.setVisible(true);
         ui.playerPanel.setVisible(true);
+
+        //montre les images
+
+        //cache les images
+
+        ui.imageLabelPrincipal.setVisible(true);
+        ui.imageLabelPortrait.setVisible(true);
 
     }
 }

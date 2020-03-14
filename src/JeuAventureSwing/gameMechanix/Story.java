@@ -10,6 +10,8 @@ import JeuAventureSwing.weaponz.WeaponKnife;
 
 import java.util.Random;
 
+import static JeuAventureSwing.gameMechanix.Game.getRandomNumberBetweenTwoBounds;
+
 public class Story {
 
     Game game;
@@ -28,16 +30,29 @@ public class Story {
 
     public void defaultSetup() {
 
-       player.hpMax = 6 + new Random().nextInt(10) + 1;
+        ui.getImage(ui.imageLabelPortrait, player.portrait);
+        player.hpMax = getRandomNumberBetweenTwoBounds(7, 15);
         player.hp = player.hpMax;
 
         ui.hpLabelNumber.setText("" + player.hp);
         ui.hpMaxLabelNumber.setText("" + player.hpMax);
+
+        player.mpMax = 0;
+        player.mp = player.mpMax;
+
+        ui.mpLabelNumber.setText("" + player.mp);
+        ui.mpMaxLabelNumber.setText("" + player.mpMax);
+
         silverRing = false;
 
         player.currentWeapon = new WeaponKnife();
         ui.weaponLabelName.setText(player.currentWeapon.name);
         ui.weaponLabelDamageMaxNumber.setText("" + player.currentWeapon.damageMax);
+
+        player.strength = getRandomNumberBetweenTwoBounds(0, 10);
+        player.hability = 10 - player.strength;
+        ui.strengthLabelNumber.setText("" + player.strength);
+        ui.habilityLabelNumber.setText("" + player.hability);
     }
 
     public void selectNextPosition(String nextPosition) {
@@ -89,7 +104,7 @@ public class Story {
     }
 
     public void townGate() {
-        ui.getImage("places//cite.jpg");
+        ui.getImage(ui.imageLabelPrincipal, "places//cite.jpg");
         ui.mainTextArea.setText("Vous êtes aux portes de la Cité. \n Un garde se tient debout devant vous. \n Que voulez vous faire ? \n \n \n ");
         ui.choice1.setText("Parler au garde");
         ui.choice2.setText("Attaquer le garde");
@@ -104,7 +119,7 @@ public class Story {
 
     public void talkGuard() {
         monster = new Guard();
-        ui.getImage(monster.image);
+        ui.getImage(ui.imageLabelPrincipal, monster.image);
         if (!silverRing) {
             ui.mainTextArea.setText(monster.name + ": \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. \n Je suis désolé mais nous ne pouvons pas laisser  \n un étranger dans notre ville \"");
             ui.choice1.setText(">");
@@ -124,9 +139,10 @@ public class Story {
 
     public void attackGuard() {
         monster = new Guard();
-        ui.getImage(monster.image);
-        ui.mainTextArea.setText(monster.name + " : \"Hey ! Ne soyez pas stupide!\" \n Vous vous battez bravement mais " + monster.theName + " vous frappe fort \net vous recevez trois points de dommage");
-        player.hp = player.hp - 3;
+        ui.getImage(ui.imageLabelPrincipal, monster.image);
+        int dammageGuard = getRandomNumberBetweenTwoBounds(2, 4);
+        ui.mainTextArea.setText(monster.name + " : \"Hey ! Ne soyez pas stupide!\" \n Vous vous battez bravement mais " + monster.theName + " vous frappe fort \net vous recevez " + dammageGuard + " points de dommage");
+        player.hp = player.hp - dammageGuard;
         ui.hpLabelNumber.setText("" + player.hp);
         ui.choice1.setText(">");
         ui.choice2.setText("");
@@ -140,7 +156,7 @@ public class Story {
     }
 
     public void crossRoad() {
-        ui.getImage("places/crossroad.jpg");
+        ui.getImage(ui.imageLabelPrincipal, "places/crossroad.jpg");
         ui.mainTextArea.setText("Vous êtes à un carrefour. \nSi vous allez au sud, vous serez de retour aux portes de la Cité. \n  Vous choisissez d'aller :");
         ui.choice1.setText("au Nord");
         ui.choice2.setText("à l'Est");
@@ -155,12 +171,12 @@ public class Story {
     }
 
     public void north() {
-        ui.getImage("places/riviere.jpeg");
-
+        ui.getImage(ui.imageLabelPrincipal, "places/riviere.jpeg");
+        int riverRestore = getRandomNumberBetweenTwoBounds(1, 3);
         if (player.hp < (player.hpMax - 1)) {
-            player.hp = player.hp + 2;
+            player.hp = player.hp + riverRestore;
             ui.hpLabelNumber.setText("" + player.hp);
-            ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+2)");
+            ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+" + riverRestore + ")");
         } else if (player.hp < player.hpMax) {
             player.hp = player.hp + 1;
             ui.hpLabelNumber.setText("" + player.hp);
@@ -182,8 +198,9 @@ public class Story {
 
     public void east() {
         player.currentWeapon = new LongSword();
-        ui.getImage(player.currentWeapon.image);
+        ui.getImage(ui.imageLabelPrincipal, player.currentWeapon.image);
         ui.weaponLabelName.setText(player.currentWeapon.name);
+        ui.weaponLabelDamageMaxNumber.setText("" + player.currentWeapon.damageMax);
         ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( " + player.currentWeapon.damageMax + " dommage max )");
         ui.choice1.setText("Vous allez à l'Ouest");
         ui.choice2.setText("");
@@ -206,7 +223,7 @@ public class Story {
         } else {
             monster = new PetitDragon();
         }
-        ui.getImage(monster.image);
+        ui.getImage(ui.imageLabelPrincipal, monster.image);
         ui.mainTextArea.setText("Vous tombez nez à nez sur " + monster.aName + " !");
         ui.choice1.setText("Vous combattez");
         ui.choice2.setText("Vous fuyez");
@@ -220,8 +237,8 @@ public class Story {
     }
 
     public void fight() {
-        ui.getImage(monster.image);
-        ui.mainTextArea.setText("PV " + monster.ofTheName + " : " + monster.hp + "\n\nQue faîtes vous ?");
+        ui.getImage(ui.imageLabelPrincipal, monster.image);
+        ui.mainTextArea.setText("HP " + monster.ofTheName + " : " + monster.hp + "\n\nQue faîtes vous ?");
         ui.choice1.setText("Vous attaquez");
         ui.choice2.setText("Vous fuyez");
         ui.choice3.setText("");
@@ -234,8 +251,8 @@ public class Story {
     }
 
     public void playerAttack() {
-        ui.getImage(monster.image);
-        int playerDamage = new Random().nextInt(player.currentWeapon.damageMax);
+        ui.getImage(ui.imageLabelPrincipal, monster.image);
+        int playerDamage = getRandomNumberBetweenTwoBounds(1, player.currentWeapon.damageMax);
 
 
         monster.hp = monster.hp - playerDamage;
@@ -261,8 +278,8 @@ public class Story {
     }
 
     public void monsterAttack() {
-        ui.getImage(monster.image);
-        int monsterDamage = new Random().nextInt(monster.attack);
+        ui.getImage(ui.imageLabelPrincipal, monster.image);
+        int monsterDamage = getRandomNumberBetweenTwoBounds(1, monster.attack);
 
 
         player.hp = player.hp - monsterDamage;
@@ -290,7 +307,7 @@ public class Story {
 
     public void win() {
 
-        ui.getImage("objects/anneau.jpg");
+        ui.getImage(ui.imageLabelPrincipal, "objects/anneau.jpg");
         silverRing = true;
         ui.mainTextArea.setText("Vous avez battu " + monster.theName + " !\n" + monster.theName + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
 
@@ -307,7 +324,8 @@ public class Story {
     }
 
     public void lose() {
-        ui.getImage("");
+        ui.getImage(ui.imageLabelPrincipal, "");
+
         ui.mainTextArea.setText("Vous êtes mort !\n\n GAME OVER");
 
         ui.choice1.setText("Revenir à l'écran tître");
@@ -322,7 +340,7 @@ public class Story {
     }
 
     public void ending() {
-        ui.getImage("garde.jpg");
+        ui.getImage(ui.imageLabelPrincipal, "garde.jpg");
         ui.mainTextArea.setText("Garde: \"Oh vous avez tué " + monster.theName + " !!??? Super !\nVous êtes notre heros!\nBienvenue dans notre Cité!\"\n\nTHE END");
 
         ui.choice1.setText("Revenir à l'écran tître");
