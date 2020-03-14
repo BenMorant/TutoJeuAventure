@@ -28,7 +28,7 @@ public class Story {
 
     public void defaultSetup() {
 
-        player.hpMax = 6 + new Random().nextInt(10) + 1;
+       player.hpMax = 6 + new Random().nextInt(10) + 1;
         player.hp = player.hpMax;
 
         ui.hpLabelNumber.setText("" + player.hp);
@@ -157,10 +157,14 @@ public class Story {
     public void north() {
         ui.getImage("places/riviere.jpeg");
 
-        if (player.hp < player.hpMax) {
+        if (player.hp < (player.hpMax - 1)) {
             player.hp = player.hp + 2;
             ui.hpLabelNumber.setText("" + player.hp);
             ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+2)");
+        } else if (player.hp < player.hpMax) {
+            player.hp = player.hp + 1;
+            ui.hpLabelNumber.setText("" + player.hp);
+            ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+1)");
         } else {
             ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont au maximum.");
         }
