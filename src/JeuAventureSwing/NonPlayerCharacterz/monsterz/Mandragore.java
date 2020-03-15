@@ -11,6 +11,7 @@ public class Mandragore extends SuperMonster {
         attack = 4;
         attackMessage = "La mandragore pousse son cri mortel !";
         image = "monsters/mandragore.jpg";
+        object = "gousse de mandragore";
 
     }
 }

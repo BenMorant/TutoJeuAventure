@@ -12,6 +12,7 @@ public class PetitDragon extends SuperMonster {
         attack = 8;
         attackMessage = "Le petit dragon crache un jet de flammes par ses narines !";
         image = "monsters/petit_dragon.jpg";
+        object = "dent de dragonneau";
 
     }
 }

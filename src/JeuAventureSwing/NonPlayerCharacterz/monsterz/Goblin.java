@@ -11,7 +11,7 @@ public class Goblin extends SuperMonster {
         attack = 6;
         attackMessage = "Le gobelin vous touche avec son baton !";
         image = "monsters/gobelin.jpg";
-
+        object = "annnnneau !";
         //monsterObject = new Silverring();
 
     }

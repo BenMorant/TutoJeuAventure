@@ -83,7 +83,7 @@ public class Story {
     }
 
     public void selectNextPosition(String nextPosition) {
-
+        int difficulty = 0;
         switch (nextPosition) {
             case "townGate":
                 townGate();
@@ -122,7 +122,7 @@ public class Story {
                 goThroughPlayerAttack++;
                 break;
             case "stealEnemy":
-                stealEnemy();
+                stealEnemy(monster.object, player.hability, difficulty);
                 goThroughStealEnemy++;
                 break;
             case "monsterAttack":
@@ -378,8 +378,13 @@ public class Story {
         }
     }
 
-    public void stealEnemy() {
-
+    public void stealEnemy(String enemyObject, int habilityPoints, int difficulty) {
+        int chance = getRandomNumberBetweenTwoBounds(0, habilityPoints);
+        if (chance < difficulty) {
+            ui.mainTextArea.setText("Vous n'avez pas réussi à voler l'ennemi !");
+        } else {
+            ui.mainTextArea.setText("Bravo ! Vous avez réussi à choper " + enemyObject);
+        }
     }
 
     public void monsterAttack() {

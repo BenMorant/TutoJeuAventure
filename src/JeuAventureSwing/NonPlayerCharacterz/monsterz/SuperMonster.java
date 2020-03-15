@@ -1,7 +1,5 @@
 package JeuAventureSwing.NonPlayerCharacterz.monsterz;
 
-import JeuAventureSwing.objectz.SuperObjectz;
-
 public class SuperMonster {
 
     public String name;
@@ -12,6 +10,6 @@ public class SuperMonster {
     public int attack;
     public String attackMessage;
     public String image;
-
-    public SuperObjectz monsterObject;
+    public String object;
+    //public SuperObjectz monsterObject;
 }
