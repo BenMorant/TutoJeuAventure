@@ -7,7 +7,8 @@ public class UI {
 
     JFrame window;
     JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, imagePanelPrincipal, imagePanelPortrait;
-    JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabelPrincipal, imageLabelPortrait, habilityLabel, strengthLabel, mpLabel, mpLabelNumber, mpMaxLabel, mpMaxLabelNumber, strengthLabelNumber, habilityLabelNumber;
+    JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabelPrincipal, imageLabelPortrait,
+            habilityLabel, strengthLabel, mpLabel, mpLabelNumber, mpMaxLabel, mpMaxLabelNumber, strengthLabelNumber, habilityLabelNumber, strengthMaxLabel, strengthMaxLabelNumber, habilityMaxLabel, habilityMaxLabelNumber;
     Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
     JButton startButton, choice1, choice2, choice3, choice4;
@@ -122,7 +123,7 @@ public class UI {
         playerPanel = new JPanel();
         playerPanel.setBounds(850, 260, 400, 320);
         playerPanel.setBackground(Color.black);
-        playerPanel.setLayout(new GridLayout(8, 2));
+        playerPanel.setLayout(new GridLayout(10, 2));
         window.add(playerPanel);
         hpLabel = new JLabel("HP : ");
         hpLabel.setFont(normalFont);
@@ -180,6 +181,14 @@ public class UI {
         strengthLabelNumber.setFont(normalFont);
         strengthLabelNumber.setForeground(Color.white);
         playerPanel.add(strengthLabelNumber);
+        strengthMaxLabel = new JLabel("Force Max: ");
+        strengthMaxLabel.setFont(normalFont);
+        strengthMaxLabel.setForeground(Color.yellow);
+        playerPanel.add(strengthMaxLabel);
+        strengthMaxLabelNumber = new JLabel();
+        strengthMaxLabelNumber.setFont(normalFont);
+        strengthMaxLabelNumber.setForeground(Color.yellow);
+        playerPanel.add(strengthMaxLabelNumber);
         habilityLabel = new JLabel("Habileté : ");
         habilityLabel.setFont(normalFont);
         habilityLabel.setForeground(Color.white);
@@ -188,6 +197,14 @@ public class UI {
         habilityLabelNumber.setFont(normalFont);
         habilityLabelNumber.setForeground(Color.white);
         playerPanel.add(habilityLabelNumber);
+        habilityMaxLabel = new JLabel("Habileté Max: ");
+        habilityMaxLabel.setFont(normalFont);
+        habilityMaxLabel.setForeground(Color.yellow);
+        playerPanel.add(habilityMaxLabel);
+        habilityMaxLabelNumber = new JLabel();
+        habilityMaxLabelNumber.setFont(normalFont);
+        habilityMaxLabelNumber.setForeground(Color.yellow);
+        playerPanel.add(habilityMaxLabelNumber);
 
         window.setVisible(true);
 
