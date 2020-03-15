@@ -41,8 +41,6 @@ public class VisibilityManager {
 
         //montre les images
 
-        //cache les images
-
         ui.imageLabelPrincipal.setVisible(true);
         ui.imageLabelPortrait.setVisible(true);
 

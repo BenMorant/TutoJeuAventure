@@ -1,6 +1,6 @@
 package JeuAventureSwing.objectz;
 
-import JeuAventureSwing.monsterz.SuperMonster;
+import JeuAventureSwing.NonPlayerCharacterz.monsterz.SuperMonster;
 
 public class Silverring extends SuperMonster {
 

@@ -1,4 +1,4 @@
-package JeuAventureSwing.monsterz;
+package JeuAventureSwing.NonPlayerCharacterz.monsterz;
 
 public class SuperMonster {
 

@@ -47,13 +47,13 @@ public class Game {
                     break;
 
             }
-
         }
     }
 
     public static int getRandomNumberBetweenTwoBounds(int min, int max) {
-        return min + new Random().nextInt(Math.abs(max - min)) + 1;
+            return min + new Random().nextInt(Math.abs(max - min + 1));
     }
+
 
     public static void main(String[] args) {
 
