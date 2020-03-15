@@ -3,7 +3,7 @@
 
 #IntelliJ-specific stuff
 .idea/
-.iml
+*.iml
 out/
 
 #Eclipse-specific stuff
