@@ -1,4 +1,4 @@
-package JeuAventureSwing.NonPlayerCharacterz.monsterz;
+package JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz;
 
 public class SuperMonster {
 
@@ -11,5 +11,6 @@ public class SuperMonster {
     public String attackMessage;
     public String image;
     public String object;
+    public int stealDifficulty;
     //public SuperObjectz monsterObject;
 }

@@ -1,4 +1,6 @@
-package JeuAventureSwing.NonPlayerCharacterz.monsterz;
+package JeuAventureSwing.gameModelz.nonPlayerCharacterz.otherNPCz;
+
+import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.SuperMonster;
 
 public class Guard extends SuperMonster {
 

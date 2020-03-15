@@ -8,7 +8,7 @@ public class UI {
     JFrame window;
     JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, imagePanelPrincipal, imagePanelPortrait;
     JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabelPrincipal, imageLabelPortrait,
-            habilityLabel, strengthLabel, mpLabel, mpLabelNumber, mpMaxLabel, mpMaxLabelNumber, strengthLabelNumber, habilityLabelNumber, strengthMaxLabel, strengthMaxLabelNumber, habilityMaxLabel, habilityMaxLabelNumber,
+            abilityLabel, strengthLabel, mpLabel, mpLabelNumber, mpMaxLabel, mpMaxLabelNumber, strengthLabelNumber, abilityLabelNumber, strengthMaxLabel, strengthMaxLabelNumber, abilityMaxLabel, abilityMaxLabelNumber,
             weaponLabelWear, weaponLabelWearNumber, weaponLabelWearMaxLabel, weaponLabelWearMaxLabelNumber;
     Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
@@ -207,22 +207,22 @@ public class UI {
         strengthMaxLabelNumber.setFont(playerPanelFont);
         strengthMaxLabelNumber.setForeground(Color.yellow);
         playerPanel.add(strengthMaxLabelNumber);
-        habilityLabel = new JLabel("Habileté : ");
-        habilityLabel.setFont(playerPanelFont);
-        habilityLabel.setForeground(Color.white);
-        playerPanel.add(habilityLabel);
-        habilityLabelNumber = new JLabel();
-        habilityLabelNumber.setFont(playerPanelFont);
-        habilityLabelNumber.setForeground(Color.white);
-        playerPanel.add(habilityLabelNumber);
-        habilityMaxLabel = new JLabel("Habileté Max: ");
-        habilityMaxLabel.setFont(playerPanelFont);
-        habilityMaxLabel.setForeground(Color.yellow);
-        playerPanel.add(habilityMaxLabel);
-        habilityMaxLabelNumber = new JLabel();
-        habilityMaxLabelNumber.setFont(playerPanelFont);
-        habilityMaxLabelNumber.setForeground(Color.yellow);
-        playerPanel.add(habilityMaxLabelNumber);
+        abilityLabel = new JLabel("Habileté : ");
+        abilityLabel.setFont(playerPanelFont);
+        abilityLabel.setForeground(Color.white);
+        playerPanel.add(abilityLabel);
+        abilityLabelNumber = new JLabel();
+        abilityLabelNumber.setFont(playerPanelFont);
+        abilityLabelNumber.setForeground(Color.white);
+        playerPanel.add(abilityLabelNumber);
+        abilityMaxLabel = new JLabel("Habileté Max: ");
+        abilityMaxLabel.setFont(playerPanelFont);
+        abilityMaxLabel.setForeground(Color.yellow);
+        playerPanel.add(abilityMaxLabel);
+        abilityMaxLabelNumber = new JLabel();
+        abilityMaxLabelNumber.setFont(playerPanelFont);
+        abilityMaxLabelNumber.setForeground(Color.yellow);
+        playerPanel.add(abilityMaxLabelNumber);
 
         window.setVisible(true);
 

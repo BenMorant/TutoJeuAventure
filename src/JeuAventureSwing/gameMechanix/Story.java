@@ -1,18 +1,18 @@
 package JeuAventureSwing.gameMechanix;
 
-import JeuAventureSwing.NonPlayerCharacterz.monsterz.Goblin;
-import JeuAventureSwing.NonPlayerCharacterz.monsterz.Guard;
-import JeuAventureSwing.NonPlayerCharacterz.monsterz.Mandragore;
-import JeuAventureSwing.NonPlayerCharacterz.monsterz.PetitDragon;
-import JeuAventureSwing.NonPlayerCharacterz.monsterz.SuperMonster;
-import JeuAventureSwing.weaponz.LongSword;
-import JeuAventureSwing.weaponz.SuperWeapon;
-import JeuAventureSwing.weaponz.WeaponKnife;
+import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.Goblin;
+import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.Mandragore;
+import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.PetitDragon;
+import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.SuperMonster;
+import JeuAventureSwing.gameModelz.nonPlayerCharacterz.otherNPCz.Guard;
+import JeuAventureSwing.gameModelz.weaponz.LongSword;
+import JeuAventureSwing.gameModelz.weaponz.SuperWeapon;
+import JeuAventureSwing.gameModelz.weaponz.WeaponKnife;
 
 import java.util.Random;
 
 import static JeuAventureSwing.gameMechanix.Game.getRandomNumberBetweenTwoBounds;
-import static JeuAventureSwing.weaponz.SuperWeapon.getDamageWeapon;
+import static JeuAventureSwing.gameModelz.weaponz.SuperWeapon.getDamageWeapon;
 
 public class Story {
 
@@ -57,12 +57,12 @@ public class Story {
 
         player.strengthMax = getRandomNumberBetweenTwoBounds(0, 10);
         player.strength = player.strengthMax;
-        player.habilityMax = 10 - player.strengthMax;
-        player.hability = player.habilityMax;
+        player.abilityMax = 10 - player.strengthMax;
+        player.ability = player.abilityMax;
         ui.strengthLabelNumber.setText("" + player.strength);
         ui.strengthMaxLabelNumber.setText("" + player.strengthMax);
-        ui.habilityLabelNumber.setText("" + player.hability);
-        ui.habilityMaxLabelNumber.setText("" + player.habilityMax);
+        ui.abilityLabelNumber.setText("" + player.ability);
+        ui.abilityMaxLabelNumber.setText("" + player.abilityMax);
 
         hasSilverRing = false;
         goThroughTalkGuard = 0;
@@ -121,10 +121,10 @@ public class Story {
                 playerAttack();
                 goThroughPlayerAttack++;
                 break;
-//            case "stealEnemy":
-//                stealEnemy();
-//                goThroughStealEnemy++;
-//                break;
+            case "stealEnemy":
+                stealEnemy();
+                goThroughStealEnemy++;
+                break;
             case "monsterAttack":
                 monsterAttack();
                 goThroughMonsterAttack++;
@@ -173,7 +173,7 @@ public class Story {
             } else if (goThroughTalkGuard == 2) {
                 ui.mainTextArea.setText("Vous entendez " + monster.theName + " grommeler entre ses dents : \" Bon, c'est vrai qu'il me le faudrait, ce petit anneau ! \"");
             } else if (goThroughTalkGuard == 3) {
-                if (player.hability > 5) {
+                if (player.ability > 5) {
                     ui.mainTextArea.setText("Vous tendez l'oreille et grâce à vos points d'habilité vous percevez les murmures " + monster.ofTheName + " : \" Je crois savoir que c'est un Gobelin a l'Ouest qui en serait l'heureux propriétaire... \n Je donnerais tout pour l'avoir ! \"");
                 } else {
                     ui.mainTextArea.setText("Vous avez beau tendre l'oreille, vous n'avez pas assez de points d'habilité pour percevoir les murmures " + monster.ofTheName);
@@ -261,9 +261,9 @@ public class Story {
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont au maximum.");
             }
         } else {
-            if (player.hability > 0) {
-                player.hability--;
-                ui.habilityLabelNumber.setText("" + player.hability);
+            if (player.ability > 0) {
+                player.ability--;
+                ui.abilityLabelNumber.setText("" + player.ability);
                 ui.mainTextArea.setText("Vous avez trop bu d'eau et perdez un point d'habileté.");
             } else {
                 ui.mainTextArea.setText("Vous avez trop bu d'eau.");
@@ -336,7 +336,7 @@ public class Story {
 
     public void fight() {
         ui.getImage(ui.imageLabelPrincipal, monster.image);
-        if (player.hability > 4) {
+        if (player.ability > 4) {
             ui.mainTextArea.setText("Grâce à vos points d'habilité, vous arrivez à déterminer les HP " + monster.ofTheName + " : " + monster.hp + "HP .\n\nQue faîtes vous ?");
             ui.choice1.setText("Vous attaquez");
         } else {
@@ -364,7 +364,7 @@ public class Story {
             player.currentWeapon.wear++;
             ui.weaponLabelWearNumber.setText("" + player.currentWeapon.wear);
         }
-        if (player.hability > 4) {
+        if (player.ability > 4) {
             ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage ! \n" + monster.theName + " a désormais " + monster.hp + " HP.");
         } else {
             ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage !");
@@ -391,14 +391,31 @@ public class Story {
         game.nextPosition4 = "";
     }
 
-//    public void stealEnemy() {
-//        int chance = getRandomNumberBetweenTwoBounds(0, habilityPoints);
-//        if (chance < difficulty) {
-//            ui.mainTextArea.setText("Vous n'avez pas réussi à voler l'ennemi !");
-//        } else {
-//            ui.mainTextArea.setText("Bravo ! Vous avez réussi à choper " + enemyObject);
-//        }
-//    }
+    public void stealEnemy() {
+        boolean alreadyStolen = false;
+        int chance = getRandomNumberBetweenTwoBounds(0, player.ability);
+        if (chance < monster.stealDifficulty) {
+            ui.mainTextArea.setText("Vous n'avez pas réussi à voler l'ennemi !");
+        } else {
+            ui.mainTextArea.setText("Bravo ! Vous avez réussi à choper " + monster.object);
+            alreadyStolen = true;
+        }
+        if (alreadyStolen) {
+            ui.mainTextArea.setText("Bravo ! Vous avez déjà volé " + monster.theName);
+            game.nextPosition1 = "playerAttack";
+        } else {
+            game.nextPosition1 = "monsterAttack";
+        }
+
+        ui.choice1.setText(">");
+        ui.choice2.setText("");
+        ui.choice3.setText("");
+        ui.choice4.setText("");
+
+        game.nextPosition2 = "";
+        game.nextPosition3 = "";
+        game.nextPosition4 = "";
+    }
 
     public void monsterAttack() {
         ui.getImage(ui.imageLabelPrincipal, monster.image);
@@ -419,18 +436,20 @@ public class Story {
         if (player.hp < 1) {
             ui.choice1.setText(">");
             ui.choice2.setText("");
+            ui.choice3.setText("");
             game.nextPosition1 = "die";
+            game.nextPosition2 = "";
             game.nextPosition2 = "";
         } else {
             ui.choice1.setText("Vous attaquez");
-            ui.choice2.setText("Vous fuyez");
+            ui.choice2.setText("Vous tentez de voler " + monster.theName);
+            ui.choice3.setText("Vous fuyez");
             game.nextPosition1 = "playerAttack";
-            game.nextPosition2 = "crossRoad";
+            game.nextPosition2 = "stealEnemy";
+            game.nextPosition3 = "crossRoad";
         }
 
-        ui.choice3.setText("");
         ui.choice4.setText("");
-        game.nextPosition3 = "";
         game.nextPosition4 = "";
     }
 

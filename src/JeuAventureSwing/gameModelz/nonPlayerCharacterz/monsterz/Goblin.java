@@ -1,4 +1,4 @@
-package JeuAventureSwing.NonPlayerCharacterz.monsterz;
+package JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz;
 
 public class Goblin extends SuperMonster {
 
@@ -12,6 +12,8 @@ public class Goblin extends SuperMonster {
         attackMessage = "Le gobelin vous touche avec son baton !";
         image = "monsters/gobelin.jpg";
         object = "annnnneau !";
+        stealDifficulty = 5;
+
         //monsterObject = new Silverring();
 
     }

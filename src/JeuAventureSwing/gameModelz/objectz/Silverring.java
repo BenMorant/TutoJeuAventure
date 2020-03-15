@@ -1,8 +1,6 @@
-package JeuAventureSwing.objectz;
+package JeuAventureSwing.gameModelz.objectz;
 
-import JeuAventureSwing.NonPlayerCharacterz.monsterz.SuperMonster;
-
-public class Silverring extends SuperMonster {
+public class Silverring extends SuperObjectz {
 
     public Silverring() {
         name = "anneau d'argent";

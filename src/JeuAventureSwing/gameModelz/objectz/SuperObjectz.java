@@ -1,4 +1,4 @@
-package JeuAventureSwing.objectz;
+package JeuAventureSwing.gameModelz.objectz;
 
 public class SuperObjectz {
 

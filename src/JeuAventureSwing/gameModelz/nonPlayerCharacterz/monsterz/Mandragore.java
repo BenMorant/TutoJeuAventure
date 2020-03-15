@@ -1,4 +1,4 @@
-package JeuAventureSwing.NonPlayerCharacterz.monsterz;
+package JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz;
 
 public class Mandragore extends SuperMonster {
 
@@ -12,6 +12,7 @@ public class Mandragore extends SuperMonster {
         attackMessage = "La mandragore pousse son cri mortel !";
         image = "monsters/mandragore.jpg";
         object = "gousse de mandragore";
+        stealDifficulty = 3;
 
     }
 }

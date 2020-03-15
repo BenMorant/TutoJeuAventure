@@ -1,4 +1,4 @@
-package JeuAventureSwing.weaponz;
+package JeuAventureSwing.gameModelz.weaponz;
 
 public class LongSword extends SuperWeapon {
 
