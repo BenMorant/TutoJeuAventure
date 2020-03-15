@@ -8,6 +8,7 @@ public class SuperWeapon {
     public int wear;
     public int wearMax;
 
+
     public static int getDamageWeapon(int playerStrength, int playerStrengthMax, int weaponDamageMax) {
         return (int) (Math.random() * (weaponDamageMax * (playerStrength / playerStrengthMax + 1)));
     }

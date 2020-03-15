@@ -23,7 +23,7 @@ public class Story {
     SuperMonster monster;
     boolean hasSilverRing;
     int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
-            goThroughFight, goThroughPlayerAttack, goThroughMonsterAttack, goThroughWin, goThroughLose, goThroughEnding, goThroughToTitle, goThroughStealEnemy;
+            goThroughFight, goThroughPlayerAttack, goThroughMonsterAttack, goThroughGetSilverRing, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealEnemy;
 
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
 
@@ -75,8 +75,8 @@ public class Story {
         goThroughFight = 0;
         goThroughPlayerAttack = 0;
         goThroughMonsterAttack = 0;
-        goThroughWin = 0;
-        goThroughLose = 0;
+        goThroughGetSilverRing = 0;
+        goThroughDie = 0;
         goThroughEnding = 0;
         goThroughToTitle = 0;
         goThroughStealEnemy = 0;
@@ -121,21 +121,21 @@ public class Story {
                 playerAttack();
                 goThroughPlayerAttack++;
                 break;
-            case "stealEnemy":
-                stealEnemy(monster.object, player.hability, difficulty);
-                goThroughStealEnemy++;
-                break;
+//            case "stealEnemy":
+//                stealEnemy();
+//                goThroughStealEnemy++;
+//                break;
             case "monsterAttack":
                 monsterAttack();
                 goThroughMonsterAttack++;
                 break;
-            case "win":
-                goThroughWin++;
-                win();
+            case "getSilverRing":
+                goThroughGetSilverRing++;
+                getSilverRing();
                 break;
-            case "lose":
-                lose();
-                goThroughLose++;
+            case "die":
+                die();
+                goThroughDie++;
                 break;
             case "ending":
                 ending();
@@ -206,15 +206,26 @@ public class Story {
         monster = new Guard();
         ui.getImage(ui.imageLabelPrincipal, monster.image);
         int dammageGuard = getRandomNumberBetweenTwoBounds(2, 4);
-        ui.mainTextArea.setText(monster.name + " : \"Hey ! Ne soyez pas stupide!\" \n Vous vous battez bravement mais " + monster.theName + " vous frappe fort \net vous recevez " + dammageGuard + " points de dommage");
+        if (goThroughAttackGuard == 0) {
+            ui.mainTextArea.setText(monster.name + " : \"Hey ! Ne sois pas stupide!\" \n Vous vous battez bravement mais " + monster.theName + " vous frappe fort \net vous recevez " + dammageGuard + " points de dommage");
+        } else {
+            dammageGuard++;
+            ui.mainTextArea.setText(monster.name + " : \"Toi, tu n'as rien compris à la leçon que je t'ai donnée tout à l'heure !\" \n " + monster.theName + " vous frappe encore plus fort \net vous recevez " + dammageGuard + " points de dommage");
+        }
         player.hp = player.hp - dammageGuard;
+
+        if (player.hp < 1) {
+            player.hp = 0;
+            game.nextPosition1 = "die";
+        } else {
+            game.nextPosition1 = "townGate";
+        }
         ui.hpLabelNumber.setText("" + player.hp);
         ui.choice1.setText(">");
         ui.choice2.setText("");
         ui.choice3.setText("");
         ui.choice4.setText("");
 
-        game.nextPosition1 = "townGate";
         game.nextPosition2 = "";
         game.nextPosition3 = "";
         game.nextPosition4 = "";
@@ -276,18 +287,18 @@ public class Story {
         if (player.strengthMax < 5) {
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n Malheureusement, vous n'êtes pas assez fort pour la porter.");
         } else {
-            //player.currentWeapon = new LongSword();
-            // ui.getImage(ui.imageLabelPrincipal, player.currentWeapon.image);
             player.currentWeapon = swordFound;
             ui.weaponLabelName.setText(player.currentWeapon.name);
             ui.weaponLabelDamageMaxNumber.setText("" + player.currentWeapon.damageMax);
+            player.currentWeapon.wear = getRandomNumberBetweenTwoBounds(0, player.currentWeapon.wearMax - 1);
+            ui.weaponLabelWearNumber.setText("" + player.currentWeapon.wear);
+            ui.weaponLabelWearMaxLabelNumber.setText("" + player.currentWeapon.wearMax);
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + player.currentWeapon.damageMax + " , usure = " + player.currentWeapon.wear + " / " + player.currentWeapon.wearMax + " )");
             if (player.currentWeapon.wear == player.currentWeapon.wearMax) {
                 ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + player.currentWeapon.damageMax + " , usure = " + player.currentWeapon.wear + " / " + player.currentWeapon.wearMax +
                         " ) \n ... Vous comprenez pourquoi " + player.currentWeapon.name + "a été jeté.");
             }
         }
-
 
         ui.choice1.setText("Vous allez à l'Ouest");
         ui.choice2.setText("");
@@ -345,15 +356,14 @@ public class Story {
 
     public void playerAttack() {
         ui.getImage(ui.imageLabelPrincipal, monster.image);
-//        int playerDamage = getRandomNumberBetweenTwoBounds(player.strength, player.currentWeapon.damageMax);
         int playerDamage = getDamageWeapon(player.strength, player.strengthMax, player.currentWeapon.damageMax);
 
         monster.hp = monster.hp - playerDamage;
-        if (player.currentWeapon.wear < player.currentWeapon.wearMax && (goThroughPlayerAttack != 0 && goThroughPlayerAttack % 3 == 0)) {
+
+        if (player.currentWeapon.wear < player.currentWeapon.wearMax && (goThroughPlayerAttack != 0 && goThroughPlayerAttack % 2 == 0)) {
             player.currentWeapon.wear++;
             ui.weaponLabelWearNumber.setText("" + player.currentWeapon.wear);
         }
-
         if (player.hability > 4) {
             ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage ! \n" + monster.theName + " a désormais " + monster.hp + " HP.");
         } else {
@@ -365,56 +375,66 @@ public class Story {
         ui.choice3.setText("");
         ui.choice4.setText("");
 
-        if (monster.hp > 0) {
+        if (monster.hp < 1) {
+            monster.hp = 0;
+            ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage ! \n" + monster.theName + " est mort .");
+            if (monster.name.equalsIgnoreCase("gobelin")) {
+                game.nextPosition1 = "getSilverRing";
+            } else {
+                game.nextPosition1 = "crossRoad";
+            }
+        } else {
             game.nextPosition1 = "monsterAttack";
-            game.nextPosition2 = "";
-            game.nextPosition3 = "";
-            game.nextPosition4 = "";
-        } else if (monster.hp < 1) {
-            game.nextPosition1 = "win";
-            game.nextPosition2 = "";
-            game.nextPosition3 = "";
-            game.nextPosition4 = "";
         }
+        game.nextPosition2 = "";
+        game.nextPosition3 = "";
+        game.nextPosition4 = "";
     }
 
-    public void stealEnemy(String enemyObject, int habilityPoints, int difficulty) {
-        int chance = getRandomNumberBetweenTwoBounds(0, habilityPoints);
-        if (chance < difficulty) {
-            ui.mainTextArea.setText("Vous n'avez pas réussi à voler l'ennemi !");
-        } else {
-            ui.mainTextArea.setText("Bravo ! Vous avez réussi à choper " + enemyObject);
-        }
-    }
+//    public void stealEnemy() {
+//        int chance = getRandomNumberBetweenTwoBounds(0, habilityPoints);
+//        if (chance < difficulty) {
+//            ui.mainTextArea.setText("Vous n'avez pas réussi à voler l'ennemi !");
+//        } else {
+//            ui.mainTextArea.setText("Bravo ! Vous avez réussi à choper " + enemyObject);
+//        }
+//    }
 
     public void monsterAttack() {
         ui.getImage(ui.imageLabelPrincipal, monster.image);
         int monsterDamage = getRandomNumberBetweenTwoBounds(1, monster.attack);
 
         player.hp = player.hp - monsterDamage;
+        if (player.hp < 1) {
+            player.hp = 0;
+        }
         ui.hpLabelNumber.setText("" + player.hp);
 
         ui.mainTextArea.setText(monster.attackMessage + "\n " + monster.theName + " vous attaque et vous donne " + monsterDamage + " de dommage!");
 
-        ui.choice1.setText("Vous attaquez");
-        ui.choice2.setText("Vous fuyez");
+
         ui.choice3.setText("");
         ui.choice4.setText("");
 
-        if (player.hp > 0) {
+        if (player.hp < 1) {
+            ui.choice1.setText(">");
+            ui.choice2.setText("");
+            game.nextPosition1 = "die";
+            game.nextPosition2 = "";
+        } else {
+            ui.choice1.setText("Vous attaquez");
+            ui.choice2.setText("Vous fuyez");
             game.nextPosition1 = "playerAttack";
             game.nextPosition2 = "crossRoad";
-            game.nextPosition3 = "";
-            game.nextPosition4 = "";
-        } else if (player.hp < 1) {
-            game.nextPosition1 = "lose";
-            game.nextPosition2 = "";
-            game.nextPosition3 = "";
-            game.nextPosition4 = "";
         }
+
+        ui.choice3.setText("");
+        ui.choice4.setText("");
+        game.nextPosition3 = "";
+        game.nextPosition4 = "";
     }
 
-    public void win() {
+    public void getSilverRing() {
 
         ui.getImage(ui.imageLabelPrincipal, "objects/anneau.jpg");
         hasSilverRing = true;
@@ -432,7 +452,7 @@ public class Story {
 
     }
 
-    public void lose() {
+    public void die() {
         ui.getImage(ui.imageLabelPrincipal, "");
 
         ui.mainTextArea.setText("Vous êtes mort !\n\n GAME OVER");
@@ -453,10 +473,7 @@ public class Story {
         ui.mainTextArea.setText("Garde: \"Oh vous avez tué " + monster.theName + " !!??? Super !\nVous êtes notre heros!\nBienvenue dans notre Cité!\"\n\nTHE END");
 
         ui.choice1.setText("Revenir à l'écran tître");
-        ui.choice2.setVisible(false);
-        ui.choice3.setVisible(false);
-        ui.choice4.setVisible(false);
-
+        
         game.nextPosition1 = "toTitle";
     }
 
