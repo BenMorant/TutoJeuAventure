@@ -3,6 +3,8 @@
 
 #IntelliJ-specific stuff
 .idea/
+.iml
+out/
 
 #Eclipse-specific stuff
 .settings/
