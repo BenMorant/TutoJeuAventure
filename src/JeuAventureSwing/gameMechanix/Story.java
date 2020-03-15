@@ -473,7 +473,7 @@ public class Story {
         ui.mainTextArea.setText("Garde: \"Oh vous avez tué " + monster.theName + " !!??? Super !\nVous êtes notre heros!\nBienvenue dans notre Cité!\"\n\nTHE END");
 
         ui.choice1.setText("Revenir à l'écran tître");
-        
+
         game.nextPosition1 = "toTitle";
     }
 
