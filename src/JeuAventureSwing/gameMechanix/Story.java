@@ -49,6 +49,10 @@ public class Story {
         ui.weaponLabelName.setText(player.currentWeapon.name);
         ui.weaponLabelDamageMaxNumber.setText("" + player.currentWeapon.damageMax);
 
+        player.currentWeapon.wear = getRandomNumberBetweenTwoBounds(0, player.currentWeapon.wearMax - 1);
+        ui.weaponLabelWearNumber.setText("" + player.currentWeapon.wear);
+        ui.weaponLabelWearMaxLabelNumber.setText("" + player.currentWeapon.wearMax);
+
         player.strengthMax = getRandomNumberBetweenTwoBounds(0, 10);
         player.strength = player.strengthMax;
         player.habilityMax = 10 - player.strengthMax;
@@ -261,7 +265,13 @@ public class Story {
         ui.getImage(ui.imageLabelPrincipal, player.currentWeapon.image);
         ui.weaponLabelName.setText(player.currentWeapon.name);
         ui.weaponLabelDamageMaxNumber.setText("" + player.currentWeapon.damageMax);
-        ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( " + player.currentWeapon.damageMax + " dommage max )");
+        ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + player.currentWeapon.damageMax + " , usure = " + player.currentWeapon.wear + " / " + player.currentWeapon.wearMax + " )");
+        if (player.currentWeapon.wear == player.currentWeapon.wearMax) {
+            ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + player.currentWeapon.damageMax + " , usure = " + player.currentWeapon.wear + " / " + player.currentWeapon.wearMax +
+                    " ) \n ... Vous comprenez pourquoi " + player.currentWeapon.name + "a été jeté.");
+        }
+
+
         ui.choice1.setText("Vous allez à l'Ouest");
         ui.choice2.setText("");
         ui.choice3.setText("");
@@ -319,7 +329,12 @@ public class Story {
     public void playerAttack() {
         ui.getImage(ui.imageLabelPrincipal, monster.image);
         int playerDamage = getRandomNumberBetweenTwoBounds(player.strength, player.currentWeapon.damageMax);
+
         monster.hp = monster.hp - playerDamage;
+        if (player.currentWeapon.wear < player.currentWeapon.wearMax && (goThroughPlayerAttack != 0 && goThroughPlayerAttack % 3 == 0)) {
+            player.currentWeapon.wear++;
+            ui.weaponLabelWearNumber.setText("" + player.currentWeapon.wear);
+        }
 
         if (player.hability > 4) {
             ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage ! \n" + monster.theName + " a désormais " + monster.hp + " HP.");

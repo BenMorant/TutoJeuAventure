@@ -7,5 +7,6 @@ public class LongSword extends SuperWeapon {
         name = "longue épée";
         damageMax = 10;
         image = "weapons/epee.jpg";
+        wearMax = 15;
     }
 }

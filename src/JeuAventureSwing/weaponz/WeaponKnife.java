@@ -6,5 +6,6 @@ public class WeaponKnife extends SuperWeapon {
 
         name = "couteau";
         damageMax = 3;
+        wearMax = 7;
     }
 }
