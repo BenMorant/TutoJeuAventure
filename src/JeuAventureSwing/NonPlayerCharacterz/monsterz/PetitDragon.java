@@ -2,6 +2,7 @@ package JeuAventureSwing.NonPlayerCharacterz.monsterz;
 
 public class PetitDragon extends SuperMonster {
 
+
     public PetitDragon() {
         name = "Petit dragon";
         aName = "un petit dragon";

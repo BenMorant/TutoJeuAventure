@@ -23,7 +23,7 @@ public class Story {
     SuperMonster monster;
     boolean hasSilverRing;
     int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
-            goThroughFight, goThroughPlayerAttack, goThroughMonsterAttack, goThroughWin, goThroughLose, goThroughEnding, goThroughToTitle;
+            goThroughFight, goThroughPlayerAttack, goThroughMonsterAttack, goThroughWin, goThroughLose, goThroughEnding, goThroughToTitle, goThroughStealEnemy;
 
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
 
@@ -79,6 +79,7 @@ public class Story {
         goThroughLose = 0;
         goThroughEnding = 0;
         goThroughToTitle = 0;
+        goThroughStealEnemy = 0;
     }
 
     public void selectNextPosition(String nextPosition) {
@@ -119,6 +120,10 @@ public class Story {
             case "playerAttack":
                 playerAttack();
                 goThroughPlayerAttack++;
+                break;
+            case "stealEnemy":
+                stealEnemy();
+                goThroughStealEnemy++;
                 break;
             case "monsterAttack":
                 monsterAttack();
@@ -197,7 +202,6 @@ public class Story {
         }
     }
 
-
     public void attackGuard() {
         monster = new Guard();
         ui.getImage(ui.imageLabelPrincipal, monster.image);
@@ -228,7 +232,6 @@ public class Story {
         game.nextPosition2 = "east";
         game.nextPosition3 = "townGate";
         game.nextPosition4 = "west";
-
     }
 
     public void north() {
@@ -330,13 +333,13 @@ public class Story {
             ui.choice1.setText("Vous attaquez malgré cela");
         }
 
-        ui.choice2.setText("Vous fuyez");
-        ui.choice3.setText("");
+        ui.choice2.setText("Vous tentez de voler " + monster.theName);
+        ui.choice3.setText("Vous fuyez");
         ui.choice4.setText("");
 
         game.nextPosition1 = "playerAttack";
-        game.nextPosition2 = "crossRoad";
-        game.nextPosition3 = "";
+        game.nextPosition2 = "stealEnemy";
+        game.nextPosition3 = "crossRoad";
         game.nextPosition4 = "";
     }
 
@@ -373,6 +376,10 @@ public class Story {
             game.nextPosition3 = "";
             game.nextPosition4 = "";
         }
+    }
+
+    public void stealEnemy() {
+
     }
 
     public void monsterAttack() {
