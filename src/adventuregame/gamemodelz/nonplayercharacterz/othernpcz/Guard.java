@@ -1,6 +1,6 @@
-package JeuAventureSwing.gameModelz.nonPlayerCharacterz.otherNPCz;
+package adventuregame.gamemodelz.nonplayercharacterz.othernpcz;
 
-import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.SuperMonster;
+import adventuregame.gamemodelz.nonplayercharacterz.monsterz.SuperMonster;
 
 public class Guard extends SuperMonster {
 
@@ -12,7 +12,7 @@ public class Guard extends SuperMonster {
         hp = 15;
         attack = 3;
         attackMessage = "Le garde vous pique le derrière avec la pointe de son mousquet !";
-        image = "monsters/garde.png";
+        image = "monsters/guard.png";
 
     }
 }

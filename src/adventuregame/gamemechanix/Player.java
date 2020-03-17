@@ -1,6 +1,6 @@
-package JeuAventureSwing.gameMechanix;
+package adventuregame.gamemechanix;
 
-import JeuAventureSwing.gameModelz.weaponz.SuperWeapon;
+import adventuregame.gamemodelz.weaponz.SuperWeapon;
 
 public class Player {
 

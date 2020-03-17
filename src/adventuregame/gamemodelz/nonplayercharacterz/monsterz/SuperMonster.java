@@ -1,4 +1,4 @@
-package JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz;
+package adventuregame.gamemodelz.nonplayercharacterz.monsterz;
 
 public class SuperMonster {
 

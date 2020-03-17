@@ -1,18 +1,18 @@
-package JeuAventureSwing.gameMechanix;
+package adventuregame.gamemechanix;
 
-import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.Goblin;
-import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.Mandragore;
-import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.PetitDragon;
-import JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz.SuperMonster;
-import JeuAventureSwing.gameModelz.nonPlayerCharacterz.otherNPCz.Guard;
-import JeuAventureSwing.gameModelz.weaponz.LongSword;
-import JeuAventureSwing.gameModelz.weaponz.SuperWeapon;
-import JeuAventureSwing.gameModelz.weaponz.WeaponKnife;
+import adventuregame.gamemodelz.nonplayercharacterz.monsterz.Goblin;
+import adventuregame.gamemodelz.nonplayercharacterz.monsterz.LittleDragon;
+import adventuregame.gamemodelz.nonplayercharacterz.monsterz.Mandragore;
+import adventuregame.gamemodelz.nonplayercharacterz.monsterz.SuperMonster;
+import adventuregame.gamemodelz.nonplayercharacterz.othernpcz.Guard;
+import adventuregame.gamemodelz.weaponz.Knife;
+import adventuregame.gamemodelz.weaponz.LongSword;
+import adventuregame.gamemodelz.weaponz.SuperWeapon;
 
 import java.util.Random;
 
-import static JeuAventureSwing.gameMechanix.Game.getRandomNumberBetweenTwoBounds;
-import static JeuAventureSwing.gameModelz.weaponz.SuperWeapon.getDamageWeapon;
+import static adventuregame.gamemechanix.Game.getRandomNumberBetweenTwoBounds;
+import static adventuregame.gamemodelz.weaponz.SuperWeapon.getDamageWeapon;
 
 public class Story {
 
@@ -47,7 +47,7 @@ public class Story {
         ui.mpLabelNumber.setText("" + player.mp);
         ui.mpMaxLabelNumber.setText("" + player.mpMax);
 
-        player.currentWeapon = new WeaponKnife();
+        player.currentWeapon = new Knife();
         ui.weaponLabelName.setText(player.currentWeapon.name);
         ui.weaponLabelDamageMaxNumber.setText("" + player.currentWeapon.damageMax);
 
@@ -83,7 +83,7 @@ public class Story {
     }
 
     public void selectNextPosition(String nextPosition) {
-        int difficulty = 0;
+
         switch (nextPosition) {
             case "townGate":
                 townGate();
@@ -149,7 +149,7 @@ public class Story {
     }
 
     public void townGate() {
-        ui.getImage(ui.imageLabelPrincipal, "places//cite.jpg");
+        ui.getImage(ui.imageLabelPrincipal, "places//town.jpg");
         ui.mainTextArea.setText("Vous êtes aux portes de la Cité. \n Un garde se tient debout devant vous. \n Que voulez vous faire ? \n \n \n ");
         ui.choice1.setText("Parler au garde");
         ui.choice2.setText("Attaquer le garde");
@@ -246,7 +246,7 @@ public class Story {
     }
 
     public void north() {
-        ui.getImage(ui.imageLabelPrincipal, "places/riviere.jpeg");
+        ui.getImage(ui.imageLabelPrincipal, "places/river.jpeg");
         int riverRestore = getRandomNumberBetweenTwoBounds(1, 3);
         if (goThroughNorth < 2) {
             if (player.hp < (player.hpMax - 1)) {
@@ -319,7 +319,7 @@ public class Story {
         } else if (i < 90) {
             monster = new Mandragore();
         } else {
-            monster = new PetitDragon();
+            monster = new LittleDragon();
         }
         ui.getImage(ui.imageLabelPrincipal, monster.image);
         ui.mainTextArea.setText("Vous tombez nez à nez sur " + monster.aName + " !");
@@ -455,7 +455,7 @@ public class Story {
 
     public void getSilverRing() {
 
-        ui.getImage(ui.imageLabelPrincipal, "objects/anneau.jpg");
+        ui.getImage(ui.imageLabelPrincipal, "objects/silver_ring.jpg");
         hasSilverRing = true;
         ui.mainTextArea.setText("Vous avez battu " + monster.theName + " !\n" + monster.theName + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
 

@@ -1,4 +1,4 @@
-package JeuAventureSwing.gameMechanix;
+package adventuregame.gamemechanix;
 
 public class VisibilityManager {
     UI ui;

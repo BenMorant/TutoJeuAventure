@@ -1,4 +1,4 @@
-package JeuAventureSwing.gameModelz.weaponz;
+package adventuregame.gamemodelz.weaponz;
 
 public class SuperWeapon {
 

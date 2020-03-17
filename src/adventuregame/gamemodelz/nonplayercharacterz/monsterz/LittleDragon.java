@@ -1,9 +1,9 @@
-package JeuAventureSwing.gameModelz.nonPlayerCharacterz.monsterz;
+package adventuregame.gamemodelz.nonplayercharacterz.monsterz;
 
-public class PetitDragon extends SuperMonster {
+public class LittleDragon extends SuperMonster {
 
 
-    public PetitDragon() {
+    public LittleDragon() {
         name = "Petit dragon";
         aName = "un petit dragon";
         theName = "le petit dragon";
@@ -11,7 +11,7 @@ public class PetitDragon extends SuperMonster {
         hp = 60;
         attack = 8;
         attackMessage = "Le petit dragon crache un jet de flammes par ses narines !";
-        image = "monsters/petit_dragon.jpg";
+        image = "monsters/little_dragon.jpg";
         object = "dent de dragonneau";
         stealDifficulty = 6;
 

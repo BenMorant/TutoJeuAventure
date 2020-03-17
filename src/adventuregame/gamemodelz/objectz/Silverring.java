@@ -1,4 +1,4 @@
-package JeuAventureSwing.gameModelz.objectz;
+package adventuregame.gamemodelz.objectz;
 
 public class Silverring extends SuperObjectz {
 
@@ -7,7 +7,7 @@ public class Silverring extends SuperObjectz {
         aName = "un anneau d'argent";
         theName = "l'anneau d'argent";
         ofTheName = "de l'anneau d'argent";
-        image = "objects/anneau.jpg";
+        image = "objects/silver_ring.jpg";
 
     }
 }

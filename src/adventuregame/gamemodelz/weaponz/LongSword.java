@@ -1,4 +1,4 @@
-package JeuAventureSwing.gameModelz.weaponz;
+package adventuregame.gamemodelz.weaponz;
 
 public class LongSword extends SuperWeapon {
 
@@ -6,7 +6,7 @@ public class LongSword extends SuperWeapon {
 
         name = "longue épée";
         damageMax = 10;
-        image = "weapons/epee.jpg";
+        image = "weapons/sword.jpg";
         wearMax = 15;
     }
 }
