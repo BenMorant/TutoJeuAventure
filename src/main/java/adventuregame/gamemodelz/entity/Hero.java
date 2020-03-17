@@ -12,7 +12,7 @@ public class Hero {
     private int strength;
     private int abilityMax;
     private int strengthMax;
-    private String picture = "hero/rambo.jpg";
+    private String picture;
     private SuperWeapon currentWeapon;
 
     public int getHp() {
