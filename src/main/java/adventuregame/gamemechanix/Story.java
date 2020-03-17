@@ -1,5 +1,6 @@
 package adventuregame.gamemechanix;
 
+import adventuregame.gamemodelz.entity.Hero;
 import adventuregame.gamemodelz.nonplayercharacterz.monsterz.Goblin;
 import adventuregame.gamemodelz.nonplayercharacterz.monsterz.LittleDragon;
 import adventuregame.gamemodelz.nonplayercharacterz.monsterz.Mandragore;
@@ -19,7 +20,7 @@ public class Story {
     Game game;
     UI ui;
     VisibilityManager vm;
-    Player player = new Player();
+    Hero hero = new Hero();
     SuperMonster monster;
     boolean hasSilverRing;
     int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
@@ -34,35 +35,35 @@ public class Story {
 
     public void defaultSetup() {
 
-        ui.getImage(ui.imageLabelPortrait, player.portrait);
-        player.hpMax = getRandomNumberBetweenTwoBounds(7, 15);
-        player.hp = player.hpMax;
+        ui.getImage(ui.imageLabelPicture, hero.getPicture());
+        hero.setHpMax(getRandomNumberBetweenTwoBounds(7, 15));
+        hero.setHp(hero.getHpMax());
 
-        ui.hpLabelNumber.setText("" + player.hp);
-        ui.hpMaxLabelNumber.setText("" + player.hpMax);
+        ui.hpLabelNumber.setText("" + hero.getHp());
+        ui.hpMaxLabelNumber.setText("" + hero.getHpMax());
 
-        player.mpMax = 0;
-        player.mp = player.mpMax;
+        hero.setMpMax(0);
+        hero.setMp(hero.getMpMax());
 
-        ui.mpLabelNumber.setText("" + player.mp);
-        ui.mpMaxLabelNumber.setText("" + player.mpMax);
+        ui.mpLabelNumber.setText("" + hero.getMp());
+        ui.mpMaxLabelNumber.setText("" + hero.getHpMax());
 
-        player.currentWeapon = new Knife();
-        ui.weaponLabelName.setText(player.currentWeapon.name);
-        ui.weaponLabelDamageMaxNumber.setText("" + player.currentWeapon.damageMax);
+        hero.setCurrentWeapon(new Knife());
+        ui.weaponLabelName.setText(hero.getCurrentWeapon().name);
+        ui.weaponLabelDamageMaxNumber.setText("" + hero.getCurrentWeapon().damageMax);
 
-        player.currentWeapon.wear = getRandomNumberBetweenTwoBounds(0, player.currentWeapon.wearMax - 1);
-        ui.weaponLabelWearNumber.setText("" + player.currentWeapon.wear);
-        ui.weaponLabelWearMaxLabelNumber.setText("" + player.currentWeapon.wearMax);
+        hero.getCurrentWeapon().wear = getRandomNumberBetweenTwoBounds(0, hero.getCurrentWeapon().wearMax - 1);
+        ui.weaponLabelWearNumber.setText("" + hero.getCurrentWeapon().wear);
+        ui.weaponLabelWearMaxLabelNumber.setText("" + hero.getCurrentWeapon().wearMax);
 
-        player.strengthMax = getRandomNumberBetweenTwoBounds(0, 10);
-        player.strength = player.strengthMax;
-        player.abilityMax = 10 - player.strengthMax;
-        player.ability = player.abilityMax;
-        ui.strengthLabelNumber.setText("" + player.strength);
-        ui.strengthMaxLabelNumber.setText("" + player.strengthMax);
-        ui.abilityLabelNumber.setText("" + player.ability);
-        ui.abilityMaxLabelNumber.setText("" + player.abilityMax);
+        hero.setStrengthMax(getRandomNumberBetweenTwoBounds(0, 10));
+        hero.setStrength(hero.getStrengthMax());
+        hero.setAbilityMax(10 - hero.getStrengthMax());
+        hero.setAbility(hero.getAbilityMax());
+        ui.strengthLabelNumber.setText("" + hero.getStrength());
+        ui.strengthMaxLabelNumber.setText("" + hero.getStrengthMax());
+        ui.abilityLabelNumber.setText("" + hero.getAbility());
+        ui.abilityMaxLabelNumber.setText("" + hero.getAbilityMax());
 
         hasSilverRing = false;
         goThroughTalkGuard = 0;
@@ -173,7 +174,7 @@ public class Story {
             } else if (goThroughTalkGuard == 2) {
                 ui.mainTextArea.setText("Vous entendez " + monster.theName + " grommeler entre ses dents : \" Bon, c'est vrai qu'il me le faudrait, ce petit anneau ! \"");
             } else if (goThroughTalkGuard == 3) {
-                if (player.ability > 5) {
+                if (hero.getAbility() > 5) {
                     ui.mainTextArea.setText("Vous tendez l'oreille et grâce à vos points d'habilité vous percevez les murmures " + monster.ofTheName + " : \" Je crois savoir que c'est un Gobelin a l'Ouest qui en serait l'heureux propriétaire... \n Je donnerais tout pour l'avoir ! \"");
                 } else {
                     ui.mainTextArea.setText("Vous avez beau tendre l'oreille, vous n'avez pas assez de points d'habilité pour percevoir les murmures " + monster.ofTheName);
@@ -212,15 +213,15 @@ public class Story {
             dammageGuard++;
             ui.mainTextArea.setText(monster.name + " : \"Toi, tu n'as rien compris à la leçon que je t'ai donnée tout à l'heure !\" \n " + monster.theName + " vous frappe encore plus fort \net vous recevez " + dammageGuard + " points de dommage");
         }
-        player.hp = player.hp - dammageGuard;
+        hero.setHp(hero.getHp() - dammageGuard);
 
-        if (player.hp < 1) {
-            player.hp = 0;
+        if (hero.getHp() < 1) {
+            hero.setHp(0);
             game.nextPosition1 = "die";
         } else {
             game.nextPosition1 = "townGate";
         }
-        ui.hpLabelNumber.setText("" + player.hp);
+        ui.hpLabelNumber.setText("" + hero.getHp());
         ui.choice1.setText(">");
         ui.choice2.setText("");
         ui.choice3.setText("");
@@ -249,21 +250,21 @@ public class Story {
         ui.getImage(ui.imageLabelPrincipal, "places/river.jpeg");
         int riverRestore = getRandomNumberBetweenTwoBounds(1, 3);
         if (goThroughNorth < 2) {
-            if (player.hp < (player.hpMax - 1)) {
-                player.hp = player.hp + riverRestore;
-                ui.hpLabelNumber.setText("" + player.hp);
+            if (hero.getHp() < (hero.getHpMax() - 1)) {
+                hero.setHp(hero.getHp() + riverRestore);
+                ui.hpLabelNumber.setText("" + hero.getHp());
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+" + riverRestore + ")");
-            } else if (player.hp < player.hpMax) {
-                player.hp = player.hp + 1;
-                ui.hpLabelNumber.setText("" + player.hp);
+            } else if (hero.getHp() < hero.getHpMax()) {
+                hero.setHp(hero.getHp() + 1);
+                ui.hpLabelNumber.setText("" + hero.getHp());
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+1)");
             } else {
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont au maximum.");
             }
         } else {
-            if (player.ability > 0) {
-                player.ability--;
-                ui.abilityLabelNumber.setText("" + player.ability);
+            if (hero.getAbility() > 0) {
+                hero.setAbility(hero.getAbility() - 1);
+                ui.abilityLabelNumber.setText("" + hero.getAbility());
                 ui.mainTextArea.setText("Vous avez trop bu d'eau et perdez un point d'habileté.");
             } else {
                 ui.mainTextArea.setText("Vous avez trop bu d'eau.");
@@ -284,19 +285,19 @@ public class Story {
     public void east() {
         SuperWeapon swordFound = new LongSword();
         ui.getImage(ui.imageLabelPrincipal, swordFound.image);
-        if (player.strengthMax < 5) {
+        if (hero.getStrengthMax() < 5) {
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n Malheureusement, vous n'êtes pas assez fort pour la porter.");
         } else {
-            player.currentWeapon = swordFound;
-            ui.weaponLabelName.setText(player.currentWeapon.name);
-            ui.weaponLabelDamageMaxNumber.setText("" + player.currentWeapon.damageMax);
-            player.currentWeapon.wear = getRandomNumberBetweenTwoBounds(0, player.currentWeapon.wearMax - 1);
-            ui.weaponLabelWearNumber.setText("" + player.currentWeapon.wear);
-            ui.weaponLabelWearMaxLabelNumber.setText("" + player.currentWeapon.wearMax);
-            ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + player.currentWeapon.damageMax + " , usure = " + player.currentWeapon.wear + " / " + player.currentWeapon.wearMax + " )");
-            if (player.currentWeapon.wear == player.currentWeapon.wearMax) {
-                ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + player.currentWeapon.damageMax + " , usure = " + player.currentWeapon.wear + " / " + player.currentWeapon.wearMax +
-                        " ) \n ... Vous comprenez pourquoi " + player.currentWeapon.name + "a été jeté.");
+            hero.setCurrentWeapon(swordFound);
+            ui.weaponLabelName.setText(hero.getCurrentWeapon().name);
+            ui.weaponLabelDamageMaxNumber.setText("" + hero.getCurrentWeapon().damageMax);
+            hero.getCurrentWeapon().wear = getRandomNumberBetweenTwoBounds(0, hero.getCurrentWeapon().wearMax - 1);
+            ui.weaponLabelWearNumber.setText("" + hero.getCurrentWeapon().wear);
+            ui.weaponLabelWearMaxLabelNumber.setText("" + hero.getCurrentWeapon().wearMax);
+            ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + hero.getCurrentWeapon().damageMax + " , usure = " + hero.getCurrentWeapon().wear + " / " + hero.getCurrentWeapon().wearMax + " )");
+            if (hero.getCurrentWeapon().wear == hero.getCurrentWeapon().wearMax) {
+                ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + hero.getCurrentWeapon().damageMax + " , usure = " + hero.getCurrentWeapon().wear + " / " + hero.getCurrentWeapon().wearMax +
+                        " ) \n ... Vous comprenez pourquoi " + hero.getCurrentWeapon().name + "a été jeté.");
             }
         }
 
@@ -336,7 +337,7 @@ public class Story {
 
     public void fight() {
         ui.getImage(ui.imageLabelPrincipal, monster.image);
-        if (player.ability > 4) {
+        if (hero.getAbility() > 4) {
             ui.mainTextArea.setText("Grâce à vos points d'habilité, vous arrivez à déterminer les HP " + monster.ofTheName + " : " + monster.hp + "HP .\n\nQue faîtes vous ?");
             ui.choice1.setText("Vous attaquez");
         } else {
@@ -356,15 +357,15 @@ public class Story {
 
     public void playerAttack() {
         ui.getImage(ui.imageLabelPrincipal, monster.image);
-        int playerDamage = getDamageWeapon(player.strength, player.strengthMax, player.currentWeapon.damageMax);
+        int playerDamage = getDamageWeapon(hero.getStrength(), hero.getStrengthMax(), hero.getCurrentWeapon().damageMax);
 
         monster.hp = monster.hp - playerDamage;
 
-        if (player.currentWeapon.wear < player.currentWeapon.wearMax && (goThroughPlayerAttack != 0 && goThroughPlayerAttack % 2 == 0)) {
-            player.currentWeapon.wear++;
-            ui.weaponLabelWearNumber.setText("" + player.currentWeapon.wear);
+        if (hero.getCurrentWeapon().wear < hero.getCurrentWeapon().wearMax && (goThroughPlayerAttack != 0 && goThroughPlayerAttack % 2 == 0)) {
+            hero.getCurrentWeapon().wear++;
+            ui.weaponLabelWearNumber.setText("" + hero.getCurrentWeapon().wear);
         }
-        if (player.ability > 4) {
+        if (hero.getAbility() > 4) {
             ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage ! \n" + monster.theName + " a désormais " + monster.hp + " HP.");
         } else {
             ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage !");
@@ -393,7 +394,7 @@ public class Story {
 
     public void stealEnemy() {
         boolean alreadyStolen = false;
-        int chance = getRandomNumberBetweenTwoBounds(0, player.ability);
+        int chance = getRandomNumberBetweenTwoBounds(0, hero.getAbility());
         if (chance < monster.stealDifficulty) {
             ui.mainTextArea.setText("Vous n'avez pas réussi à voler l'ennemi !");
         } else {
@@ -421,11 +422,11 @@ public class Story {
         ui.getImage(ui.imageLabelPrincipal, monster.image);
         int monsterDamage = getRandomNumberBetweenTwoBounds(1, monster.attack);
 
-        player.hp = player.hp - monsterDamage;
-        if (player.hp < 1) {
-            player.hp = 0;
+        hero.setHp(hero.getHp() - monsterDamage);
+        if (hero.getHp() < 1) {
+            hero.setHp(0);
         }
-        ui.hpLabelNumber.setText("" + player.hp);
+        ui.hpLabelNumber.setText("" + hero.getHp());
 
         ui.mainTextArea.setText(monster.attackMessage + "\n " + monster.theName + " vous attaque et vous donne " + monsterDamage + " de dommage!");
 
@@ -433,7 +434,7 @@ public class Story {
         ui.choice3.setText("");
         ui.choice4.setText("");
 
-        if (player.hp < 1) {
+        if (hero.getHp() < 1) {
             ui.choice1.setText(">");
             ui.choice2.setText("");
             ui.choice3.setText("");

@@ -6,8 +6,8 @@ import java.awt.*;
 public class UI {
 
     JFrame window;
-    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, imagePanelPrincipal, imagePanelPortrait;
-    JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabelPrincipal, imageLabelPortrait,
+    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, imagePanelPrincipal, imagePanelPicture;
+    JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabelPrincipal, imageLabelPicture,
             abilityLabel, strengthLabel, mpLabel, mpLabelNumber, mpMaxLabel, mpMaxLabelNumber, strengthLabelNumber, abilityLabelNumber, strengthMaxLabel, strengthMaxLabelNumber, abilityMaxLabel, abilityMaxLabelNumber,
             weaponLabelWear, weaponLabelWearNumber, weaponLabelWearMaxLabel, weaponLabelWearMaxLabelNumber;
     Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
@@ -59,13 +59,13 @@ public class UI {
         imagePanelPrincipal.add(imageLabelPrincipal);
         window.add(imagePanelPrincipal);
 
-        //portrait du personnage
-        imagePanelPortrait = new JPanel();
-        imagePanelPortrait.setBounds(960, 70, 140, 175);
-        imagePanelPortrait.setBackground(Color.black);
-        imageLabelPortrait = new JLabel("");
-        imagePanelPortrait.add(imageLabelPortrait);
-        window.add(imagePanelPortrait);
+        //image du personnage
+        imagePanelPicture = new JPanel();
+        imagePanelPicture.setBounds(960, 70, 140, 175);
+        imagePanelPicture.setBackground(Color.black);
+        imageLabelPicture = new JLabel("");
+        imagePanelPicture.add(imageLabelPicture);
+        window.add(imagePanelPicture);
 
         //écran jeu
         mainTextPanel = new JPanel();

@@ -24,7 +24,7 @@ public class VisibilityManager {
         //cache les images
 
         ui.imageLabelPrincipal.setVisible(false);
-        ui.imageLabelPortrait.setVisible(false);
+        ui.imageLabelPicture.setVisible(false);
     }
 
     public void titleToTown() {
@@ -42,7 +42,7 @@ public class VisibilityManager {
         //montre les images
 
         ui.imageLabelPrincipal.setVisible(true);
-        ui.imageLabelPortrait.setVisible(true);
+        ui.imageLabelPicture.setVisible(true);
 
     }
 }
