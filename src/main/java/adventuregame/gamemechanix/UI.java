@@ -229,7 +229,7 @@ public class UI {
     }
 
     public void getImage(JLabel imageLabelToDefine, String filename) {
-        image = new ImageIcon(".//resources//pix//" + filename);
+        image = new ImageIcon(".//src//main//resources//pix//" + filename);
         imageLabelToDefine.setIcon(image);
     }
 }
