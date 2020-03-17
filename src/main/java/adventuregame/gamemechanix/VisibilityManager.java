@@ -19,7 +19,7 @@ public class VisibilityManager {
 
         ui.mainTextPanel.setVisible(false);
         ui.choiceButtonPanel.setVisible(false);
-        ui.playerPanel.setVisible(false);
+        ui.heroPanel.setVisible(false);
 
         //cache les images
 
@@ -37,7 +37,7 @@ public class VisibilityManager {
 
         ui.mainTextPanel.setVisible(true);
         ui.choiceButtonPanel.setVisible(true);
-        ui.playerPanel.setVisible(true);
+        ui.heroPanel.setVisible(true);
 
         //montre les images
 

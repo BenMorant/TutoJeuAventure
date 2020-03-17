@@ -9,8 +9,8 @@ public class SuperWeapon {
     public int wearMax;
 
 
-    public static int getDamageWeapon(int playerStrength, int playerStrengthMax, int weaponDamageMax) {
-        return (int) (Math.random() * (weaponDamageMax * (playerStrength / playerStrengthMax + 1)));
+    public static int getDamageWeapon(int heroStrength, int heroStrengthMax, int weaponDamageMax) {
+        return (int) (Math.random() * (weaponDamageMax * (heroStrength / heroStrengthMax + 1)));
     }
 
 }

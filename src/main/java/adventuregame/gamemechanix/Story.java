@@ -24,7 +24,7 @@ public class Story {
     SuperMonster monster;
     boolean hasSilverRing;
     int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
-            goThroughFight, goThroughPlayerAttack, goThroughMonsterAttack, goThroughGetSilverRing, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealEnemy;
+            goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughGetSilverRing, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealEnemy;
 
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
 
@@ -74,7 +74,7 @@ public class Story {
         goThroughEast = 0;
         goThroughWest = 0;
         goThroughFight = 0;
-        goThroughPlayerAttack = 0;
+        goThroughHeroAttack = 0;
         goThroughMonsterAttack = 0;
         goThroughGetSilverRing = 0;
         goThroughDie = 0;
@@ -118,9 +118,9 @@ public class Story {
                 fight();
                 goThroughFight++;
                 break;
-            case "playerAttack":
-                playerAttack();
-                goThroughPlayerAttack++;
+            case "heroAttack":
+                heroAttack();
+                goThroughHeroAttack++;
                 break;
             case "stealEnemy":
                 stealEnemy();
@@ -349,26 +349,26 @@ public class Story {
         ui.choice3.setText("Vous fuyez");
         ui.choice4.setText("");
 
-        game.nextPosition1 = "playerAttack";
+        game.nextPosition1 = "heroAttack";
         game.nextPosition2 = "stealEnemy";
         game.nextPosition3 = "crossRoad";
         game.nextPosition4 = "";
     }
 
-    public void playerAttack() {
+    public void heroAttack() {
         ui.getImage(ui.imageLabelPrincipal, monster.image);
-        int playerDamage = getDamageWeapon(hero.getStrength(), hero.getStrengthMax(), hero.getCurrentWeapon().damageMax);
+        int heroDamage = getDamageWeapon(hero.getStrength(), hero.getStrengthMax(), hero.getCurrentWeapon().damageMax);
 
-        monster.hp = monster.hp - playerDamage;
+        monster.hp = monster.hp - heroDamage;
 
-        if (hero.getCurrentWeapon().wear < hero.getCurrentWeapon().wearMax && (goThroughPlayerAttack != 0 && goThroughPlayerAttack % 2 == 0)) {
+        if (hero.getCurrentWeapon().wear < hero.getCurrentWeapon().wearMax && (goThroughHeroAttack != 0 && goThroughHeroAttack % 2 == 0)) {
             hero.getCurrentWeapon().wear++;
             ui.weaponLabelWearNumber.setText("" + hero.getCurrentWeapon().wear);
         }
         if (hero.getAbility() > 4) {
-            ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage ! \n" + monster.theName + " a désormais " + monster.hp + " HP.");
+            ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + heroDamage + " de dommage ! \n" + monster.theName + " a désormais " + monster.hp + " HP.");
         } else {
-            ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage !");
+            ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + heroDamage + " de dommage !");
         }
 
         ui.choice1.setText(">");
@@ -378,7 +378,7 @@ public class Story {
 
         if (monster.hp < 1) {
             monster.hp = 0;
-            ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + playerDamage + " de dommage ! \n" + monster.theName + " est mort .");
+            ui.mainTextArea.setText("Vous attaquez " + monster.theName + " et lui donnez " + heroDamage + " de dommage ! \n" + monster.theName + " est mort .");
             if (monster.name.equalsIgnoreCase("gobelin")) {
                 game.nextPosition1 = "getSilverRing";
             } else {
@@ -403,7 +403,7 @@ public class Story {
         }
         if (alreadyStolen) {
             ui.mainTextArea.setText("Bravo ! Vous avez déjà volé " + monster.theName);
-            game.nextPosition1 = "playerAttack";
+            game.nextPosition1 = "heroAttack";
         } else {
             game.nextPosition1 = "monsterAttack";
         }
@@ -445,7 +445,7 @@ public class Story {
             ui.choice1.setText("Vous attaquez");
             ui.choice2.setText("Vous tentez de voler " + monster.theName);
             ui.choice3.setText("Vous fuyez");
-            game.nextPosition1 = "playerAttack";
+            game.nextPosition1 = "heroAttack";
             game.nextPosition2 = "stealEnemy";
             game.nextPosition3 = "crossRoad";
         }
