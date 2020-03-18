@@ -58,27 +58,13 @@ public class Story {
         hero.setMpMax(getRandomNumberBetweenTwoBounds(0, 0));
         heroMpMax = hero.getMpMax();
         ui.mpMaxLabelNumber.setText("" + heroMpMax);
-        //MP (based on the MP max)
+        //MP (based on MP max)
         hero.setMp(heroMpMax);
         heroMp = hero.getMp();
         ui.mpLabelNumber.setText("" + heroMp);
         //weapon
         //TODO weapon to choose
-        hero.setCurrentWeapon(new Knife());
-        heroCurrentWeapon = hero.getCurrentWeapon();
-        //weapon name
-        heroCurrentWeaponName = heroCurrentWeapon.getName();
-        ui.weaponLabelName.setText(heroCurrentWeaponName);
-        //damage max
-        heroCurrentWeaponDamageMax = heroCurrentWeapon.getDamageMax();
-        ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponDamageMax);
-        //wear max
-        heroCurrentWeaponWearMax = heroCurrentWeapon.getWearMax();
-        ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeapon.getWearMax());
-        //wear
-        heroCurrentWeapon.setWear(getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
-        heroCurrentWeaponWear = heroCurrentWeapon.getWear();
-        ui.weaponLabelWearNumber.setText("" + heroCurrentWeapon.getWear());
+        configureCurrentWeapon(new Knife());
         //strength Max
         hero.setStrengthMax(getRandomNumberBetweenTwoBounds(0, 10));
         heroStrengthMax = hero.getStrengthMax();
@@ -113,6 +99,24 @@ public class Story {
         goThroughEnding = 0;
         goThroughToTitle = 0;
         goThroughStealEnemy = 0;
+    }
+
+    public void configureCurrentWeapon(SuperWeapon weaponToConfigure) {
+        hero.setCurrentWeapon(weaponToConfigure);
+        heroCurrentWeapon = hero.getCurrentWeapon();
+        //weapon name
+        heroCurrentWeaponName = heroCurrentWeapon.getName();
+        ui.weaponLabelName.setText(heroCurrentWeaponName);
+        //damage max
+        heroCurrentWeaponDamageMax = heroCurrentWeapon.getDamageMax();
+        ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponDamageMax);
+        //wear max
+        heroCurrentWeaponWearMax = heroCurrentWeapon.getWearMax();
+        ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeapon.getWearMax());
+        //wear
+        heroCurrentWeapon.setWear(getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
+        heroCurrentWeaponWear = heroCurrentWeapon.getWear();
+        ui.weaponLabelWearNumber.setText("" + heroCurrentWeapon.getWear());
     }
 
     public void selectNextPosition(String nextPosition) {
@@ -320,12 +324,7 @@ public class Story {
         if (heroStrength < 5) {
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n Malheureusement, vous n'êtes pas assez fort pour la porter.");
         } else {
-            hero.setCurrentWeapon(swordFound);
-            ui.weaponLabelName.setText(heroCurrentWeaponName);
-            ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponDamageMax);
-            heroCurrentWeaponWear = getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1);
-            ui.weaponLabelWearNumber.setText("" + heroCurrentWeaponWear);
-            ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeaponWearMax);
+            configureCurrentWeapon(swordFound);
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + heroCurrentWeaponDamageMax + " , usure = " + heroCurrentWeaponWear + " / " + heroCurrentWeaponWearMax + " )");
             if (heroCurrentWeaponWear == heroCurrentWeaponWearMax) {
                 ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + heroCurrentWeaponDamageMax + " , usure = " + heroCurrentWeaponWear + " / " + heroCurrentWeaponWearMax +
