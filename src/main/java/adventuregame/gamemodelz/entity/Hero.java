@@ -1,7 +1,5 @@
 package adventuregame.gamemodelz.entity;
 
-import adventuregame.gamemodelz.weaponz.SuperWeapon;
-
 public class Hero {
 
     private int hp;

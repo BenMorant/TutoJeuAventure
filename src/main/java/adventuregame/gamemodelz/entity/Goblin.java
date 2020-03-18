@@ -1,4 +1,4 @@
-package adventuregame.gamemodelz.nonplayercharacterz.monsterz;
+package adventuregame.gamemodelz.entity;
 
 public class Goblin extends SuperMonster {
 

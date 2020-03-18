@@ -1,4 +1,4 @@
-package adventuregame.gamemodelz.objectz;
+package adventuregame.gamemodelz.entity;
 
 public class Silverring extends SuperObjectz {
 

@@ -1,6 +1,4 @@
-package adventuregame.gamemodelz.nonplayercharacterz.othernpcz;
-
-import adventuregame.gamemodelz.nonplayercharacterz.monsterz.SuperMonster;
+package adventuregame.gamemodelz.entity;
 
 public class Guard extends SuperMonster {
 
