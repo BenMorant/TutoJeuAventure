@@ -8,8 +8,8 @@ public class Mandragore extends Monster {
         damageMax = 4;
         attackMessage = "La mandragore pousse son cri mortel !";
         image = "monsters/mandragore.jpg";
-        object = "gousse de mandragore";
         stealDifficulty = 3;
+        monsterObject = new MandragoreClove();
 
     }
 }

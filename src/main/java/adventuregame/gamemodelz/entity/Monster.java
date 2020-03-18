@@ -7,8 +7,8 @@ public class Monster {
     protected int damageMax;
     protected String attackMessage;
     protected String image;
-    protected String object;
     protected int stealDifficulty;
+    protected Object monsterObject;
 
     public String getName() {
         return name;
@@ -50,19 +50,19 @@ public class Monster {
         this.image = image;
     }
 
-    public String getObject() {
-        return object;
-    }
-
-    public void setObject(String object) {
-        this.object = object;
-    }
-
     public int getStealDifficulty() {
         return stealDifficulty;
     }
 
     public void setStealDifficulty(int stealDifficulty) {
         this.stealDifficulty = stealDifficulty;
+    }
+
+    public Object getMonsterObject() {
+        return monsterObject;
+    }
+
+    public void setMonsterObject(Object monsterObject) {
+        this.monsterObject = monsterObject;
     }
 }

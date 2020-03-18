@@ -9,8 +9,8 @@ public class LittleDragon extends Monster {
         damageMax = 8;
         attackMessage = "Le petit dragon crache un jet de flammes par ses narines !";
         image = "monsters/little_dragon.jpg";
-        object = "dent de dragonneau";
         stealDifficulty = 6;
+        monsterObject = new LittleDragonTooth();
 
     }
 }
