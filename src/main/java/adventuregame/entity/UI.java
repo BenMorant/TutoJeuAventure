@@ -1,4 +1,4 @@
-package adventuregame.gamemechanix;
+package adventuregame.entity;
 
 import javax.swing.*;
 import java.awt.*;

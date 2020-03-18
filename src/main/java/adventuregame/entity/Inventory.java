@@ -1,4 +1,4 @@
-package adventuregame.gamemodelz.entity;
+package adventuregame.entity;
 
 import java.util.List;
 

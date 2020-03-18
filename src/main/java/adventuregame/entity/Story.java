@@ -1,20 +1,6 @@
-package adventuregame.gamemechanix;
-
-import adventuregame.gamemodelz.entity.Goblin;
-import adventuregame.gamemodelz.entity.Guard;
-import adventuregame.gamemodelz.entity.Hero;
-import adventuregame.gamemodelz.entity.Knife;
-import adventuregame.gamemodelz.entity.LittleDragon;
-import adventuregame.gamemodelz.entity.LongSword;
-import adventuregame.gamemodelz.entity.Mandragore;
-import adventuregame.gamemodelz.entity.Monster;
-import adventuregame.gamemodelz.entity.Silverring;
-import adventuregame.gamemodelz.entity.Weapon;
+package adventuregame.entity;
 
 import java.util.Random;
-
-import static adventuregame.gamemechanix.Game.getRandomNumberBetweenTwoBounds;
-import static adventuregame.gamemodelz.entity.Weapon.getDamageWeapon;
 
 public class Story {
 
@@ -45,14 +31,14 @@ public class Story {
         String heroPictureStart = "hero/rambo.jpg";
         instantiateHeroPicture(heroPictureStart);
         //HP Max
-        int heroHpMaxStart = getRandomNumberBetweenTwoBounds(7, 15);
+        int heroHpMaxStart = Game.getRandomNumberBetweenTwoBounds(7, 15);
         instantiateHpMax(heroHpMaxStart);
         //HP (based on HP max)
         int heroHpStart = heroHpMaxStart;
         instantiateHp(heroHpStart);
         //MP Max
         // TODO = 0 for now
-        int heroMpMaxStart = getRandomNumberBetweenTwoBounds(0, 0);
+        int heroMpMaxStart = Game.getRandomNumberBetweenTwoBounds(0, 0);
         instantiateMpMax(heroMpMaxStart);
         //MP (based on MP max)
         int heroMpStart = heroMpMaxStart;
@@ -62,7 +48,7 @@ public class Story {
         Weapon heroWeaponStart = new Knife();
         instantiateHeroCurrentWeapon(heroWeaponStart);
         //strength Max
-        int heroStrengthMaxStart = getRandomNumberBetweenTwoBounds(0, 10);
+        int heroStrengthMaxStart = Game.getRandomNumberBetweenTwoBounds(0, 10);
         instantiateStrengthMax(heroStrengthMaxStart);
         //strength
         int heroStrengthStart = heroStrengthMaxStart;
@@ -159,7 +145,7 @@ public class Story {
         heroCurrentWeaponWearMax = heroCurrentWeapon.getWearMax();
         ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeapon.getWearMax());
         //wear
-        heroCurrentWeapon.setWear(getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
+        heroCurrentWeapon.setWear(Game.getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
         heroCurrentWeaponWear = heroCurrentWeapon.getWear();
         ui.weaponLabelWearNumber.setText("" + heroCurrentWeapon.getWear());
     }
@@ -288,7 +274,7 @@ public class Story {
     public void attackGuard() {
         monster = new Guard();
         ui.getImage(ui.imageLabelPrincipal, monster.getImage());
-        int dammageGuard = getRandomNumberBetweenTwoBounds(2, 4);
+        int dammageGuard = Game.getRandomNumberBetweenTwoBounds(2, 4);
         if (goThroughAttackGuard == 0) {
             ui.mainTextArea.setText(monster.getName() + " : \"Hey ! Ne sois pas stupide!\" \n Vous vous battez bravement mais " + monster.getName() + " vous frappe fort \net vous recevez " + dammageGuard + " points de dommage");
         } else {
@@ -329,7 +315,7 @@ public class Story {
 
     public void north() {
         ui.getImage(ui.imageLabelPrincipal, "places/river.jpeg");
-        int riverRestore = getRandomNumberBetweenTwoBounds(1, 3);
+        int riverRestore = Game.getRandomNumberBetweenTwoBounds(1, 3);
         if (goThroughNorth < 2) {
             if (heroHp < (heroHpMax - 1)) {
                 instantiateHp(heroHp + riverRestore);
@@ -433,7 +419,7 @@ public class Story {
 
     public void heroAttack() {
         ui.getImage(ui.imageLabelPrincipal, monster.getImage());
-        int heroDamage = getDamageWeapon(heroStrength, heroStrengthMax, heroCurrentWeaponDamageMax);
+        int heroDamage = Weapon.getDamageWeapon(heroStrength, heroStrengthMax, heroCurrentWeaponDamageMax);
 
         monster.setHp(monster.getHp() - heroDamage);
 
@@ -470,7 +456,7 @@ public class Story {
 
     public void stealMonster() {
         boolean alreadyStolen = false;
-        int chance = getRandomNumberBetweenTwoBounds(0, heroAbility);
+        int chance = Game.getRandomNumberBetweenTwoBounds(0, heroAbility);
         if (chance < monster.getStealDifficulty()) {
             ui.mainTextArea.setText("Vous n'avez pas réussi à voler " + monster.getName() + " !");
         } else {
@@ -497,7 +483,7 @@ public class Story {
 
     public void monsterAttack() {
         ui.getImage(ui.imageLabelPrincipal, monster.getImage());
-        int monsterDamage = getRandomNumberBetweenTwoBounds(1, monster.getDamageMax());
+        int monsterDamage = Game.getRandomNumberBetweenTwoBounds(1, monster.getDamageMax());
 
         instantiateHp(heroHp - monsterDamage);
         if (heroHp < 1) {

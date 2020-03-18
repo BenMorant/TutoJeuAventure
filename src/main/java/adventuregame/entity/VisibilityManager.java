@@ -1,4 +1,4 @@
-package adventuregame.gamemechanix;
+package adventuregame.entity;
 
 public class VisibilityManager {
     UI ui;
