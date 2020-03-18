@@ -54,7 +54,6 @@ public class Game {
             return min + new Random().nextInt(Math.abs(max - min + 1));
     }
 
-
     public static void main(String[] args) {
 
         new Game();
