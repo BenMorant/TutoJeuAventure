@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class Hero {
+public class Hero extends People {
 
     private int hp;
     private int hpMax;
@@ -10,7 +10,7 @@ public class Hero {
     private int strength;
     private int abilityMax;
     private int strengthMax;
-    private String picture;
+    private String image;
     private Weapon currentWeapon;
     private Object currentObject;
 
@@ -78,12 +78,12 @@ public class Hero {
         this.strengthMax = strengthMax;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImage() {
+        return image;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Weapon getCurrentWeapon() {

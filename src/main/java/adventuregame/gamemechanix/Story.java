@@ -8,6 +8,7 @@ import adventuregame.gamemodelz.entity.LittleDragon;
 import adventuregame.gamemodelz.entity.LongSword;
 import adventuregame.gamemodelz.entity.Mandragore;
 import adventuregame.gamemodelz.entity.Monster;
+import adventuregame.gamemodelz.entity.Silverring;
 import adventuregame.gamemodelz.entity.Weapon;
 
 import java.util.Random;
@@ -22,9 +23,8 @@ public class Story {
     VisibilityManager vm;
     Hero hero = new Hero();
     Monster monster;
-    boolean hasSilverRing;
     private int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
-            goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughGetSilverRing, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealEnemy;
+            goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughGetMonsterObject, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealMonster;
 
     private int heroAbility, heroHp, heroHpMax, heroMp, heroMpMax, heroStrength, heroAbilityMax, heroStrengthMax, heroCurrentWeaponDamageMax, heroCurrentWeaponWearMax,
             heroCurrentWeaponWear;
@@ -75,7 +75,6 @@ public class Story {
         int heroAbilityStart = heroAbilityMaxStart;
         instantiateAbility(heroAbilityStart);
 
-        hasSilverRing = false;
         goThroughTalkGuard = 0;
         goThroughTownGate = 0;
         goThroughAttackGuard = 0;
@@ -86,11 +85,11 @@ public class Story {
         goThroughFight = 0;
         goThroughHeroAttack = 0;
         goThroughMonsterAttack = 0;
-        goThroughGetSilverRing = 0;
+        goThroughGetMonsterObject = 0;
         goThroughDie = 0;
         goThroughEnding = 0;
         goThroughToTitle = 0;
-        goThroughStealEnemy = 0;
+        goThroughStealMonster = 0;
     }
 
     public void instantiateAbility(int abilityToConfigure) {
@@ -142,8 +141,8 @@ public class Story {
     }
 
     public void instantiateHeroPicture(String pictureToConfigure) {
-        hero.setPicture(pictureToConfigure);
-        heroPicture = hero.getPicture();
+        hero.setImage(pictureToConfigure);
+        heroPicture = hero.getImage();
         ui.getImage(ui.imageLabelPicture, heroPicture);
     }
 
@@ -204,17 +203,17 @@ public class Story {
                 heroAttack();
                 goThroughHeroAttack++;
                 break;
-            case "stealEnemy":
-                stealEnemy();
-                goThroughStealEnemy++;
+            case "stealMonster":
+                stealMonster();
+                goThroughStealMonster++;
                 break;
             case "monsterAttack":
                 monsterAttack();
                 goThroughMonsterAttack++;
                 break;
-            case "getSilverRing":
-                goThroughGetSilverRing++;
-                getSilverRing();
+            case "getMonsterObject":
+                goThroughGetMonsterObject++;
+                getMonsterObject();
                 break;
             case "die":
                 die();
@@ -249,7 +248,9 @@ public class Story {
     public void talkGuard() {
         monster = new Guard();
         ui.getImage(ui.imageLabelPrincipal, monster.getImage());
-        if (!hasSilverRing) {
+        if (hero.getCurrentObject().equals(new Silverring())) {
+            ending();
+        } else {
             if (goThroughTalkGuard == 0) {
                 ui.mainTextArea.setText(monster.getName() + " a l'air affable et poli au premier abord, mais vous sentez aussi qu'il peut être facilement irrascible si on lui tient la jambe trop longtemps...\n" + monster.getName() + ": \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. \n Je suis désolé mais nous ne pouvons pas laisser entrer un étranger dans notre valeureuse Cité. \"");
             } else if (goThroughTalkGuard == 1 || goThroughTalkGuard == 4) {
@@ -281,8 +282,6 @@ public class Story {
             game.nextPosition2 = "";
             game.nextPosition3 = "";
             game.nextPosition4 = "";
-        } else if (hasSilverRing) {
-            ending();
         }
     }
 
@@ -427,7 +426,7 @@ public class Story {
         ui.choice4.setText("");
 
         game.nextPosition1 = "heroAttack";
-        game.nextPosition2 = "stealEnemy";
+        game.nextPosition2 = "stealMonster";
         game.nextPosition3 = "crossRoad";
         game.nextPosition4 = "";
     }
@@ -469,13 +468,14 @@ public class Story {
         game.nextPosition4 = "";
     }
 
-    public void stealEnemy() {
+    public void stealMonster() {
         boolean alreadyStolen = false;
         int chance = getRandomNumberBetweenTwoBounds(0, heroAbility);
         if (chance < monster.getStealDifficulty()) {
-            ui.mainTextArea.setText("Vous n'avez pas réussi à voler l'ennemi !");
+            ui.mainTextArea.setText("Vous n'avez pas réussi à voler " + monster.getName() + " !");
         } else {
-            ui.mainTextArea.setText("Bravo ! Vous avez réussi à choper " + monster.getObject());
+            ui.mainTextArea.setText("Bravo ! Vous avez réussi à choper " + monster.getMonsterObject().name);
+            hero.setCurrentObject(monster.getMonsterObject());
             alreadyStolen = true;
         }
         if (alreadyStolen) {
@@ -522,7 +522,7 @@ public class Story {
             ui.choice2.setText("Vous tentez de voler " + monster.getName());
             ui.choice3.setText("Vous fuyez");
             game.nextPosition1 = "heroAttack";
-            game.nextPosition2 = "stealEnemy";
+            game.nextPosition2 = "stealMonster";
             game.nextPosition3 = "crossRoad";
         }
 
@@ -530,10 +530,9 @@ public class Story {
         game.nextPosition4 = "";
     }
 
-    public void getSilverRing() {
+    public void getMonsterObject() {
 
         ui.getImage(ui.imageLabelPrincipal, "objects/silver_ring.jpg");
-        hasSilverRing = true;
         ui.mainTextArea.setText("Vous avez battu " + monster.getName() + " !\n" + monster.getName() + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
 
         ui.choice1.setText("Vous allez à l'Est");
