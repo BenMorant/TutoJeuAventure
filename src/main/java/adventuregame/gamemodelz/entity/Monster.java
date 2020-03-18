@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class SuperMonster {
+public class Monster {
 
     protected String name;
     protected int hp;

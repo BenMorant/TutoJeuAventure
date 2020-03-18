@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class LittleDragon extends SuperMonster {
+public class LittleDragon extends Monster {
 
 
     public LittleDragon() {

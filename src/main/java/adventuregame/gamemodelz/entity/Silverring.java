@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class Silverring extends SuperObjectz {
+public class Silverring extends Object {
 
     public Silverring() {
         name = "anneau d'argent";

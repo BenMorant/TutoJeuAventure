@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class SuperWeapon {
+public class Weapon {
 
     protected String name;
     protected int damageMax;

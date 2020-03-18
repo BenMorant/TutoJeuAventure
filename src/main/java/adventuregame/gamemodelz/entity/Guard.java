@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class Guard extends SuperMonster {
+public class Guard extends Monster {
 
     public Guard() {
         name = "Garde";

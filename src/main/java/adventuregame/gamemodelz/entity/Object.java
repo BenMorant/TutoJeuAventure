@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class SuperObjectz {
+public class Object {
 
     public String name;
     public String image;

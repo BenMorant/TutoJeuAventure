@@ -11,7 +11,7 @@ public class Hero {
     private int abilityMax;
     private int strengthMax;
     private String picture;
-    private SuperWeapon currentWeapon;
+    private Weapon currentWeapon;
 
     public int getHp() {
         return hp;
@@ -85,11 +85,11 @@ public class Hero {
         this.picture = picture;
     }
 
-    public SuperWeapon getCurrentWeapon() {
+    public Weapon getCurrentWeapon() {
         return currentWeapon;
     }
 
-    public void setCurrentWeapon(SuperWeapon currentWeapon) {
+    public void setCurrentWeapon(Weapon currentWeapon) {
         this.currentWeapon = currentWeapon;
     }
 }

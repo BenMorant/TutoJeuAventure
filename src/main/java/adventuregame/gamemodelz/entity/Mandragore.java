@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class Mandragore extends SuperMonster {
+public class Mandragore extends Monster {
 
     public Mandragore() {
         name = "Mandragore";

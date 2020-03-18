@@ -7,13 +7,13 @@ import adventuregame.gamemodelz.entity.Knife;
 import adventuregame.gamemodelz.entity.LittleDragon;
 import adventuregame.gamemodelz.entity.LongSword;
 import adventuregame.gamemodelz.entity.Mandragore;
-import adventuregame.gamemodelz.entity.SuperMonster;
-import adventuregame.gamemodelz.entity.SuperWeapon;
+import adventuregame.gamemodelz.entity.Monster;
+import adventuregame.gamemodelz.entity.Weapon;
 
 import java.util.Random;
 
 import static adventuregame.gamemechanix.Game.getRandomNumberBetweenTwoBounds;
-import static adventuregame.gamemodelz.entity.SuperWeapon.getDamageWeapon;
+import static adventuregame.gamemodelz.entity.Weapon.getDamageWeapon;
 
 public class Story {
 
@@ -21,7 +21,7 @@ public class Story {
     UI ui;
     VisibilityManager vm;
     Hero hero = new Hero();
-    SuperMonster monster;
+    Monster monster;
     boolean hasSilverRing;
     private int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
             goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughGetSilverRing, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealEnemy;
@@ -29,7 +29,7 @@ public class Story {
     private int heroAbility, heroHp, heroHpMax, heroMp, heroMpMax, heroStrength, heroAbilityMax, heroStrengthMax, heroCurrentWeaponDamageMax, heroCurrentWeaponWearMax,
             heroCurrentWeaponWear;
     private String heroPicture, heroCurrentWeaponName;
-    private SuperWeapon heroCurrentWeapon;
+    private Weapon heroCurrentWeapon;
 
 
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
@@ -59,7 +59,7 @@ public class Story {
         instantiateMp(heroMpStart);
         //weapon
         //TODO weapon to choose
-        SuperWeapon heroWeaponStart = new Knife();
+        Weapon heroWeaponStart = new Knife();
         instantiateHeroCurrentWeapon(heroWeaponStart);
         //strength Max
         int heroStrengthMaxStart = getRandomNumberBetweenTwoBounds(0, 10);
@@ -147,7 +147,7 @@ public class Story {
         ui.getImage(ui.imageLabelPicture, heroPicture);
     }
 
-    public void instantiateHeroCurrentWeapon(SuperWeapon weaponToConfigure) {
+    public void instantiateHeroCurrentWeapon(Weapon weaponToConfigure) {
         hero.setCurrentWeapon(weaponToConfigure);
         heroCurrentWeapon = hero.getCurrentWeapon();
         //weapon name
@@ -365,7 +365,7 @@ public class Story {
     }
 
     public void east() {
-        SuperWeapon swordFound = new LongSword();
+        Weapon swordFound = new LongSword();
         ui.getImage(ui.imageLabelPrincipal, swordFound.getImage());
         if (heroStrength < 5) {
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n Malheureusement, vous n'êtes pas assez fort pour la porter.");

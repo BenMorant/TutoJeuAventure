@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class Goblin extends SuperMonster {
+public class Goblin extends Monster {
 
     public Goblin() {
         name = "Gobelin";

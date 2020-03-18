@@ -1,6 +1,6 @@
 package adventuregame.gamemodelz.entity;
 
-public class LongSword extends SuperWeapon {
+public class LongSword extends Weapon {
 
     public LongSword() {
 
