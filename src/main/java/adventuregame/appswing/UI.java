@@ -5,17 +5,17 @@ import java.awt.*;
 
 public class UI {
 
-    JFrame window;
-    JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, heroPanel, imagePanelPrincipal, imagePanelPicture;
-    JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabelPrincipal, imageLabelPicture,
+    public JFrame window;
+    public JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, heroPanel, imagePanelPrincipal, imagePanelPicture;
+    public JLabel titleNameLabel, hpLabel, hpLabelNumber, hpMaxLabel, hpMaxLabelNumber, weaponLabel, weaponLabelName, weaponLabelDamageMax, weaponLabelDamageMaxNumber, imageLabelPrincipal, imageLabelPicture,
             abilityLabel, strengthLabel, mpLabel, mpLabelNumber, mpMaxLabel, mpMaxLabelNumber, strengthLabelNumber, abilityLabelNumber, strengthMaxLabel, strengthMaxLabelNumber, abilityMaxLabel, abilityMaxLabelNumber,
             weaponLabelWear, weaponLabelWearNumber, weaponLabelWearMaxLabel, weaponLabelWearMaxLabelNumber;
-    Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
-    Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
-    Font heroPanelFont = new Font("Times New Roman", Font.PLAIN, 22);
-    JButton startButton, choice1, choice2, choice3, choice4;
-    JTextArea mainTextArea;
-    ImageIcon image;
+    public Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
+    public Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
+    public Font heroPanelFont = new Font("Times New Roman", Font.PLAIN, 22);
+    public JButton startButton, choice1, choice2, choice3, choice4;
+    public JTextArea mainTextArea;
+    public ImageIcon image;
 
     public void createUI(Game.ChoiceHandler choiceHandler) {
 
@@ -228,7 +228,7 @@ public class UI {
 
     }
 
-    public void getImage(JLabel imageLabelToDefine, String filename) {
+    public void setImage(JLabel imageLabelToDefine, String filename) {
         image = new ImageIcon(".//src//main//resources//pix//" + filename);
         imageLabelToDefine.setIcon(image);
     }

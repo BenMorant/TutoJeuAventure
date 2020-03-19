@@ -131,7 +131,7 @@ public class Story {
     }
 
     public void townGate() {
-        ui.getImage(ui.imageLabelPrincipal, "places//town.jpg");
+        ui.setImage(ui.imageLabelPrincipal, "places//town.jpg");
         System.out.println(heroHp);
         ui.mainTextArea.setText("Vous êtes aux portes de la Cité. \n Un garde se tient debout devant vous. \n Que voulez vous faire ? \n \n \n ");
         ui.choice1.setText("Parler au garde");
@@ -147,7 +147,7 @@ public class Story {
 
     public void talkGuard() {
         monster = new Guard();
-        ui.getImage(ui.imageLabelPrincipal, monster.getImage());
+        ui.setImage(ui.imageLabelPrincipal, monster.getImage());
 //        if (hero.getCurrentObject().equals(new Silverring())) {
 //            ending();
 //        } else {
@@ -187,7 +187,7 @@ public class Story {
 
     public void attackGuard() {
         monster = new Guard();
-        ui.getImage(ui.imageLabelPrincipal, monster.getImage());
+        ui.setImage(ui.imageLabelPrincipal, monster.getImage());
         int dammageGuard = Game.getRandomNumberBetweenTwoBounds(2, 4);
         if (goThroughAttackGuard == 0) {
             ui.mainTextArea.setText(monster.getName() + " : \"Hey ! Ne sois pas stupide!\" \n Vous vous battez bravement mais " + monster.getName() + " vous frappe fort \net vous recevez " + dammageGuard + " points de dommage");
@@ -214,7 +214,7 @@ public class Story {
     }
 
     public void crossRoad() {
-        ui.getImage(ui.imageLabelPrincipal, "places/crossroad.jpg");
+        ui.setImage(ui.imageLabelPrincipal, "places/crossroad.jpg");
         ui.mainTextArea.setText("Vous êtes à un carrefour. \nSi vous allez au sud, vous serez de retour aux portes de la Cité. \n  Vous choisissez d'aller :");
         ui.choice1.setText("au Nord");
         ui.choice2.setText("à l'Est");
@@ -228,7 +228,7 @@ public class Story {
     }
 
     public void north() {
-        ui.getImage(ui.imageLabelPrincipal, "places/river.jpeg");
+        ui.setImage(ui.imageLabelPrincipal, "places/river.jpeg");
         int riverRestore = Game.getRandomNumberBetweenTwoBounds(1, 3);
         if (goThroughNorth < 2) {
             if (heroHp < (heroHpMax - 1)) {
@@ -265,7 +265,7 @@ public class Story {
 
     public void east() {
         Weapon swordFound = new LongSword();
-        ui.getImage(ui.imageLabelPrincipal, swordFound.getImage());
+        ui.setImage(ui.imageLabelPrincipal, swordFound.getImage());
         if (heroStrength < 5) {
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n Malheureusement, vous n'êtes pas assez fort pour la porter.");
         } else {
@@ -298,7 +298,7 @@ public class Story {
         } else {
             monster = new LittleDragon();
         }
-        ui.getImage(ui.imageLabelPrincipal, monster.getImage());
+        ui.setImage(ui.imageLabelPrincipal, monster.getImage());
         ui.mainTextArea.setText("Vous tombez nez à nez sur " + monster.getName() + " !");
         ui.choice1.setText("Vous combattez");
         ui.choice2.setText("Vous fuyez");
@@ -312,7 +312,7 @@ public class Story {
     }
 
     public void fight() {
-        ui.getImage(ui.imageLabelPrincipal, monster.getImage());
+        ui.setImage(ui.imageLabelPrincipal, monster.getImage());
         if (heroAbility > 4) {
             ui.mainTextArea.setText("Grâce à vos points d'habilité, vous arrivez à déterminer les HP " + monster.getName() + " : " + monster.getHp() + "HP .\n\nQue faîtes vous ?");
             ui.choice1.setText("Vous attaquez");
@@ -332,7 +332,7 @@ public class Story {
     }
 
     public void heroAttack() {
-        ui.getImage(ui.imageLabelPrincipal, monster.getImage());
+        ui.setImage(ui.imageLabelPrincipal, monster.getImage());
         int heroDamage = Weapon.getDamageWeapon(heroStrength, heroStrengthMax, heroCurrentWeaponDamageMax);
 
         monster.setHp(monster.getHp() - heroDamage);
@@ -396,7 +396,7 @@ public class Story {
     }
 
     public void monsterAttack() {
-        ui.getImage(ui.imageLabelPrincipal, monster.getImage());
+        ui.setImage(ui.imageLabelPrincipal, monster.getImage());
         int monsterDamage = Game.getRandomNumberBetweenTwoBounds(1, monster.getDamageMax());
 
         displayHp(heroHp - monsterDamage);
@@ -432,7 +432,7 @@ public class Story {
 
     public void getMonsterObject() {
 
-        ui.getImage(ui.imageLabelPrincipal, "objects/silver_ring.jpg");
+        ui.setImage(ui.imageLabelPrincipal, "objects/silver_ring.jpg");
         ui.mainTextArea.setText("Vous avez battu " + monster.getName() + " !\n" + monster.getName() + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
 
         ui.choice1.setText("Vous allez à l'Est");
@@ -448,7 +448,7 @@ public class Story {
     }
 
     public void die() {
-        ui.getImage(ui.imageLabelPrincipal, "");
+        ui.setImage(ui.imageLabelPrincipal, "");
 
         ui.mainTextArea.setText("Vous êtes mort !\n\n GAME OVER");
 
@@ -464,7 +464,7 @@ public class Story {
     }
 
     public void ending() {
-        ui.getImage(ui.imageLabelPrincipal, "garde.jpg");
+        ui.setImage(ui.imageLabelPrincipal, "garde.jpg");
         ui.mainTextArea.setText("Garde: \"Oh vous avez tué " + monster.getName() + " !!??? Super !\nVous êtes notre heros!\nBienvenue dans notre Cité!\"\n\nTHE END");
 
         ui.choice1.setText("Revenir à l'écran tître");

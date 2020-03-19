@@ -1,62 +1,61 @@
 package adventuregame.front;
 
 import adventuregame.appswing.Game;
+import adventuregame.appswing.UI;
+import adventuregame.business.HeroService;
+import adventuregame.entity.Hero;
 import adventuregame.entity.Weapon;
 
 public class HeroPanel {
 
+    Hero hero;
+    UI ui;
+    HeroService heroService;
+
     public void displayAbility(int abilityToConfigure) {
-        hero.setAbility(abilityToConfigure);
-        heroAbility = hero.getAbility();
+        heroService.instantiateAbility(abilityToConfigure);
         ui.abilityLabelNumber.setText("" + heroAbility);
     }
 
     public void displayAbilityMax(int abilityMaxToConfigure) {
-        hero.setAbilityMax(abilityMaxToConfigure);
-        heroAbilityMax = hero.getAbilityMax();
+        heroService.instantiateAbilityMax(abilityMaxToConfigure);
         ui.abilityMaxLabelNumber.setText("" + heroAbilityMax);
     }
 
     public void displayStrength(int strengthToConfigure) {
-        hero.setStrength(strengthToConfigure);
-        heroStrength = hero.getStrength();
+        heroService.instantiateStrength(strengthToConfigure);
         ui.strengthLabelNumber.setText("" + heroStrength);
     }
 
     public void displayStrengthMax(int strengthMaxToConfigure) {
-        hero.setStrengthMax(strengthMaxToConfigure);
-        heroStrengthMax = hero.getStrengthMax();
+        heroService.instantiateStrengthMax(strengthMaxToConfigure);
         ui.strengthMaxLabelNumber.setText("" + heroStrengthMax);
     }
 
     public void displayMp(int mpToConfigure) {
-        hero.setMp(mpToConfigure);
-        heroMp = hero.getMp();
+        heroService.instantiateMp(mpToConfigure);
         ui.mpLabelNumber.setText("" + heroMp);
     }
 
     public void displayMpMax(int mpMaxToConfigure) {
-        hero.setMpMax(mpMaxToConfigure);
-        heroMpMax = hero.getMpMax();
+        heroService.instantiateMpMax(mpMaxToConfigure);
         ui.mpMaxLabelNumber.setText("" + heroMpMax);
     }
 
     public void displayHp(int hpToConfigure) {
-        hero.setHp(hpToConfigure);
-        heroHp = hero.getHp();
+        heroService.instantiateHp(hpToConfigure);
         ui.hpLabelNumber.setText("" + heroHp);
     }
 
+
     public void displayHpMax(int hpMaxToConfigure) {
-        hero.setHpMax(hpMaxToConfigure);
-        heroHpMax = hero.getHpMax();
+        heroService.instantiateHpMax(hpMaxToConfigure);
         ui.hpMaxLabelNumber.setText("" + heroHpMax);
     }
 
     public void displayHeroPicture(String pictureToConfigure) {
-        hero.setImage(pictureToConfigure);
-        heroPicture = hero.getImage();
-        ui.getImage(ui.imageLabelPicture, heroPicture);
+        heroService.instantiateHeroPicture(pictureToConfigure);
+        ui.setImage(ui.imageLabelPicture, heroPicture);
     }
 
     public void displayHeroCurrentWeapon(Weapon weaponToConfigure) {
