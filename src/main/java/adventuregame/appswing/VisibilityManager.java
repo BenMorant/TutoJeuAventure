@@ -1,4 +1,4 @@
-package adventuregame.app;
+package adventuregame.appswing;
 
 public class VisibilityManager {
     UI ui;

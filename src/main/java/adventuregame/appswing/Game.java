@@ -1,4 +1,4 @@
-package adventuregame.app;
+package adventuregame.appswing;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,14 +10,14 @@ public class Game {
     UI ui = new UI();
     VisibilityManager vm = new VisibilityManager(ui);
     Story story = new Story(this, ui, vm);
-
     String nextPosition1, nextPosition2, nextPosition3, nextPosition4;
 
     public Game() {
 
         ui.createUI(csHandler);
-        story.defaultSetup();
         vm.showTitleScreen();
+        story.defaultHeroSetup();
+
 
     }
 

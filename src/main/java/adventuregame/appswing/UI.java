@@ -1,4 +1,4 @@
-package adventuregame.app;
+package adventuregame.appswing;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,9 +1,8 @@
-package adventuregame.app;
+package adventuregame.appswing;
 
 import adventuregame.entity.Goblin;
 import adventuregame.entity.Guard;
 import adventuregame.entity.Hero;
-import adventuregame.entity.Knife;
 import adventuregame.entity.LittleDragon;
 import adventuregame.entity.LongSword;
 import adventuregame.entity.Mandragore;
@@ -14,6 +13,7 @@ import java.util.Random;
 
 public class Story {
 
+    InitData initialData;
     Game game;
     UI ui;
     VisibilityManager vm;
@@ -35,41 +35,17 @@ public class Story {
         vm = vManager;
     }
 
-    public void defaultSetup() {
-        //picture
-        // TODO choose picture
-        String heroPicture = "hero/rambo.jpg";
-        instantiateHeroPicture(heroPicture);
-        //HP Max
-        int heroHpMax = Game.getRandomNumberBetweenTwoBounds(7, 15);
-        instantiateHpMax(heroHpMax);
-        //HP (based on HP max)
-        int heroHp = heroHpMax;
-        instantiateHp(heroHp);
-        //MP Max
-        // TODO = 0 for now
-        int heroMpMax = Game.getRandomNumberBetweenTwoBounds(0, 0);
-        instantiateMpMax(heroMpMax);
-        //MP (based on MP max)
-        int heroMp = heroMpMax;
-        instantiateMp(heroMp);
-        //weapon
-        //TODO weapon to choose
-        Weapon heroWeapon = new Knife();
-        instantiateHeroCurrentWeapon(heroWeapon);
-        //strength Max
-        int heroStrengthMax = Game.getRandomNumberBetweenTwoBounds(0, 10);
-        instantiateStrengthMax(heroStrengthMax);
-        //strength
-        int heroStrength = heroStrengthMax;
-        instantiateStrength(heroStrength);
-        //ability max
-        //TODO : for now...
-        int heroAbilityMax = 10 - heroStrengthMax;
-        instantiateAbilityMax(heroAbilityMax);
-        //ability
-        int heroAbility = heroAbilityMax;
-        instantiateAbility(heroAbility);
+    public void defaultHeroSetup() {
+        initialData.initializeHeroPicture();
+        initialData.initializeHeroHpMax();
+        initialData.initializeHeroHp();
+        initialData.initializeHeroMpMax();
+        initialData.initializeHeroMp();
+        initialData.initializeHeroWeapon();
+        initialData.initializeHeroStrengthMax();
+        initialData.initializeHeroStrength();
+        initialData.initializeHeroAbilityMax();
+        initialData.initializeHeroAbility();
 
         goThroughTalkGuard = 0;
         goThroughTownGate = 0;
@@ -86,78 +62,6 @@ public class Story {
         goThroughEnding = 0;
         goThroughToTitle = 0;
         goThroughStealMonster = 0;
-    }
-
-    public void instantiateAbility(int abilityToConfigure) {
-        hero.setAbility(abilityToConfigure);
-        heroAbility = hero.getAbility();
-        ui.abilityLabelNumber.setText("" + heroAbility);
-    }
-
-    public void instantiateAbilityMax(int abilityMaxToConfigure) {
-        hero.setAbilityMax(abilityMaxToConfigure);
-        heroAbilityMax = hero.getAbilityMax();
-        ui.abilityMaxLabelNumber.setText("" + heroAbilityMax);
-    }
-
-    public void instantiateStrength(int strengthToConfigure) {
-        hero.setStrength(strengthToConfigure);
-        heroStrength = hero.getStrength();
-        ui.strengthLabelNumber.setText("" + heroStrength);
-    }
-
-    public void instantiateStrengthMax(int strengthMaxToConfigure) {
-        hero.setStrengthMax(strengthMaxToConfigure);
-        heroStrengthMax = hero.getStrengthMax();
-        ui.strengthMaxLabelNumber.setText("" + heroStrengthMax);
-    }
-
-    public void instantiateMp(int mpToConfigure) {
-        hero.setMp(mpToConfigure);
-        heroMp = hero.getMp();
-        ui.mpLabelNumber.setText("" + heroMp);
-    }
-
-    public void instantiateMpMax(int mpMaxToConfigure) {
-        hero.setMpMax(mpMaxToConfigure);
-        heroMpMax = hero.getMpMax();
-        ui.mpMaxLabelNumber.setText("" + heroMpMax);
-    }
-
-    public void instantiateHp(int hpToConfigure) {
-        hero.setHp(hpToConfigure);
-        heroHp = hero.getHp();
-        ui.hpLabelNumber.setText("" + heroHp);
-    }
-
-    public void instantiateHpMax(int hpMaxToConfigure) {
-        hero.setHpMax(hpMaxToConfigure);
-        heroHpMax = hero.getHpMax();
-        ui.hpMaxLabelNumber.setText("" + heroHpMax);
-    }
-
-    public void instantiateHeroPicture(String pictureToConfigure) {
-        hero.setImage(pictureToConfigure);
-        heroPicture = hero.getImage();
-        ui.getImage(ui.imageLabelPicture, heroPicture);
-    }
-
-    public void instantiateHeroCurrentWeapon(Weapon weaponToConfigure) {
-        hero.setCurrentWeapon(weaponToConfigure);
-        heroCurrentWeapon = hero.getCurrentWeapon();
-        //weapon name
-        heroCurrentWeaponName = heroCurrentWeapon.getName();
-        ui.weaponLabelName.setText(heroCurrentWeaponName);
-        //damage max
-        heroCurrentWeaponDamageMax = heroCurrentWeapon.getDamageMax();
-        ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponDamageMax);
-        //wear max
-        heroCurrentWeaponWearMax = heroCurrentWeapon.getWearMax();
-        ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeapon.getWearMax());
-        //wear
-        heroCurrentWeapon.setWear(Game.getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
-        heroCurrentWeaponWear = heroCurrentWeapon.getWear();
-        ui.weaponLabelWearNumber.setText("" + heroCurrentWeapon.getWear());
     }
 
     public void selectNextPosition(String nextPosition) {
@@ -291,9 +195,9 @@ public class Story {
             dammageGuard++;
             ui.mainTextArea.setText(monster.getName() + " : \"Toi, tu n'as rien compris à la leçon que je t'ai donnée tout à l'heure !\" \n " + monster.getName() + " vous frappe encore plus fort \net vous recevez " + dammageGuard + " points de dommage");
         }
-        instantiateHp(heroHp - dammageGuard);
+        displayHp(heroHp - dammageGuard);
         if (heroHp < 1) {
-            instantiateHp(0);
+            displayHp(0);
             game.nextPosition1 = "die";
         } else {
             game.nextPosition1 = "townGate";
@@ -328,11 +232,11 @@ public class Story {
         int riverRestore = Game.getRandomNumberBetweenTwoBounds(1, 3);
         if (goThroughNorth < 2) {
             if (heroHp < (heroHpMax - 1)) {
-                instantiateHp(heroHp + riverRestore);
+                displayHp(heroHp + riverRestore);
                 ui.hpLabelNumber.setText("" + heroHp);
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+" + riverRestore + ")");
             } else if (heroHp < heroHpMax) {
-                instantiateHp(heroHp + 1);
+                displayHp(heroHp + 1);
                 ui.hpLabelNumber.setText("" + heroHp);
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+1)");
             } else {
@@ -340,7 +244,7 @@ public class Story {
             }
         } else {
             if (heroAbility > 0) {
-                instantiateAbility(heroAbility--);
+                displayAbility(heroAbility--);
                 ui.abilityLabelNumber.setText("" + heroAbility);
                 ui.mainTextArea.setText("Vous avez trop bu d'eau et perdez un point d'habileté.");
             } else {
@@ -365,7 +269,7 @@ public class Story {
         if (heroStrength < 5) {
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n Malheureusement, vous n'êtes pas assez fort pour la porter.");
         } else {
-            instantiateHeroCurrentWeapon(swordFound);
+            displayHeroCurrentWeapon(swordFound);
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + heroCurrentWeaponDamageMax + " , usure = " + heroCurrentWeaponWear + " / " + heroCurrentWeaponWearMax + " )");
             if (heroCurrentWeaponWear == heroCurrentWeaponWearMax) {
                 ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + heroCurrentWeaponDamageMax + " , usure = " + heroCurrentWeaponWear + " / " + heroCurrentWeaponWearMax +
@@ -495,9 +399,9 @@ public class Story {
         ui.getImage(ui.imageLabelPrincipal, monster.getImage());
         int monsterDamage = Game.getRandomNumberBetweenTwoBounds(1, monster.getDamageMax());
 
-        instantiateHp(heroHp - monsterDamage);
+        displayHp(heroHp - monsterDamage);
         if (heroHp < 1) {
-            instantiateHp(0);
+            displayHp(0);
         }
         ui.hpLabelNumber.setText("" + heroHp);
 
@@ -570,7 +474,7 @@ public class Story {
 
     public void toTitle() {
 
-        defaultSetup();
+        defaultHeroSetup();
         vm.showTitleScreen();
     }
 }
