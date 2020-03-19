@@ -2,6 +2,7 @@ package adventuregame.business;
 
 import adventuregame.dao.HeroDao;
 import adventuregame.dao.WeaponDao;
+import adventuregame.entity.Weapon;
 
 
 public class HeroServiceImpl implements HeroService {
@@ -53,6 +54,14 @@ public class HeroServiceImpl implements HeroService {
     @Override
     public void instantiateHeroPicture(String pictureToConfigure) {
         heroDao.configureHeroPicture(pictureToConfigure);
+    }
+
+    @Override
+    public void instantiateHeroCurrentWeapon(Weapon heroCurrentWeaponToConfigure) {
+        weaponDao.configureDamageMax(heroCurrentWeaponToConfigure.getDamageMax());
+        weaponDao.configureWeaponImage(heroCurrentWeaponToConfigure.getImage());
+        weaponDao.configureWear(heroCurrentWeaponToConfigure.getWear());
+        weaponDao.configureWearMax(heroCurrentWeaponToConfigure.getWearMax());
     }
 
 

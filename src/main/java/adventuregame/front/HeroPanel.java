@@ -60,21 +60,23 @@ public class HeroPanel {
 
     public void displayHeroCurrentWeapon(Weapon heroCurrentWeaponToConfigure) {
         heroService.instantiateHeroCurrentWeapon(heroCurrentWeaponToConfigure);
+        ui.weaponLabelName.setText(heroCurrentWeaponToConfigure.getName());
+        ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponToConfigure.getDamageMax());
+        ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeaponToConfigure.getWearMax());
+        ui.weaponLabelWearNumber.setText("" + heroCurrentWeaponToConfigure.getWear());
+
         hero.setCurrentWeapon(heroCurrentWeaponToConfigure);
         heroCurrentWeapon = hero.getCurrentWeapon();
-        //weapon name
+
         hero.setStrength(strengthToConfigure);
         heroCurrentWeaponName = heroCurrentWeapon.getName();
-        ui.weaponLabelName.setText(heroCurrentWeaponName);
-        //damage max
+
         heroCurrentWeaponDamageMax = heroCurrentWeapon.getDamageMax();
-        ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponDamageMax);
-        //wear max
+
         heroCurrentWeaponWearMax = heroCurrentWeapon.getWearMax();
-        ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeapon.getWearMax());
-        //wear
+
         heroCurrentWeapon.setWear(Game.getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
         heroCurrentWeaponWear = heroCurrentWeapon.getWear();
-        ui.weaponLabelWearNumber.setText("" + heroCurrentWeapon.getWear());
+
     }
 }

@@ -238,7 +238,7 @@ public class Story {
                 ui.hpLabelNumber.setText("" + heroHp);
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+" + riverRestore + ")");
             } else if (heroHp < heroHpMax) {
-                displayHp(heroHp + 1);
+                heroPanel.displayHp(heroHp + 1);
                 ui.hpLabelNumber.setText("" + heroHp);
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+1)");
             } else {
@@ -246,7 +246,7 @@ public class Story {
             }
         } else {
             if (heroAbility > 0) {
-                displayAbility(heroAbility--);
+                heroPanel.displayAbility(heroAbility--);
                 ui.abilityLabelNumber.setText("" + heroAbility);
                 ui.mainTextArea.setText("Vous avez trop bu d'eau et perdez un point d'habileté.");
             } else {
@@ -271,7 +271,7 @@ public class Story {
         if (heroStrength < 5) {
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n Malheureusement, vous n'êtes pas assez fort pour la porter.");
         } else {
-            displayHeroCurrentWeapon(swordFound);
+            heroPanel.displayHeroCurrentWeapon(swordFound);
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + heroCurrentWeaponDamageMax + " , usure = " + heroCurrentWeaponWear + " / " + heroCurrentWeaponWearMax + " )");
             if (heroCurrentWeaponWear == heroCurrentWeaponWearMax) {
                 ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + heroCurrentWeaponDamageMax + " , usure = " + heroCurrentWeaponWear + " / " + heroCurrentWeaponWearMax +
@@ -401,9 +401,9 @@ public class Story {
         ui.setImage(ui.imageLabelPrincipal, monster.getImage());
         int monsterDamage = Game.getRandomNumberBetweenTwoBounds(1, monster.getDamageMax());
 
-        displayHp(heroHp - monsterDamage);
+        heroPanel.displayHp(heroHp - monsterDamage);
         if (heroHp < 1) {
-            displayHp(0);
+            heroPanel.displayHp(0);
         }
         ui.hpLabelNumber.setText("" + heroHp);
 
