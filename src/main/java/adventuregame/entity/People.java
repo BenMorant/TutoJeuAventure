@@ -1,6 +1,6 @@
 package adventuregame.entity;
 
-public class People extends GenericGameModel {
+public class People extends GenericEntity {
 
     private int hp;
     private int hpMax;

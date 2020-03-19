@@ -1,6 +1,6 @@
 package adventuregame.entity;
 
-public class Object extends GenericGameModel {
+public class Object extends GenericEntity {
 
     public String name;
     public String image;
