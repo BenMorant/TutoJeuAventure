@@ -44,6 +44,7 @@ public class InitData {
         // TODO choose picture
         String heroPicture = "hero/rambo.jpg";
         heroPanel.displayHeroPicture(heroPicture);
+        System.out.println();
     }
 
     public void initializeHeroHpMax() {

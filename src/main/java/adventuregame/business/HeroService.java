@@ -1,10 +1,10 @@
 package adventuregame.business;
 
+import adventuregame.entity.Weapon;
+
 public interface HeroService {
 
     void instantiateAbility(int abilityToConfigure);
-
-    void
 
     void instantiateAbilityMax(int abilityMaxToConfigure);
 
@@ -21,5 +21,7 @@ public interface HeroService {
     void instantiateHpMax(int hpMaxToConfigure);
 
     void instantiateHeroPicture(String pictureToConfigure);
+
+    void instantiateHeroCurrentWeapon(Weapon heroCurrentWeaponToConfigure);
 
 }

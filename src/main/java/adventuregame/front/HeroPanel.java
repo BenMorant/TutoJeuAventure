@@ -58,10 +58,12 @@ public class HeroPanel {
         ui.setImage(ui.imageLabelPicture, heroPicture);
     }
 
-    public void displayHeroCurrentWeapon(Weapon weaponToConfigure) {
-        hero.setCurrentWeapon(weaponToConfigure);
+    public void displayHeroCurrentWeapon(Weapon heroCurrentWeaponToConfigure) {
+        heroService.instantiateHeroCurrentWeapon(heroCurrentWeaponToConfigure);
+        hero.setCurrentWeapon(heroCurrentWeaponToConfigure);
         heroCurrentWeapon = hero.getCurrentWeapon();
         //weapon name
+        hero.setStrength(strengthToConfigure);
         heroCurrentWeaponName = heroCurrentWeapon.getName();
         ui.weaponLabelName.setText(heroCurrentWeaponName);
         //damage max

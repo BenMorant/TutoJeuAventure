@@ -8,6 +8,7 @@ import adventuregame.entity.LongSword;
 import adventuregame.entity.Mandragore;
 import adventuregame.entity.Monster;
 import adventuregame.entity.Weapon;
+import adventuregame.front.HeroPanel;
 
 import java.util.Random;
 
@@ -27,6 +28,7 @@ public class Story {
     private String heroPicture, heroCurrentWeaponName;
     private Weapon heroCurrentWeapon;
 
+    public HeroPanel heroPanel;
 
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
 
@@ -195,9 +197,9 @@ public class Story {
             dammageGuard++;
             ui.mainTextArea.setText(monster.getName() + " : \"Toi, tu n'as rien compris à la leçon que je t'ai donnée tout à l'heure !\" \n " + monster.getName() + " vous frappe encore plus fort \net vous recevez " + dammageGuard + " points de dommage");
         }
-        displayHp(heroHp - dammageGuard);
+        heroPanel.displayHp(heroHp - dammageGuard);
         if (heroHp < 1) {
-            displayHp(0);
+            heroPanel.displayHp(0);
             game.nextPosition1 = "die";
         } else {
             game.nextPosition1 = "townGate";
@@ -232,7 +234,7 @@ public class Story {
         int riverRestore = Game.getRandomNumberBetweenTwoBounds(1, 3);
         if (goThroughNorth < 2) {
             if (heroHp < (heroHpMax - 1)) {
-                displayHp(heroHp + riverRestore);
+                heroPanel.displayHp(heroHp + riverRestore);
                 ui.hpLabelNumber.setText("" + heroHp);
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+" + riverRestore + ")");
             } else if (heroHp < heroHpMax) {

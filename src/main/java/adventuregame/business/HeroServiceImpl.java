@@ -1,63 +1,58 @@
 package adventuregame.business;
 
-import adventuregame.entity.Hero;
+import adventuregame.dao.HeroDao;
+import adventuregame.dao.WeaponDao;
+
 
 public class HeroServiceImpl implements HeroService {
 
-    Hero hero;
+    HeroDao heroDao;
+    WeaponDao weaponDao;
 
     @Override
     public void instantiateAbility(int abilityToConfigure) {
-        hero.setAbility(abilityToConfigure);
-        heroAbility = hero.getAbility();
+        heroDao.configureAbility(abilityToConfigure);
     }
 
     @Override
     public void instantiateAbilityMax(int abilityMaxToConfigure) {
-        hero.setAbilityMax(abilityMaxToConfigure);
-        heroAbilityMax = hero.getAbilityMax();
+        heroDao.configureAbilityMax(abilityMaxToConfigure);
     }
 
     @Override
     public void instantiateStrength(int strengthToConfigure) {
-        hero.setStrength(strengthToConfigure);
-        heroStrength = hero.getStrength();
+        heroDao.configureStrength(strengthToConfigure);
     }
 
     @Override
     public void instantiateStrengthMax(int strengthMaxToConfigure) {
-        hero.setStrengthMax(strengthMaxToConfigure);
-        heroStrengthMax = hero.getStrengthMax();
+        heroDao.configureStrengthMax(strengthMaxToConfigure);
     }
 
     @Override
     public void instantiateMp(int mpToConfigure) {
-        hero.setMp(mpToConfigure);
-        heroMp = hero.getMp();
+        heroDao.configureMp(mpToConfigure);
     }
 
     @Override
     public void instantiateMpMax(int mpMaxToConfigure) {
-        hero.setMpMax(mpMaxToConfigure);
-        heroMpMax = hero.getMpMax();
+        heroDao.configureMpMax(mpMaxToConfigure);
     }
 
     @Override
     public void instantiateHp(int hpToConfigure) {
-        hero.setHp(hpToConfigure);
-        heroHp = hero.getHp();
+        heroDao.configureHp(hpToConfigure);
     }
 
     @Override
     public void instantiateHpMax(int hpMaxToConfigure) {
-        hero.setHpMax(hpMaxToConfigure);
-        heroHpMax = hero.getHpMax();
+        heroDao.configureHpMax(hpMaxToConfigure);
+
     }
 
     @Override
     public void instantiateHeroPicture(String pictureToConfigure) {
-        hero.setImage(pictureToConfigure);
-        heroPicture = hero.getImage();
+        heroDao.configureHeroPicture(pictureToConfigure);
     }
 
 
