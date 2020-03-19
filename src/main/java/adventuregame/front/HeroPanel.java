@@ -1,6 +1,5 @@
 package adventuregame.front;
 
-import adventuregame.appswing.Game;
 import adventuregame.appswing.UI;
 import adventuregame.business.HeroService;
 import adventuregame.entity.Hero;
@@ -14,48 +13,48 @@ public class HeroPanel {
 
     public void displayAbility(int abilityToConfigure) {
         heroService.instantiateAbility(abilityToConfigure);
-        ui.abilityLabelNumber.setText("" + heroAbility);
+        ui.abilityLabelNumber.setText("" + abilityToConfigure);
     }
 
     public void displayAbilityMax(int abilityMaxToConfigure) {
         heroService.instantiateAbilityMax(abilityMaxToConfigure);
-        ui.abilityMaxLabelNumber.setText("" + heroAbilityMax);
+        ui.abilityMaxLabelNumber.setText("" + abilityMaxToConfigure);
     }
 
     public void displayStrength(int strengthToConfigure) {
         heroService.instantiateStrength(strengthToConfigure);
-        ui.strengthLabelNumber.setText("" + heroStrength);
+        ui.strengthLabelNumber.setText("" + strengthToConfigure);
     }
 
     public void displayStrengthMax(int strengthMaxToConfigure) {
         heroService.instantiateStrengthMax(strengthMaxToConfigure);
-        ui.strengthMaxLabelNumber.setText("" + heroStrengthMax);
+        ui.strengthMaxLabelNumber.setText("" + strengthMaxToConfigure);
     }
 
     public void displayMp(int mpToConfigure) {
         heroService.instantiateMp(mpToConfigure);
-        ui.mpLabelNumber.setText("" + heroMp);
+        ui.mpLabelNumber.setText("" + mpToConfigure);
     }
 
     public void displayMpMax(int mpMaxToConfigure) {
         heroService.instantiateMpMax(mpMaxToConfigure);
-        ui.mpMaxLabelNumber.setText("" + heroMpMax);
+        ui.mpMaxLabelNumber.setText("" + mpMaxToConfigure);
     }
 
     public void displayHp(int hpToConfigure) {
         heroService.instantiateHp(hpToConfigure);
-        ui.hpLabelNumber.setText("" + heroHp);
+        ui.hpLabelNumber.setText("" + hpToConfigure);
     }
 
 
     public void displayHpMax(int hpMaxToConfigure) {
         heroService.instantiateHpMax(hpMaxToConfigure);
-        ui.hpMaxLabelNumber.setText("" + heroHpMax);
+        ui.hpMaxLabelNumber.setText("" + hpMaxToConfigure);
     }
 
     public void displayHeroPicture(String pictureToConfigure) {
         heroService.instantiateHeroPicture(pictureToConfigure);
-        ui.setImage(ui.imageLabelPicture, heroPicture);
+        ui.setImage(ui.imageLabelPicture, pictureToConfigure);
     }
 
     public void displayHeroCurrentWeapon(Weapon heroCurrentWeaponToConfigure) {
@@ -64,19 +63,5 @@ public class HeroPanel {
         ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponToConfigure.getDamageMax());
         ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeaponToConfigure.getWearMax());
         ui.weaponLabelWearNumber.setText("" + heroCurrentWeaponToConfigure.getWear());
-
-        hero.setCurrentWeapon(heroCurrentWeaponToConfigure);
-        heroCurrentWeapon = hero.getCurrentWeapon();
-
-        hero.setStrength(strengthToConfigure);
-        heroCurrentWeaponName = heroCurrentWeapon.getName();
-
-        heroCurrentWeaponDamageMax = heroCurrentWeapon.getDamageMax();
-
-        heroCurrentWeaponWearMax = heroCurrentWeapon.getWearMax();
-
-        heroCurrentWeapon.setWear(Game.getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
-        heroCurrentWeaponWear = heroCurrentWeapon.getWear();
-
     }
 }

@@ -134,7 +134,6 @@ public class Story {
 
     public void townGate() {
         ui.setImage(ui.imageLabelPrincipal, "places//town.jpg");
-        System.out.println(heroHp);
         ui.mainTextArea.setText("Vous êtes aux portes de la Cité. \n Un garde se tient debout devant vous. \n Que voulez vous faire ? \n \n \n ");
         ui.choice1.setText("Parler au garde");
         ui.choice2.setText("Attaquer le garde");

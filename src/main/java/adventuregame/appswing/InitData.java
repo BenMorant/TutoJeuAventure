@@ -48,7 +48,6 @@ public class InitData {
 
     public void initializeHeroPicture() {
         heroPanel.displayHeroPicture(heroPicture);
-        System.out.println();
     }
 
     public void initializeHeroHpMax() {

@@ -27,7 +27,7 @@ public class HeroServiceImpl implements HeroService {
 
     @Override
     public void instantiateStrengthMax(int strengthMaxToConfigure) {
-        heroDao.configureStrengthMax(strengthMaxToConfigure);
+        heroDao.configureStrength(strengthMaxToConfigure);
     }
 
     @Override
@@ -48,7 +48,6 @@ public class HeroServiceImpl implements HeroService {
     @Override
     public void instantiateHpMax(int hpMaxToConfigure) {
         heroDao.configureHpMax(hpMaxToConfigure);
-
     }
 
     @Override
@@ -58,11 +57,10 @@ public class HeroServiceImpl implements HeroService {
 
     @Override
     public void instantiateHeroCurrentWeapon(Weapon heroCurrentWeaponToConfigure) {
-        weaponDao.configureDamageMax(heroCurrentWeaponToConfigure.getDamageMax());
-        weaponDao.configureWeaponImage(heroCurrentWeaponToConfigure.getImage());
-        weaponDao.configureWear(heroCurrentWeaponToConfigure.getWear());
         weaponDao.configureWearMax(heroCurrentWeaponToConfigure.getWearMax());
+        weaponDao.configureWear(heroCurrentWeaponToConfigure.getWear());
+        weaponDao.configureWeaponImage(heroCurrentWeaponToConfigure.getImage());
+        weaponDao.configureDamageMax(heroCurrentWeaponToConfigure.getDamageMax());
+
     }
-
-
 }
