@@ -11,6 +11,7 @@ public class HeroPanel {
     UI ui;
     HeroService heroService;
 
+
     public void displayAbility(int abilityToConfigure) {
         heroService.instantiateAbility(abilityToConfigure);
         ui.abilityLabelNumber.setText("" + abilityToConfigure);
@@ -52,10 +53,6 @@ public class HeroPanel {
         ui.hpMaxLabelNumber.setText("" + hpMaxToConfigure);
     }
 
-    public void displayHeroPicture(String pictureToConfigure) {
-        heroService.instantiateHeroPicture(pictureToConfigure);
-        ui.setImage(ui.imageLabelPicture, pictureToConfigure);
-    }
 
     public void displayHeroCurrentWeapon(Weapon heroCurrentWeaponToConfigure) {
         heroService.instantiateHeroCurrentWeapon(heroCurrentWeaponToConfigure);

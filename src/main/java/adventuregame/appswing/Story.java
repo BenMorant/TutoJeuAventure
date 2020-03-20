@@ -1,8 +1,11 @@
 package adventuregame.appswing;
 
+import adventuregame.business.HeroService;
+import adventuregame.dao.HeroDao;
 import adventuregame.entity.Goblin;
 import adventuregame.entity.Guard;
 import adventuregame.entity.Hero;
+import adventuregame.entity.Knife;
 import adventuregame.entity.LittleDragon;
 import adventuregame.entity.LongSword;
 import adventuregame.entity.Mandragore;
@@ -11,6 +14,8 @@ import adventuregame.entity.Weapon;
 import adventuregame.front.HeroPanel;
 
 import java.util.Random;
+
+import static adventuregame.appswing.Game.getRandomNumberBetweenTwoBounds;
 
 public class Story {
 
@@ -30,6 +35,10 @@ public class Story {
 
     public HeroPanel heroPanel;
 
+    public HeroService heroService;
+
+    public HeroDao heroDao;
+
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
 
         game = g;
@@ -38,16 +47,72 @@ public class Story {
     }
 
     public void defaultHeroSetup() {
-        initialData.initializeHeroPicture();
-        initialData.initializeHeroHpMax();
-        initialData.initializeHeroHp();
-        initialData.initializeHeroMpMax();
-        initialData.initializeHeroMp();
-        initialData.initializeHeroWeapon();
-        initialData.initializeHeroStrengthMax();
-        initialData.initializeHeroStrength();
-        initialData.initializeHeroAbilityMax();
-        initialData.initializeHeroAbility();
+
+        int heroHpMaxStart = Game.getRandomNumberBetweenTwoBounds(7, 15);
+        // TODO = 0 for now
+        int heroMpMaxStart = Game.getRandomNumberBetweenTwoBounds(0, 0);
+        int heroHpStart = heroHpMaxStart;
+        // TODO choose picture
+        String heroPictureStart = "hero/rambo.jpg";
+        int heroMpStart = heroMpMaxStart;
+        //TODO weapon to choose
+        Weapon heroCurrentWeaponStart = new Knife();
+        int heroStrengthMaxStart = Game.getRandomNumberBetweenTwoBounds(0, 10);
+        int heroStrengthStart = heroStrengthMaxStart;
+        //TODO : for now...
+        int heroAbilityMaxStart = 10 - heroStrengthMaxStart;
+        int heroAbilityStart = heroAbilityMaxStart;
+
+        displayHeroPicture(heroPictureStart);
+        //HP Max
+        hero.setHpMax(heroHpMaxStart);
+        heroHpMax = hero.getHpMax();
+        ui.hpMaxLabelNumber.setText("" + heroHpMax);
+        //HP (based on the HP max)
+        hero.setHp(heroHpStart);
+        heroHp = hero.getHp();
+        ui.hpLabelNumber.setText("" + heroHp);
+        //MP Max
+        hero.setMpMax(heroMpMaxStart);
+        heroMpMax = hero.getMpMax();
+        ui.mpMaxLabelNumber.setText("" + heroMpMax);
+        //MP (based on the MP max)
+        hero.setMp(heroMpStart);
+        heroMp = hero.getMp();
+        ui.mpLabelNumber.setText("" + heroMp);
+        //strength Max
+        hero.setStrengthMax(heroStrengthMaxStart);
+        heroStrengthMax = hero.getStrengthMax();
+        ui.strengthMaxLabelNumber.setText("" + heroStrengthMax);
+        //strength
+        hero.setStrength(heroStrengthStart);
+        heroStrength = hero.getStrength();
+        ui.strengthLabelNumber.setText("" + heroStrength);
+        //ability max
+        hero.setAbilityMax(heroAbilityMaxStart);
+        heroAbilityMax = hero.getAbilityMax();
+        ui.abilityMaxLabelNumber.setText("" + heroAbilityMax);
+        //ability
+        hero.setAbility(heroAbilityStart);
+        heroAbility = hero.getAbility();
+        ui.abilityLabelNumber.setText("" + heroAbility);
+//        //weapon
+//        hero.setCurrentWeapon(new Knife());
+//        heroCurrentWeapon = hero.getCurrentWeapon();
+//        //weapon name
+//        heroCurrentWeapon.setName();
+//        heroCurrentWeaponName = heroCurrentWeapon.getName();
+//        ui.weaponLabelName.setText(heroCurrentWeaponName);
+//        //damage max
+//        heroCurrentWeaponDamageMax = heroCurrentWeapon.getDamageMax();
+//        ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponDamageMax);
+//        //wear max
+//        heroCurrentWeaponWearMax = heroCurrentWeapon.getWearMax();
+//        ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeapon.getWearMax());
+//        //wear
+//        heroCurrentWeapon.setWear(getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
+//        heroCurrentWeaponWear = heroCurrentWeapon.getWear();
+//        ui.weaponLabelWearNumber.setText("" + heroCurrentWeapon.getWear());
 
         goThroughTalkGuard = 0;
         goThroughTownGate = 0;
@@ -64,6 +129,14 @@ public class Story {
         goThroughEnding = 0;
         goThroughToTitle = 0;
         goThroughStealMonster = 0;
+    }
+
+    public void displayHeroPicture(String heroPicturetoConfigure) {
+        hero.setImage(heroPicturetoConfigure);
+        System.out.println("hero.getImage = " + hero.getImage());
+        heroPicture = hero.getImage();
+        System.out.println("heroPicture = " + heroPicture);
+        ui.setImage(ui.imageLabelPicture, heroPicture);
     }
 
     public void selectNextPosition(String nextPosition) {
@@ -147,6 +220,9 @@ public class Story {
     }
 
     public void talkGuard() {
+        String minnie = "/hero/minnie.jpeg";
+        displayHeroPicture(minnie);
+
         monster = new Guard();
         ui.setImage(ui.imageLabelPrincipal, monster.getImage());
 //        if (hero.getCurrentObject().equals(new Silverring())) {
@@ -189,7 +265,7 @@ public class Story {
     public void attackGuard() {
         monster = new Guard();
         ui.setImage(ui.imageLabelPrincipal, monster.getImage());
-        int dammageGuard = Game.getRandomNumberBetweenTwoBounds(2, 4);
+        int dammageGuard = getRandomNumberBetweenTwoBounds(2, 4);
         if (goThroughAttackGuard == 0) {
             ui.mainTextArea.setText(monster.getName() + " : \"Hey ! Ne sois pas stupide!\" \n Vous vous battez bravement mais " + monster.getName() + " vous frappe fort \net vous recevez " + dammageGuard + " points de dommage");
         } else {
@@ -230,7 +306,7 @@ public class Story {
 
     public void north() {
         ui.setImage(ui.imageLabelPrincipal, "places/river.jpeg");
-        int riverRestore = Game.getRandomNumberBetweenTwoBounds(1, 3);
+        int riverRestore = getRandomNumberBetweenTwoBounds(1, 3);
         if (goThroughNorth < 2) {
             if (heroHp < (heroHpMax - 1)) {
                 heroPanel.displayHp(heroHp + riverRestore);
@@ -371,7 +447,7 @@ public class Story {
 
     public void stealMonster() {
         boolean alreadyStolen = false;
-        int chance = Game.getRandomNumberBetweenTwoBounds(0, heroAbility);
+        int chance = getRandomNumberBetweenTwoBounds(0, heroAbility);
         if (chance < monster.getStealDifficulty()) {
             ui.mainTextArea.setText("Vous n'avez pas réussi à voler " + monster.getName() + " !");
         } else {
@@ -398,7 +474,7 @@ public class Story {
 
     public void monsterAttack() {
         ui.setImage(ui.imageLabelPrincipal, monster.getImage());
-        int monsterDamage = Game.getRandomNumberBetweenTwoBounds(1, monster.getDamageMax());
+        int monsterDamage = getRandomNumberBetweenTwoBounds(1, monster.getDamageMax());
 
         heroPanel.displayHp(heroHp - monsterDamage);
         if (heroHp < 1) {
