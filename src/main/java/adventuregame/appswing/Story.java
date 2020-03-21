@@ -19,6 +19,9 @@ import static adventuregame.appswing.Game.getRandomNumberBetweenTwoBounds;
 
 public class Story {
 
+    public HeroPanel heroPanel;
+    public HeroService heroService;
+    public HeroDao heroDao;
     InitData initialData;
     Game game;
     UI ui;
@@ -27,17 +30,10 @@ public class Story {
     Monster monster;
     private int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
             goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughGetMonsterObject, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealMonster;
-
     private int heroAbility, heroHp, heroHpMax, heroMp, heroMpMax, heroStrength, heroAbilityMax, heroStrengthMax, heroCurrentWeaponDamageMax, heroCurrentWeaponWearMax,
             heroCurrentWeaponWear;
     private String heroPicture, heroCurrentWeaponName;
     private Weapon heroCurrentWeapon;
-
-    public HeroPanel heroPanel;
-
-    public HeroService heroService;
-
-    public HeroDao heroDao;
 
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
 
@@ -54,6 +50,7 @@ public class Story {
         int heroHpStart = heroHpMaxStart;
         // TODO choose picture
         String heroPictureStart = "hero/rambo.jpg";
+
         int heroMpStart = heroMpMaxStart;
         //TODO weapon to choose
         Weapon heroCurrentWeaponStart = new Knife();
@@ -62,6 +59,7 @@ public class Story {
         //TODO : for now...
         int heroAbilityMaxStart = 10 - heroStrengthMaxStart;
         int heroAbilityStart = heroAbilityMaxStart;
+
 
         displayHeroPicture(heroPictureStart);
         //HP Max
@@ -96,23 +94,23 @@ public class Story {
         hero.setAbility(heroAbilityStart);
         heroAbility = hero.getAbility();
         ui.abilityLabelNumber.setText("" + heroAbility);
-//        //weapon
-//        hero.setCurrentWeapon(new Knife());
-//        heroCurrentWeapon = hero.getCurrentWeapon();
-//        //weapon name
-//        heroCurrentWeapon.setName();
-//        heroCurrentWeaponName = heroCurrentWeapon.getName();
-//        ui.weaponLabelName.setText(heroCurrentWeaponName);
-//        //damage max
-//        heroCurrentWeaponDamageMax = heroCurrentWeapon.getDamageMax();
-//        ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponDamageMax);
-//        //wear max
-//        heroCurrentWeaponWearMax = heroCurrentWeapon.getWearMax();
-//        ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeapon.getWearMax());
-//        //wear
-//        heroCurrentWeapon.setWear(getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
-//        heroCurrentWeaponWear = heroCurrentWeapon.getWear();
-//        ui.weaponLabelWearNumber.setText("" + heroCurrentWeapon.getWear());
+        //weapon
+        hero.setCurrentWeapon(heroCurrentWeaponStart);
+        heroCurrentWeapon = hero.getCurrentWeapon();
+        //weapon name
+        heroCurrentWeapon.setName(heroCurrentWeaponStart.getName());
+        heroCurrentWeaponName = heroCurrentWeapon.getName();
+        ui.weaponLabelName.setText(heroCurrentWeaponName);
+        //damage max
+        heroCurrentWeaponDamageMax = heroCurrentWeapon.getDamageMax();
+        ui.weaponLabelDamageMaxNumber.setText("" + heroCurrentWeaponDamageMax);
+        //wear max
+        heroCurrentWeaponWearMax = heroCurrentWeapon.getWearMax();
+        ui.weaponLabelWearMaxLabelNumber.setText("" + heroCurrentWeapon.getWearMax());
+        //wear
+        heroCurrentWeapon.setWear(getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
+        heroCurrentWeaponWear = heroCurrentWeapon.getWear();
+        ui.weaponLabelWearNumber.setText("" + heroCurrentWeapon.getWear());
 
         goThroughTalkGuard = 0;
         goThroughTownGate = 0;
@@ -238,28 +236,28 @@ public class Story {
             if (heroAbility > 5) {
                 ui.mainTextArea.setText("Vous tendez l'oreille et grâce à vos points d'habilité vous percevez les murmures " + monster.getName() + " : \" Je crois savoir que c'est un Gobelin a l'Ouest qui en serait l'heureux propriétaire... \n Je donnerais tout pour l'avoir ! \"");
             } else {
-                    ui.mainTextArea.setText("Vous avez beau tendre l'oreille, vous n'avez pas assez de points d'habilité pour percevoir les murmures " + monster.getName());
-                }
-            } else {
-                ui.mainTextArea.setText(monster.getName() + ": \" Toi, tu commences sérieusement à me chauffer les oreilles. Attends de voir un peu de quel bois je me chauffe ! \"");
-
+                ui.mainTextArea.setText("Vous avez beau tendre l'oreille, vous n'avez pas assez de points d'habilité pour percevoir les murmures " + monster.getName());
             }
-            ui.choice1.setText(">");
-            ui.choice2.setText("");
-            ui.choice3.setText("");
-            ui.choice4.setText("");
+        } else {
+            ui.mainTextArea.setText(monster.getName() + ": \" Toi, tu commences sérieusement à me chauffer les oreilles. Attends de voir un peu de quel bois je me chauffe ! \"");
 
-            if (goThroughTalkGuard == 2) {
-                game.nextPosition1 = "talkGuard";
-            } else if (goThroughTalkGuard > 4) {
-                game.nextPosition1 = "attackGuard";
-            } else {
-                game.nextPosition1 = "townGate";
-            }
-            game.nextPosition2 = "";
-            game.nextPosition3 = "";
-            game.nextPosition4 = "";
         }
+        ui.choice1.setText(">");
+        ui.choice2.setText("");
+        ui.choice3.setText("");
+        ui.choice4.setText("");
+
+        if (goThroughTalkGuard == 2) {
+            game.nextPosition1 = "talkGuard";
+        } else if (goThroughTalkGuard > 4) {
+            game.nextPosition1 = "attackGuard";
+        } else {
+            game.nextPosition1 = "townGate";
+        }
+        game.nextPosition2 = "";
+        game.nextPosition3 = "";
+        game.nextPosition4 = "";
+    }
     //  }
 
     public void attackGuard() {

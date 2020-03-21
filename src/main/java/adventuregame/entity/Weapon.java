@@ -8,6 +8,10 @@ public class Weapon extends Object {
     protected int wearMax;
     private int wear;
 
+    public static int getDamageWeapon(int heroStrength, int heroStrengthMax, int weaponDamageMax) {
+        return (int) (Math.random() * (weaponDamageMax * (heroStrength / heroStrengthMax + 1)));
+    }
+
     public String getName() {
         return name;
     }
@@ -46,10 +50,5 @@ public class Weapon extends Object {
 
     public void setWearMax(int wearMax) {
         this.wearMax = wearMax;
-    }
-
-
-    public static int getDamageWeapon(int heroStrength, int heroStrengthMax, int weaponDamageMax) {
-        return (int) (Math.random() * (weaponDamageMax * (heroStrength / heroStrengthMax + 1)));
     }
 }
