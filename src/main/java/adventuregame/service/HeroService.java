@@ -8,18 +8,17 @@ public class HeroService {
 
     Hero hero = new Hero();
 
-    public void instantiateHeroHp(int heroHpToInstantiate) {
+    public int instantiateHeroHp(int heroHpToInstantiate) {
         hero.setHp(heroHpToInstantiate);
+        return heroHpToInstantiate;
     }
 
     public void instantiateHeroHpMax(int heroHpMaxToInstantiate) {
         hero.setHpMax(heroHpMaxToInstantiate);
     }
-
     public void instantiateHeroMp(int heroMpToInstantiate) {
         hero.setMp(heroMpToInstantiate);
     }
-
     public void instantiateHeroMpMax(int heroMpMaxToInstantiate) {
         hero.setMpMax(heroMpMaxToInstantiate);
     }

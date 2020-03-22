@@ -62,7 +62,7 @@ public class Story {
 
         heroPicture = displayHeroPicture(heroPicture);
         heroHpMax = displayHeroHpMax(heroHpMax);
-        heroHp = displayHeroHp(heroHp);
+        heroHp = heroFront.displayHeroHp(heroHp);
         heroMpMax = displayHeroMpMax(heroMpMax);
         heroMp = displayHeroMp(heroMp);
         heroStrengthMax = displayHeroStrengthMax(heroStrengthMax);
@@ -110,11 +110,7 @@ public class Story {
         return heroCurrentWeaponToDisplay;
     }
 
-    public int displayHeroHp(int heroHpToDisplay) {
-        heroService.instantiateHeroHp(heroHpToDisplay);
-        ui.hpLabelNumber.setText("" + heroHpToDisplay);
-        return heroHpToDisplay;
-    }
+
 
     public int displayHeroAbility(int heroAbilityToDisplay) {
         heroService.instantiateHeroAbility(heroAbilityToDisplay);
@@ -301,7 +297,7 @@ public class Story {
         } else {
             game.nextPosition1 = "townGate";
         }
-        displayHeroHp(heroHp);
+        heroFront.displayHeroHp(heroHp);
 
         ui.choice1.setText(">");
         ui.choice2.setText("");
@@ -340,7 +336,7 @@ public class Story {
             } else {
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont au maximum.");
             }
-            heroHp = displayHeroHp(heroHp);
+            heroHp = heroFront.displayHeroHp(heroHp);
         } else {
             if (heroAbility > 0) {
                 heroAbility--;
@@ -516,7 +512,7 @@ public class Story {
             game.nextPosition2 = "stealMonster";
             game.nextPosition3 = "crossRoad";
         }
-        heroHp = displayHeroHp(heroHp);
+        heroHp = heroFront.displayHeroHp(heroHp);
 
         ui.mainTextArea.setText(monster.getAttackMessage() + "\n " + monster.getName() + " vous attaque et vous donne " + monsterDamage + " de dommage!");
 

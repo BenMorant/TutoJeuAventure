@@ -1,19 +1,19 @@
 package adventuregame.front;
 
-
 import adventuregame.appswing.UI;
-import adventuregame.entity.Hero;
+import adventuregame.service.HeroService;
 
 public class HeroFront {
 
-    public Hero hero = new Hero();
-    public UI ui = new UI();
-    private int heroHp;
+    public HeroService heroService = new HeroService();
+    public UI ui;
 
-    public void displayHp(int heroHpToDisplay) {
-//        hero.setHp(heroHpToDisplay);
-//        heroHp = hero.getHp();
-//        ui.hpLabelNumber.setText("" + heroHp);
+    public int displayHeroHp(int heroHpToDisplay) {
+        System.out.println("je suis ici");
+        heroService.instantiateHeroHp(heroHpToDisplay);
+        System.out.println("je suis là");
+        ui.hpLabelNumber.setText("" + heroHpToDisplay);
+        return heroHpToDisplay;
     }
 
 
