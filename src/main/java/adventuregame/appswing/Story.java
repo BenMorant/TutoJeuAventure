@@ -23,7 +23,7 @@ public class Story {
     public VisibilityManager vm;
     public Hero hero = new Hero();
     public int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
-            goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughGetMonsterObject, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealMonster;
+            goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughSilverRing, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealMonster;
     Monster monster;
     public int heroAbility, heroHp, heroHpMax, heroMp, heroMpMax, heroStrength, heroAbilityMax, heroStrengthMax, heroCurrentWeaponDamageMax, heroCurrentWeaponWearMax,
             heroCurrentWeaponWear;
@@ -44,7 +44,8 @@ public class Story {
         int heroHpMaxStart = Game.getRandomNumberBetweenTwoBounds(7, 15);
         // TODO = 0 for now
         int heroMpMaxStart = Game.getRandomNumberBetweenTwoBounds(0, 0);
-        int heroHpStart = heroHpMaxStart;
+//        int heroHpStart = heroHpMaxStart;
+        int heroHpStart = 80;
         // TODO choose picture
         String heroPictureStart = "hero/rambo.jpg";
         int heroMpStart = heroMpMaxStart;
@@ -80,7 +81,7 @@ public class Story {
         goThroughFight = 0;
         goThroughHeroAttack = 0;
         goThroughMonsterAttack = 0;
-        goThroughGetMonsterObject = 0;
+        goThroughSilverRing = 0;
         goThroughDie = 0;
         goThroughEnding = 0;
         goThroughToTitle = 0;
@@ -208,9 +209,9 @@ public class Story {
                 monsterAttack();
                 goThroughMonsterAttack++;
                 break;
-            case "getMonsterObject":
-                goThroughGetMonsterObject++;
-                getMonsterObject();
+            case "getSilverRing":
+                goThroughSilverRing++;
+                getSilverRing();
                 break;
             case "die":
                 die();
@@ -244,19 +245,20 @@ public class Story {
     public void talkGuard() {
         monster = new Guard();
         ui.setImage(ui.imageLabelPrincipal, monster.getImage());
-//        if (hero.getCurrentObject().equals(new Silverring())) {
-//            ending();
-//        } else {
-        if (goThroughTalkGuard == 0) {
-            ui.mainTextArea.setText(monster.getName() + " a l'air affable et poli au premier abord, mais vous sentez aussi qu'il peut être facilement irrascible si on lui tient la jambe trop longtemps...\n" + monster.getName() + ": \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. \n Je suis désolé mais nous ne pouvons pas laisser entrer un étranger dans notre valeureuse Cité. \"");
-        } else if (goThroughTalkGuard == 1 || goThroughTalkGuard == 4) {
-            ui.mainTextArea.setText(monster.getName() + ": \" Dégagez de là. Allez, Oust, circulez y'a rien à voir !\"");
-        } else if (goThroughTalkGuard == 2) {
-            ui.mainTextArea.setText("Vous entendez " + monster.getName() + " grommeler entre ses dents : \" Bon, c'est vrai qu'il me le faudrait, ce petit anneau ! \"");
-        } else if (goThroughTalkGuard == 3) {
-            if (heroAbility > 5) {
-                ui.mainTextArea.setText("Vous tendez l'oreille et grâce à vos points d'habilité vous percevez les murmures " + monster.getName() + " : \" Je crois savoir que c'est un Gobelin a l'Ouest qui en serait l'heureux propriétaire... \n Je donnerais tout pour l'avoir ! \"");
-            } else {
+        System.out.println(hero.getCurrentObject().getName);
+        if (hero.getCurrentObject().name.equalsIgnoreCase("anneau d'argent")) {
+            ending();
+        } else {
+            if (goThroughTalkGuard == 0) {
+                ui.mainTextArea.setText(monster.getName() + " a l'air affable et poli au premier abord, mais vous sentez aussi qu'il peut être facilement irrascible si on lui tient la jambe trop longtemps...\n" + monster.getName() + ": \" Bien le bonjour, étranger !\n Je ne vous ai jamais vu. \n Je suis désolé mais nous ne pouvons pas laisser entrer un étranger dans notre valeureuse Cité. \"");
+            } else if (goThroughTalkGuard == 1 || goThroughTalkGuard == 4) {
+                ui.mainTextArea.setText(monster.getName() + ": \" Dégagez de là. Allez, Oust, circulez y'a rien à voir !\"");
+            } else if (goThroughTalkGuard == 2) {
+                ui.mainTextArea.setText("Vous entendez " + monster.getName() + " grommeler entre ses dents : \" Bon, c'est vrai qu'il me le faudrait, ce petit anneau ! \"");
+            } else if (goThroughTalkGuard == 3) {
+                if (heroAbility > 5) {
+                    ui.mainTextArea.setText("Vous tendez l'oreille et grâce à vos points d'habilité vous percevez les murmures " + monster.getName() + " : \" Je crois savoir que c'est un Gobelin a l'Ouest qui en serait l'heureux propriétaire... \n Je donnerais tout pour l'avoir ! \"");
+                } else {
                 ui.mainTextArea.setText("Vous avez beau tendre l'oreille, vous n'avez pas assez de points d'habilité pour percevoir les murmures " + monster.getName());
             }
         } else {
@@ -279,7 +281,7 @@ public class Story {
         game.nextPosition3 = "";
         game.nextPosition4 = "";
     }
-    //  }
+    }
 
     public void attackGuard() {
         monster = new Guard();
@@ -291,14 +293,15 @@ public class Story {
             dammageGuard++;
             ui.mainTextArea.setText(monster.getName() + " : \"Toi, tu n'as rien compris à la leçon que je t'ai donnée tout à l'heure !\" \n " + monster.getName() + " vous frappe encore plus fort \net vous recevez " + dammageGuard + " points de dommage");
         }
-        heroHp = displayHeroHp(heroHp - dammageGuard);
+        heroHp = heroHp - dammageGuard;
         if (heroHp < 1) {
-            heroFront.displayHp(0);
+            heroHp = 0;
             game.nextPosition1 = "die";
         } else {
             game.nextPosition1 = "townGate";
         }
-        ui.hpLabelNumber.setText("" + heroHp);
+        displayHeroHp(heroHp);
+
         ui.choice1.setText(">");
         ui.choice2.setText("");
         ui.choice3.setText("");
@@ -328,21 +331,23 @@ public class Story {
         int riverRestore = getRandomNumberBetweenTwoBounds(1, 3);
         if (goThroughNorth < 2) {
             if (heroHp < (heroHpMax - 1)) {
-                heroHp = displayHeroHp(heroHp + riverRestore);
+                heroHp = heroHp + riverRestore;
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+" + riverRestore + ")");
             } else if (heroHp < heroHpMax) {
-                heroHp = displayHeroHp(heroHp + 1);
+                heroHp = heroHp + 1;
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+1)");
             } else {
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont au maximum.");
             }
+            heroHp = displayHeroHp(heroHp);
         } else {
             if (heroAbility > 0) {
-                heroAbility = displayHeroAbility(heroAbility--);
+                heroAbility--;
                 ui.mainTextArea.setText("Vous avez trop bu d'eau et perdez un point d'habileté.");
             } else {
                 ui.mainTextArea.setText("Vous avez trop bu d'eau.");
             }
+            heroAbility = displayHeroAbility(heroAbility);
         }
 
         ui.choice1.setText("Vous allez au Sud");
@@ -491,21 +496,13 @@ public class Story {
         heroHp = heroHp - monsterDamage;
         if (heroHp < 1) {
             heroHp = 0;
-        }
-        heroHp = displayHeroHp(heroHp);
-
-        ui.mainTextArea.setText(monster.getAttackMessage() + "\n " + monster.getName() + " vous attaque et vous donne " + monsterDamage + " de dommage!");
-
-        ui.choice3.setText("");
-        ui.choice4.setText("");
-
-        if (heroHp < 1) {
             ui.choice1.setText(">");
             ui.choice2.setText("");
             ui.choice3.setText("");
             game.nextPosition1 = "die";
             game.nextPosition2 = "";
             game.nextPosition2 = "";
+            ;
         } else {
             ui.choice1.setText("Vous attaquez");
             ui.choice2.setText("Vous tentez de voler " + monster.getName());
@@ -514,12 +511,17 @@ public class Story {
             game.nextPosition2 = "stealMonster";
             game.nextPosition3 = "crossRoad";
         }
+        heroHp = displayHeroHp(heroHp);
 
+        ui.mainTextArea.setText(monster.getAttackMessage() + "\n " + monster.getName() + " vous attaque et vous donne " + monsterDamage + " de dommage!");
+
+        ui.choice3.setText("");
+        ui.choice4.setText("");
         ui.choice4.setText("");
         game.nextPosition4 = "";
     }
 
-    public void getMonsterObject() {
+    public void getSilverRing() {
 
         ui.setImage(ui.imageLabelPrincipal, "objects/silver_ring.jpg");
         ui.mainTextArea.setText("Vous avez battu " + monster.getName() + " !\n" + monster.getName() + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
