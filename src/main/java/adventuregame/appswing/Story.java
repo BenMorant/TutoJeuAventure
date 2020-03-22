@@ -31,6 +31,8 @@ public class Story {
     public Weapon heroCurrentWeapon;
     public HeroFront heroFront = new HeroFront();
     public HeroService heroService = new HeroService();
+    public boolean hasSilverring;
+    public boolean hasAlreadySword;
 
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
 
@@ -41,6 +43,8 @@ public class Story {
 
     public void defaultHeroSetup() {
 
+        hasSilverring = false;
+        hasAlreadySword = false;
         int heroHpMaxStart = Game.getRandomNumberBetweenTwoBounds(7, 15);
         // TODO = 0 for now
         int heroMpMaxStart = Game.getRandomNumberBetweenTwoBounds(0, 0);
@@ -245,8 +249,7 @@ public class Story {
     public void talkGuard() {
         monster = new Guard();
         ui.setImage(ui.imageLabelPrincipal, monster.getImage());
-        System.out.println(hero.getCurrentObject().getName);
-        if (hero.getCurrentObject().name.equalsIgnoreCase("anneau d'argent")) {
+        if (hasSilverring) {
             ending();
         } else {
             if (goThroughTalkGuard == 0) {
@@ -362,13 +365,17 @@ public class Story {
     }
 
     public void east() {
+
         Weapon swordFound = new LongSword();
         ui.setImage(ui.imageLabelPrincipal, swordFound.getImage());
-        if (heroStrength < 5) {
+        if (hasAlreadySword) {
+            ui.mainTextArea.setText("Vous disposez déjà de " + swordFound.getName());
+        } else if (heroStrength < 5) {
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n Malheureusement, vous n'êtes pas assez fort pour la porter.");
         } else {
             heroCurrentWeapon = displayHeroCurrentWeapon(swordFound);
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + heroCurrentWeaponDamageMax + " , usure = " + heroCurrentWeaponWear + " / " + heroCurrentWeaponWearMax + " )");
+            hasAlreadySword = true;
         }
 
         ui.choice1.setText("Vous allez à l'Ouest");
@@ -522,7 +529,7 @@ public class Story {
     }
 
     public void getSilverRing() {
-
+        hasSilverring = true;
         ui.setImage(ui.imageLabelPrincipal, "objects/silver_ring.jpg");
         ui.mainTextArea.setText("Vous avez battu " + monster.getName() + " !\n" + monster.getName() + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
 
