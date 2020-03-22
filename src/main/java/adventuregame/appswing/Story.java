@@ -10,6 +10,7 @@ import adventuregame.entity.Mandragore;
 import adventuregame.entity.Monster;
 import adventuregame.entity.Weapon;
 import adventuregame.front.HeroFront;
+import adventuregame.service.HeroService;
 
 import java.util.Random;
 
@@ -17,10 +18,10 @@ import static adventuregame.appswing.Game.getRandomNumberBetweenTwoBounds;
 
 public class Story {
 
-    Game game;
-    UI ui;
-    VisibilityManager vm;
-    Hero hero = new Hero();
+    public Game game;
+    public UI ui;
+    public VisibilityManager vm;
+    public Hero hero = new Hero();
     public int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
             goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughGetMonsterObject, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealMonster;
     Monster monster;
@@ -28,7 +29,8 @@ public class Story {
             heroCurrentWeaponWear;
     public String heroPicture, heroCurrentWeaponName;
     public Weapon heroCurrentWeapon;
-    HeroFront heroFront = new HeroFront();
+    public HeroFront heroFront = new HeroFront();
+    public HeroService heroService = new HeroService();
 
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
 
@@ -55,18 +57,18 @@ public class Story {
         int heroAbilityStart = heroAbilityMaxStart;
 
 
-        displayHeroPicture(heroPictureStart);
-        displayHpMax(heroHpMaxStart);
-        displayHp(heroHpStart);
-        displayMpMax(heroMpMaxStart);
-        displayMp(heroMpStart);
-        displayStrengthMax(heroStrengthMaxStart);
-        displayStrength(heroStrengthStart);
-        displayAbilityMax(heroAbilityMaxStart);
-        displayAbility(heroAbilityStart);
+        heroPicture = displayHeroPicture(heroPictureStart);
+        heroHpMax = displayHeroHpMax(heroHpMaxStart);
+        heroHp = displayHeroHp(heroHpStart);
+        heroMpMax = displayHeroMpMax(heroMpMaxStart);
+        heroMp = displayHeroMp(heroMpStart);
+        heroStrengthMax = displayHeroStrengthMax(heroStrengthMaxStart);
+        heroStrength = displayHeroStrength(heroStrengthStart);
+        heroAbilityMax = displayHeroAbilityMax(heroAbilityMaxStart);
+        heroAbility = displayHeroAbility(heroAbilityStart);
         //weapon
         // TODO PROVISIONNAL !!!
-        displayHeroCurrentWeapon(heroCurrentWeaponStart);
+        heroCurrentWeapon = displayHeroCurrentWeapon(heroCurrentWeaponStart);
 
         goThroughTalkGuard = 0;
         goThroughTownGate = 0;
@@ -85,7 +87,7 @@ public class Story {
         goThroughStealMonster = 0;
     }
 
-    public void displayHeroCurrentWeapon(Weapon heroCurrentWeaponToDisplay) {
+    public Weapon displayHeroCurrentWeapon(Weapon heroCurrentWeaponToDisplay) {
         hero.setCurrentWeapon(heroCurrentWeaponToDisplay);
         heroCurrentWeapon = hero.getCurrentWeapon();
         //weapon name
@@ -102,60 +104,61 @@ public class Story {
         heroCurrentWeapon.setWear(getRandomNumberBetweenTwoBounds(0, heroCurrentWeaponWearMax - 1));
         heroCurrentWeaponWear = heroCurrentWeapon.getWear();
         ui.weaponLabelWearNumber.setText("" + heroCurrentWeapon.getWear());
+        return heroCurrentWeaponToDisplay;
     }
 
-    public void displayAbility(int heroAbilityToDisplay) {
-        hero.setAbility(heroAbilityToDisplay);
-        heroAbility = hero.getAbility();
-        ui.abilityLabelNumber.setText("" + heroAbility);
-    }
-
-    public void displayAbilityMax(int heroAbilityMaxToDisplay) {
-        hero.setAbilityMax(heroAbilityMaxToDisplay);
-        heroAbilityMax = hero.getAbilityMax();
-        ui.abilityMaxLabelNumber.setText("" + heroAbilityMaxToDisplay);
-    }
-
-    public void displayStrength(int heroStrengthToDisplay) {
-        hero.setStrength(heroStrengthToDisplay);
-        heroStrength = hero.getStrength();
-        ui.strengthLabelNumber.setText("" + heroStrengthToDisplay);
-    }
-
-    public void displayStrengthMax(int heroStrengthMaxToDisplay) {
-        hero.setStrengthMax(heroStrengthMaxToDisplay);
-        heroStrengthMax = hero.getStrength();
-        ui.strengthMaxLabelNumber.setText("" + heroStrengthMaxToDisplay);
-    }
-
-    public void displayMp(int heroMpToDisplay) {
-        hero.setMp(heroMpToDisplay);
-        heroMp = hero.getMp();
-        ui.mpLabelNumber.setText("" + heroMpToDisplay);
-    }
-
-    public void displayMpMax(int heroMpMaxToDisplay) {
-        hero.setMpMax(heroMpMaxToDisplay);
-        heroMpMax = hero.getMpMax();
-        ui.mpMaxLabelNumber.setText("" + heroMpMaxToDisplay);
-    }
-
-    public void displayHp(int heroHpToDisplay) {
-        hero.setHp(heroHpToDisplay);
-        heroHp = hero.getHp();
+    public int displayHeroHp(int heroHpToDisplay) {
+        heroService.instantiateHeroHp(heroHpToDisplay);
         ui.hpLabelNumber.setText("" + heroHpToDisplay);
+        return heroHpToDisplay;
     }
 
-    public void displayHpMax(int heroHpMaxToDisplay) {
-        hero.setHpMax(heroHpMaxToDisplay);
-        heroHpMax = hero.getHpMax();
+    public int displayHeroAbility(int heroAbilityToDisplay) {
+        heroService.instantiateHeroAbility(heroAbilityToDisplay);
+        ui.abilityLabelNumber.setText("" + heroAbilityToDisplay);
+        return heroAbilityToDisplay;
+    }
+
+    public int displayHeroAbilityMax(int heroAbilityMaxToDisplay) {
+        heroService.instantiateHeroAbilityMax(heroAbilityMaxToDisplay);
+        ui.abilityMaxLabelNumber.setText("" + heroAbilityMaxToDisplay);
+        return heroAbilityMaxToDisplay;
+    }
+
+    public int displayHeroStrength(int heroStrengthToDisplay) {
+        heroService.instantiateHeroStrength(heroStrengthToDisplay);
+        ui.strengthLabelNumber.setText("" + heroStrengthToDisplay);
+        return heroStrengthToDisplay;
+    }
+
+    public int displayHeroStrengthMax(int heroStrengthMaxToDisplay) {
+        heroService.instantiateHeroStrengthMax(heroStrengthMaxToDisplay);
+        ui.strengthMaxLabelNumber.setText("" + heroStrengthMaxToDisplay);
+        return heroStrengthMaxToDisplay;
+    }
+
+    public int displayHeroMp(int heroMpToDisplay) {
+        heroService.instantiateHeroMp(heroMpToDisplay);
+        ui.mpLabelNumber.setText("" + heroMpToDisplay);
+        return heroMpToDisplay;
+    }
+
+    public int displayHeroMpMax(int heroMpMaxToDisplay) {
+        heroService.instantiateHeroMpMax(heroMpMaxToDisplay);
+        ui.mpMaxLabelNumber.setText("" + heroMpMaxToDisplay);
+        return heroMpMaxToDisplay;
+    }
+
+    public int displayHeroHpMax(int heroHpMaxToDisplay) {
+        heroService.instantiateHeroHpMax(heroHpMaxToDisplay);
         ui.hpMaxLabelNumber.setText("" + heroHpMaxToDisplay);
+        return heroHpMaxToDisplay;
     }
 
-    public void displayHeroPicture(String heroPictureToDisplay) {
-        hero.setImage(heroPictureToDisplay);
-        heroPicture = hero.getImage();
+    public String displayHeroPicture(String heroPictureToDisplay) {
+        heroService.instantiateHeroPicture(heroPictureToDisplay);
         ui.setImage(ui.imageLabelPicture, heroPictureToDisplay);
+        return heroPictureToDisplay;
     }
 
     public void selectNextPosition(String nextPosition) {
@@ -239,9 +242,6 @@ public class Story {
     }
 
     public void talkGuard() {
-        String minnie = "/hero/minnie.jpeg";
-        displayHeroPicture(minnie);
-
         monster = new Guard();
         ui.setImage(ui.imageLabelPrincipal, monster.getImage());
 //        if (hero.getCurrentObject().equals(new Silverring())) {
@@ -291,9 +291,9 @@ public class Story {
             dammageGuard++;
             ui.mainTextArea.setText(monster.getName() + " : \"Toi, tu n'as rien compris à la leçon que je t'ai donnée tout à l'heure !\" \n " + monster.getName() + " vous frappe encore plus fort \net vous recevez " + dammageGuard + " points de dommage");
         }
-        displayHp(heroHp - dammageGuard);
+        heroHp = displayHeroHp(heroHp - dammageGuard);
         if (heroHp < 1) {
-            displayHp(0);
+            heroFront.displayHp(0);
             game.nextPosition1 = "die";
         } else {
             game.nextPosition1 = "townGate";
@@ -328,20 +328,17 @@ public class Story {
         int riverRestore = getRandomNumberBetweenTwoBounds(1, 3);
         if (goThroughNorth < 2) {
             if (heroHp < (heroHpMax - 1)) {
-                displayHp(heroHp + riverRestore);
-                ui.hpLabelNumber.setText("" + heroHp);
+                heroHp = displayHeroHp(heroHp + riverRestore);
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+" + riverRestore + ")");
             } else if (heroHp < heroHpMax) {
-                displayHp(heroHp + 1);
-                ui.hpLabelNumber.setText("" + heroHp);
+                heroHp = displayHeroHp(heroHp + 1);
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont restaurés (+1)");
             } else {
                 ui.mainTextArea.setText("Il y a une rivière. Vous buvez de l'eau et vous vous reposez sur la rive. \n Vos points de vie sont au maximum.");
             }
         } else {
             if (heroAbility > 0) {
-                displayAbility(heroAbility--);
-                ui.abilityLabelNumber.setText("" + heroAbility);
+                heroAbility = displayHeroAbility(heroAbility--);
                 ui.mainTextArea.setText("Vous avez trop bu d'eau et perdez un point d'habileté.");
             } else {
                 ui.mainTextArea.setText("Vous avez trop bu d'eau.");
@@ -365,12 +362,8 @@ public class Story {
         if (heroStrength < 5) {
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n Malheureusement, vous n'êtes pas assez fort pour la porter.");
         } else {
-            displayHeroCurrentWeapon(swordFound);
+            heroCurrentWeapon = displayHeroCurrentWeapon(swordFound);
             ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + heroCurrentWeaponDamageMax + " , usure = " + heroCurrentWeaponWear + " / " + heroCurrentWeaponWearMax + " )");
-            if (heroCurrentWeaponWear == heroCurrentWeaponWearMax) {
-                ui.mainTextArea.setText("Vous arrivez en plein coeur d'une forêt et trouvez une longue épée. \n ( dommage max = " + heroCurrentWeaponDamageMax + " , usure = " + heroCurrentWeaponWear + " / " + heroCurrentWeaponWearMax +
-                        " ) \n ... Vous comprenez pourquoi " + heroCurrentWeaponName + "a été jeté.");
-            }
         }
 
         ui.choice1.setText("Vous allez à l'Ouest");
@@ -495,11 +488,11 @@ public class Story {
         ui.setImage(ui.imageLabelPrincipal, monster.getImage());
         int monsterDamage = getRandomNumberBetweenTwoBounds(1, monster.getDamageMax());
 
-        displayHp(heroHp - monsterDamage);
+        heroHp = heroHp - monsterDamage;
         if (heroHp < 1) {
-            displayHp(0);
+            heroHp = 0;
         }
-        ui.hpLabelNumber.setText("" + heroHp);
+        heroHp = displayHeroHp(heroHp);
 
         ui.mainTextArea.setText(monster.getAttackMessage() + "\n " + monster.getName() + " vous attaque et vous donne " + monsterDamage + " de dommage!");
 
