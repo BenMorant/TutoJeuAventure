@@ -45,35 +45,33 @@ public class Story {
 
         hasSilverring = false;
         hasAlreadySword = false;
-        int heroHpMaxStart = Game.getRandomNumberBetweenTwoBounds(7, 15);
+        heroHpMax = Game.getRandomNumberBetweenTwoBounds(7, 15);
         // TODO = 0 for now
-        int heroMpMaxStart = Game.getRandomNumberBetweenTwoBounds(0, 0);
-//        int heroHpStart = heroHpMaxStart;
-        int heroHpStart = 80;
+        heroMpMax = Game.getRandomNumberBetweenTwoBounds(0, 0);
+        heroHp = heroHpMax;
         // TODO choose picture
-        String heroPictureStart = "hero/rambo.jpg";
-        int heroMpStart = heroMpMaxStart;
+        heroPicture = "hero/rambo.jpg";
+        heroMp = heroMpMax;
         //TODO weapon to choose
-        Weapon heroCurrentWeaponStart = new Knife();
-        int heroStrengthMaxStart = Game.getRandomNumberBetweenTwoBounds(0, 10);
-        int heroStrengthStart = heroStrengthMaxStart;
+        heroCurrentWeapon = new Knife();
+        heroStrengthMax = Game.getRandomNumberBetweenTwoBounds(0, 10);
+        heroStrength = heroStrengthMax;
         //TODO : for now...
-        int heroAbilityMaxStart = 10 - heroStrengthMaxStart;
-        int heroAbilityStart = heroAbilityMaxStart;
+        heroAbilityMax = 10 - heroStrengthMax;
+        heroAbility = heroAbilityMax;
 
-
-        heroPicture = displayHeroPicture(heroPictureStart);
-        heroHpMax = displayHeroHpMax(heroHpMaxStart);
-        heroHp = displayHeroHp(heroHpStart);
-        heroMpMax = displayHeroMpMax(heroMpMaxStart);
-        heroMp = displayHeroMp(heroMpStart);
-        heroStrengthMax = displayHeroStrengthMax(heroStrengthMaxStart);
-        heroStrength = displayHeroStrength(heroStrengthStart);
-        heroAbilityMax = displayHeroAbilityMax(heroAbilityMaxStart);
-        heroAbility = displayHeroAbility(heroAbilityStart);
+        heroPicture = displayHeroPicture(heroPicture);
+        heroHpMax = displayHeroHpMax(heroHpMax);
+        heroHp = displayHeroHp(heroHp);
+        heroMpMax = displayHeroMpMax(heroMpMax);
+        heroMp = displayHeroMp(heroMp);
+        heroStrengthMax = displayHeroStrengthMax(heroStrengthMax);
+        heroStrength = displayHeroStrength(heroStrength);
+        heroAbilityMax = displayHeroAbilityMax(heroAbilityMax);
+        heroAbility = displayHeroAbility(heroAbility);
         //weapon
         // TODO PROVISIONNAL !!!
-        heroCurrentWeapon = displayHeroCurrentWeapon(heroCurrentWeaponStart);
+        heroCurrentWeapon = displayHeroCurrentWeapon(heroCurrentWeapon);
 
         goThroughTalkGuard = 0;
         goThroughTownGate = 0;

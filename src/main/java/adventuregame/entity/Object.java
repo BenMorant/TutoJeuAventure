@@ -1,9 +1,7 @@
 package adventuregame.entity;
 
-public class Object extends GenericEntity {
+public class Object {
 
     public String name;
     public String image;
-    public int weight;
-    public Inventory inventory;
 }

@@ -1,6 +1,6 @@
 package adventuregame.entity;
 
-public class Hero extends People {
+public class Hero {
 
     private int hp;
     private int hpMax;
