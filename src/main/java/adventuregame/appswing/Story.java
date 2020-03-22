@@ -9,7 +9,7 @@ import adventuregame.entity.LongSword;
 import adventuregame.entity.Mandragore;
 import adventuregame.entity.Monster;
 import adventuregame.entity.Weapon;
-import adventuregame.front.PanelHero;
+import adventuregame.front.HeroFront;
 
 import java.util.Random;
 
@@ -17,18 +17,18 @@ import static adventuregame.appswing.Game.getRandomNumberBetweenTwoBounds;
 
 public class Story {
 
-    public PanelHero heroPanel;
     Game game;
     UI ui;
     VisibilityManager vm;
     Hero hero = new Hero();
-    Monster monster;
-    private int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
+    public int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
             goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughGetMonsterObject, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealMonster;
-    private int heroAbility, heroHp, heroHpMax, heroMp, heroMpMax, heroStrength, heroAbilityMax, heroStrengthMax, heroCurrentWeaponDamageMax, heroCurrentWeaponWearMax,
+    Monster monster;
+    public int heroAbility, heroHp, heroHpMax, heroMp, heroMpMax, heroStrength, heroAbilityMax, heroStrengthMax, heroCurrentWeaponDamageMax, heroCurrentWeaponWearMax,
             heroCurrentWeaponWear;
-    private String heroPicture, heroCurrentWeaponName;
-    private Weapon heroCurrentWeapon;
+    public String heroPicture, heroCurrentWeaponName;
+    public Weapon heroCurrentWeapon;
+    HeroFront heroFront = new HeroFront();
 
     public Story(Game g, UI userInterface, VisibilityManager vManager) {
 

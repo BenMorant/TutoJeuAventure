@@ -1,6 +1,7 @@
 package adventuregame.front;
 
-public class PanelHero {
+
+public class HeroFront {
 
 
 }
