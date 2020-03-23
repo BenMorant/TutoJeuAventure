@@ -15,7 +15,7 @@ public class UI {
     public Font heroPanelFont = new Font("Times New Roman", Font.PLAIN, 22);
     public JButton startButton, choice1, choice2, choice3, choice4;
     public JTextArea mainTextArea;
-    public ImageIcon image;
+    ImageIcon image;
 
     public void createUI(Game.ChoiceHandler choiceHandler) {
 
