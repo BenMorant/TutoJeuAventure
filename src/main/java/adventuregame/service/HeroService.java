@@ -8,9 +8,8 @@ public class HeroService {
 
     Hero hero = new Hero();
 
-    public int instantiateHeroHp(int heroHpToInstantiate) {
+    public void instantiateHeroHp(int heroHpToInstantiate) {
         hero.setHp(heroHpToInstantiate);
-        return heroHpToInstantiate;
     }
 
     public void instantiateHeroHpMax(int heroHpMaxToInstantiate) {
