@@ -3,26 +3,25 @@ package adventuregame.model.people;
 import adventuregame.model.items.Item;
 import adventuregame.model.items.weapons.Weapon;
 
-public class Hero {
+public class Hero extends People {
 
-    private int hp;
     private int hpMax;
-    private int mp;
     private int mpMax;
     private int ability;
-    private int strength;
     private int abilityMax;
     private int strengthMax;
-    private String image;
     private Weapon currentWeapon;
     private Item currentItem;
 
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
+    public Hero(int gender, String name, String image, String description, int hp, int mp, int strength, int hpMax, int mpMax, int ability, int abilityMax, int strengthMax, Weapon currentWeapon, Item currentItem) {
+        super(gender, name, image, description, hp, mp, strength);
+        this.hpMax = hpMax;
+        this.mpMax = mpMax;
+        this.ability = ability;
+        this.abilityMax = abilityMax;
+        this.strengthMax = strengthMax;
+        this.currentWeapon = currentWeapon;
+        this.currentItem = currentItem;
     }
 
     public int getHpMax() {
@@ -31,14 +30,6 @@ public class Hero {
 
     public void setHpMax(int hpMax) {
         this.hpMax = hpMax;
-    }
-
-    public int getMp() {
-        return mp;
-    }
-
-    public void setMp(int mp) {
-        this.mp = mp;
     }
 
     public int getMpMax() {
@@ -57,14 +48,6 @@ public class Hero {
         this.ability = ability;
     }
 
-    public int getStrength() {
-        return strength;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
     public int getAbilityMax() {
         return abilityMax;
     }
@@ -79,14 +62,6 @@ public class Hero {
 
     public void setStrengthMax(int strengthMax) {
         this.strengthMax = strengthMax;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public Weapon getCurrentWeapon() {

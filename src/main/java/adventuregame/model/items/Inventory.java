@@ -6,8 +6,8 @@ import java.util.List;
 
 public abstract class Inventory extends GenericEntity {
 
-    private List<Item> Items = null;
-    private int capacity = 0;
+    protected List<Item> Items = null;
+    protected int capacity = 0;
 
     public Inventory(int gender, String name, String image, String description, List<Item> items, int capacity) {
         super(gender, name, image, description);

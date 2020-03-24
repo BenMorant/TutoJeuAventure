@@ -1,15 +1,9 @@
 package adventuregame.model.people.monsters;
 
-public class Mandragore extends Monster {
+import adventuregame.model.items.MandragoreClove;
 
-//    public Mandragore() {
-//        name = "Mandragore";
-//        hp = 25;
-//        damageMax = 4;
-//        attackMessage = "La mandragore pousse son cri mortel !";
-//        image = "monsters/mandragore.jpg";
-//        stealDifficulty = 3;
-//        monsterObject = new MandragoreClove();
-//
-//    }
+public class Mandragore extends Monster {
+    public Mandragore() {
+        super(1, "Mandragore", "people/monsters/mandragore.jpg", "une mandragore qui a l'air inoffensif...", 25, 0, 4, "La Mandragore pousse son cri mortel !", 3, new MandragoreClove());
+    }
 }
