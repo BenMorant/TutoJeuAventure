@@ -3,12 +3,12 @@ package adventuregame.appswing;
 import adventuregame.model.items.weapons.Knife;
 import adventuregame.model.items.weapons.LongSword;
 import adventuregame.model.items.weapons.Weapon;
-import adventuregame.model.people.Goblin;
-import adventuregame.model.people.Guard;
 import adventuregame.model.people.Hero;
-import adventuregame.model.people.LittleDragon;
-import adventuregame.model.people.Mandragore;
-import adventuregame.model.people.Monster;
+import adventuregame.model.people.monsters.Goblin;
+import adventuregame.model.people.monsters.Guard;
+import adventuregame.model.people.monsters.LittleDragon;
+import adventuregame.model.people.monsters.Mandragore;
+import adventuregame.model.people.monsters.Monster;
 import adventuregame.service.HeroService;
 
 import java.util.Random;
@@ -432,7 +432,7 @@ public class Story {
 
     public void heroAttack() {
         ui.setImage(ui.imageLabelPrincipal, monster.getImage());
-        int heroDamage = Weapon.getDamageWeapon(heroStrength, heroStrengthMax, heroCurrentWeaponDamageMax);
+        int heroDamage = Weapon.giveDamage(heroStrength, heroStrengthMax, heroCurrentWeaponDamageMax);
 
         monster.setHp(monster.getHp() - heroDamage);
 
