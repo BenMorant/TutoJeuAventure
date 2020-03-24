@@ -3,8 +3,6 @@ package adventuregame.model.items;
 public class LittleDragonTooth extends Item {
 
     public LittleDragonTooth() {
-        name = "dent de dragonneau";
-        image = "items/little_dragon_tooth.jpg";
-
+        super("dent de dragonneau", "items/little_dragon_tooth.jpg", 1);
     }
 }
