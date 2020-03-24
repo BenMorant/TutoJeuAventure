@@ -1,4 +1,7 @@
-package adventuregame.entity;
+package adventuregame.model.people;
+
+import adventuregame.model.items.Item;
+import adventuregame.model.items.weapons.Weapon;
 
 public class Hero {
 
@@ -12,7 +15,7 @@ public class Hero {
     private int strengthMax;
     private String image;
     private Weapon currentWeapon;
-    private Object currentObject;
+    private Item currentItem;
 
     public int getHp() {
         return hp;
@@ -94,11 +97,11 @@ public class Hero {
         this.currentWeapon = currentWeapon;
     }
 
-    public Object getCurrentObject() {
-        return currentObject;
+    public Item getCurrentItem() {
+        return currentItem;
     }
 
-    public void setCurrentObject(Object currentObject) {
-        this.currentObject = currentObject;
+    public void setCurrentItem(Item currentItem) {
+        this.currentItem = currentItem;
     }
 }

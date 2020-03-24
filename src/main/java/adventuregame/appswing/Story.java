@@ -1,15 +1,14 @@
 package adventuregame.appswing;
 
-import adventuregame.entity.Goblin;
-import adventuregame.entity.Guard;
-import adventuregame.entity.Hero;
-import adventuregame.entity.Knife;
-import adventuregame.entity.LittleDragon;
-import adventuregame.entity.LongSword;
-import adventuregame.entity.Mandragore;
-import adventuregame.entity.Monster;
-import adventuregame.entity.Weapon;
-import adventuregame.front.HeroFront;
+import adventuregame.model.items.weapons.Knife;
+import adventuregame.model.items.weapons.LongSword;
+import adventuregame.model.items.weapons.Weapon;
+import adventuregame.model.people.Goblin;
+import adventuregame.model.people.Guard;
+import adventuregame.model.people.Hero;
+import adventuregame.model.people.LittleDragon;
+import adventuregame.model.people.Mandragore;
+import adventuregame.model.people.Monster;
 import adventuregame.service.HeroService;
 
 import java.util.Random;
@@ -29,7 +28,6 @@ public class Story {
             heroCurrentWeaponWear;
     public String heroPicture, heroCurrentWeaponName;
     public Weapon heroCurrentWeapon;
-    public HeroFront heroFront = new HeroFront();
     public HeroService heroService = new HeroService();
     public boolean hasSilverring;
     public boolean hasAlreadySword;
@@ -476,7 +474,7 @@ public class Story {
             ui.mainTextArea.setText("Vous n'avez pas réussi à voler " + monster.getName() + " !");
         } else {
             ui.mainTextArea.setText("Bravo ! Vous avez réussi à choper " + monster.getMonsterObject().name);
-            hero.setCurrentObject(monster.getMonsterObject());
+            hero.setCurrentItem(monster.getMonsterObject());
             alreadyStolen = true;
         }
         if (alreadyStolen) {
@@ -530,7 +528,7 @@ public class Story {
 
     public void getSilverRing() {
         hasSilverring = true;
-        ui.setImage(ui.imageLabelPrincipal, "objects/silver_ring.jpg");
+        ui.setImage(ui.imageLabelPrincipal, "items/silver_ring.jpg");
         ui.mainTextArea.setText("Vous avez battu " + monster.getName() + " !\n" + monster.getName() + " a laché un anneau!\n\n(Vous obtenez un Anneau d'argent)");
 
         ui.choice1.setText("Vous allez à l'Est");

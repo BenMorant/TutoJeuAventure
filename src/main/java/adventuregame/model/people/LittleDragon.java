@@ -1,4 +1,6 @@
-package adventuregame.entity;
+package adventuregame.model.people;
+
+import adventuregame.model.items.LittleDragonTooth;
 
 public class LittleDragon extends Monster {
 

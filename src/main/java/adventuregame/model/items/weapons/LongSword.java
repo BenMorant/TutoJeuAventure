@@ -1,4 +1,4 @@
-package adventuregame.entity;
+package adventuregame.model.items.weapons;
 
 public class LongSword extends Weapon {
 

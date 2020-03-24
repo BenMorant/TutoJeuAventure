@@ -1,4 +1,6 @@
-package adventuregame.entity;
+package adventuregame.model.people;
+
+import adventuregame.model.items.SilverRing;
 
 public class Goblin extends Monster {
 
@@ -9,7 +11,7 @@ public class Goblin extends Monster {
         attackMessage = "Le gobelin vous touche avec son baton !";
         image = "monsters/goblin.jpg";
         stealDifficulty = 5;
-        monsterObject = new Silverring();
+        monsterObject = new SilverRing();
 
     }
 }

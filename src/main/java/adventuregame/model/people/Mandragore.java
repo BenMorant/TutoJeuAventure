@@ -1,4 +1,6 @@
-package adventuregame.entity;
+package adventuregame.model.people;
+
+import adventuregame.model.items.MandragoreClove;
 
 public class Mandragore extends Monster {
 

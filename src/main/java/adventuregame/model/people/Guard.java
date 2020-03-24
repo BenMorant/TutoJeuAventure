@@ -1,4 +1,4 @@
-package adventuregame.entity;
+package adventuregame.model.people;
 
 public class Guard extends Monster {
 
