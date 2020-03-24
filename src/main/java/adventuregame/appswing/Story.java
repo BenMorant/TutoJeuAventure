@@ -9,7 +9,6 @@ import adventuregame.model.people.monsters.Guard;
 import adventuregame.model.people.monsters.LittleDragon;
 import adventuregame.model.people.monsters.Mandragore;
 import adventuregame.model.people.monsters.Monster;
-import adventuregame.service.HeroService;
 
 import java.util.Random;
 
@@ -28,7 +27,7 @@ public class Story {
             heroCurrentWeaponWear;
     public String heroPicture, heroCurrentWeaponName;
     public Weapon heroCurrentWeapon;
-    public HeroService heroService = new HeroService();
+
     public boolean hasSilverring;
     public boolean hasAlreadySword;
 

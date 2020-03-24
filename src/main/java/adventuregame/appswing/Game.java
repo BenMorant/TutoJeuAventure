@@ -2,7 +2,6 @@ package adventuregame.appswing;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 public class Game {
 
@@ -21,9 +20,6 @@ public class Game {
 
     }
 
-    public static int getRandomNumberBetweenTwoBounds(int min, int max) {
-        return min + new Random().nextInt(Math.abs(max - min + 1));
-    }
 
     public class ChoiceHandler implements ActionListener {
 

@@ -1,31 +1,14 @@
 package adventuregame.model.items;
 
-public abstract class Item {
+import adventuregame.model.GenericEntity;
 
-    private String name;
-    private String image;
-    private int weight;
+public abstract class Item extends GenericEntity {
 
-    public Item(String name, String image, int weight) {
-        this.name = name;
-        this.image = image;
+    protected int weight = 0;
+
+    public Item(int gender, String name, String image, String description, int weight) {
+        super(gender, name, image, description);
         this.weight = weight;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public int getWeight() {
@@ -36,3 +19,5 @@ public abstract class Item {
         this.weight = weight;
     }
 }
+
+

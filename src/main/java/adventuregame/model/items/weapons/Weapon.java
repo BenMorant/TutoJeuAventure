@@ -4,12 +4,13 @@ import adventuregame.model.items.Item;
 
 public abstract class Weapon extends Item {
 
-    private int damageMax;
-    private int wearMax;
-    private int wear;
+    protected int damageMax = 0;
+    protected int wearMax = 0;
+    protected int wear = 0;
 
-    public Weapon(String name, String image, int weight, int damageMax, int wearMax, int wear) {
-        super(name, image, weight);
+
+    public Weapon(int gender, String name, String image, String description, int weight, int damageMax, int wearMax, int wear) {
+        super(gender, name, image, description, weight);
         this.damageMax = damageMax;
         this.wearMax = wearMax;
         this.wear = wear;
