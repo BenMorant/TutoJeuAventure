@@ -9,32 +9,32 @@ import adventuregame.model.people.monsters.Guard;
 import adventuregame.model.people.monsters.LittleDragon;
 import adventuregame.model.people.monsters.Mandragore;
 import adventuregame.model.people.monsters.Monster;
+import adventuregame.model.utils.StatsListener;
+import adventuregame.model.utils.WordsListener;
 
 import java.util.Random;
 
-import static adventuregame.appswing.Game.getRandomNumberBetweenTwoBounds;
 
 public class Story {
 
-    public Game game;
-    public UI ui;
-    public VisibilityManager vm;
-    public Hero hero = new Hero();
+
+    private VisibilityManager vm;
+    private Hero hero = new Hero();
     public int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
             goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughSilverRing, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealMonster;
-    Monster monster;
-    public int heroAbility, heroHp, heroHpMax, heroMp, heroMpMax, heroStrength, heroAbilityMax, heroStrengthMax, heroCurrentWeaponDamageMax, heroCurrentWeaponWearMax,
-            heroCurrentWeaponWear;
-    public String heroPicture, heroCurrentWeaponName;
-    public Weapon heroCurrentWeapon;
+    private Monster monster;
+//    public int heroAbility, heroHp, heroHpMax, heroMp, heroMpMax, heroStrength, heroAbilityMax, heroStrengthMax, heroCurrentWeaponDamageMax, heroCurrentWeaponWearMax,
+//            heroCurrentWeaponWear;
+//    public String heroPicture, heroCurrentWeaponName;
+//    public Weapon heroCurrentWeapon;
 
     public boolean hasSilverring;
     public boolean hasAlreadySword;
 
-    public Story(Game g, UI userInterface, VisibilityManager vManager) {
+    public Story(StatsListener statsListener, WordsListener wordsListener, VisibilityManager vManager) {
 
-        game = g;
-        ui = userInterface;
+        hero.addStatListener(statsListener);
+        hero.addWordListener(wordsListener);
         vm = vManager;
     }
 

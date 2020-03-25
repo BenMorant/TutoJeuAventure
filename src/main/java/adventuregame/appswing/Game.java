@@ -8,7 +8,7 @@ public class Game {
     ChoiceHandler csHandler = new ChoiceHandler();
     UI ui = new UI();
     VisibilityManager vm = new VisibilityManager(ui);
-    Story story = new Story(this, ui, vm);
+    Story story = new Story(ui, vm);
     String nextPosition1, nextPosition2, nextPosition3, nextPosition4;
 
     public Game() {

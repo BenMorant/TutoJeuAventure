@@ -1,9 +1,14 @@
 package adventuregame.appswing;
 
+import adventuregame.model.utils.Stats;
+import adventuregame.model.utils.StatsListener;
+import adventuregame.model.utils.Words;
+import adventuregame.model.utils.WordsListener;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class UI {
+public class UI implements StatsListener, WordsListener {
 
     public JFrame window;
     public JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, heroPanel, imagePanelMain, imagePanelHeroPicture;
@@ -249,5 +254,20 @@ public class UI {
     public void setImage(JLabel imageLabelToDefine, String filename) {
         image = new ImageIcon(".//src//main//resources//pix//" + filename);
         imageLabelToDefine.setIcon(image);
+    }
+
+    @Override
+    public void onStatsChange(Stats stat, int newValue) {
+        switch (stat) {
+            case HP:
+                hpLabelNumber.setText(String.valueOf(newValue));
+                break;
+        }
+
+    }
+
+    @Override
+    public void onStatsChange(Words word, String newValue) {
+
     }
 }

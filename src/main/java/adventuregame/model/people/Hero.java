@@ -2,6 +2,11 @@ package adventuregame.model.people;
 
 import adventuregame.model.items.Item;
 import adventuregame.model.items.weapons.Weapon;
+import adventuregame.model.utils.StatsListener;
+import adventuregame.model.utils.WordsListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Hero extends People {
 
@@ -12,6 +17,8 @@ public class Hero extends People {
     private int strengthMax;
     private Weapon currentWeapon;
     private Item currentItem;
+    private List<StatsListener> statsListeners = new ArrayList<>();
+    private List<WordsListener> wordsListeners = new ArrayList<>();
 
     public Hero(int gender, String name, String image, String description, int hp, int mp, int strength, int hpMax, int mpMax, int ability, int abilityMax, int strengthMax, Weapon currentWeapon, Item currentItem) {
         super(gender, name, image, description, hp, mp, strength);
@@ -22,6 +29,14 @@ public class Hero extends People {
         this.strengthMax = strengthMax;
         this.currentWeapon = currentWeapon;
         this.currentItem = currentItem;
+    }
+
+    public void addStatListener(StatsListener statsListener) {
+        statsListeners.add(statsListener);
+    }
+
+    public void addWordListener(WordsListener wordListener) {
+        wordsListeners.add(wordListener);
     }
 
     public int getHpMax() {
