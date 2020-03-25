@@ -94,4 +94,26 @@ public class Hero extends People {
     public void setCurrentItem(Item currentItem) {
         this.currentItem = currentItem;
     }
+
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "hpMax=" + hpMax +
+                ", mpMax=" + mpMax +
+                ", ability=" + ability +
+                ", abilityMax=" + abilityMax +
+                ", strengthMax=" + strengthMax +
+                ", currentWeapon=" + currentWeapon +
+                ", currentItem=" + currentItem +
+                ", statsListeners=" + statsListeners +
+                ", wordsListeners=" + wordsListeners +
+                ", hp=" + hp +
+                ", mp=" + mp +
+                ", strength=" + strength +
+                ", gender=" + gender +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

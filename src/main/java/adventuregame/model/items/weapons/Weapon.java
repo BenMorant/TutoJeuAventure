@@ -44,4 +44,17 @@ public abstract class Weapon extends Item {
         this.wear = wear;
     }
 
+    @Override
+    public String toString() {
+        return "Weapon{" +
+                "damageMax=" + damageMax +
+                ", wearMax=" + wearMax +
+                ", wear=" + wear +
+                ", weight=" + weight +
+                ", gender=" + gender +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

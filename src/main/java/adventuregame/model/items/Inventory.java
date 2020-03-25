@@ -30,4 +30,16 @@ public abstract class Inventory extends GenericEntity {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "Items=" + Items +
+                ", capacity=" + capacity +
+                ", gender=" + gender +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

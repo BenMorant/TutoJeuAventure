@@ -40,4 +40,20 @@ public abstract class Monster extends People {
     public void setMonsterItem(Item monsterItem) {
         this.monsterItem = monsterItem;
     }
+
+    @Override
+    public String toString() {
+        return "Monster{" +
+                "attackMessage='" + attackMessage + '\'' +
+                ", stealDifficulty=" + stealDifficulty +
+                ", monsterItem=" + monsterItem +
+                ", hp=" + hp +
+                ", mp=" + mp +
+                ", strength=" + strength +
+                ", gender=" + gender +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

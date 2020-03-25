@@ -25,4 +25,12 @@ public class StoryBlock {
     public void setStoryText(String storyText) {
         this.storyText = storyText;
     }
+
+    @Override
+    public String toString() {
+        return "StoryBlock{" +
+                "label='" + label + '\'' +
+                ", storyText='" + storyText + '\'' +
+                '}';
+    }
 }

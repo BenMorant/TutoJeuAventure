@@ -18,6 +18,17 @@ public abstract class Item extends GenericEntity {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "weight=" + weight +
+                ", gender=" + gender +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
 
 

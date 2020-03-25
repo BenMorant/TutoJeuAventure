@@ -38,4 +38,17 @@ public abstract class People extends GenericEntity {
     public void setStrength(int strength) {
         this.strength = strength;
     }
+
+    @Override
+    public String toString() {
+        return "People{" +
+                "hp=" + hp +
+                ", mp=" + mp +
+                ", strength=" + strength +
+                ", gender=" + gender +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
