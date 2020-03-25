@@ -10,6 +10,7 @@ public abstract class People extends GenericEntity {
 
     public People(int gender, String name, String image, String description, int hp, int mp, int strength) {
         super(gender, name, image, description);
+        this.image = "./src/main/resources/pix/people/" + image;
         this.hp = hp;
         this.mp = mp;
         this.strength = strength;

@@ -11,6 +11,7 @@ public abstract class Weapon extends Item {
 
     public Weapon(int gender, String name, String image, String description, int weight, int damageMax, int wearMax, int wear) {
         super(gender, name, image, description, weight);
+        this.image = "./src/main/resources/pix/items/weapons/" + image;
         this.damageMax = damageMax;
         this.wearMax = wearMax;
         this.wear = wear;

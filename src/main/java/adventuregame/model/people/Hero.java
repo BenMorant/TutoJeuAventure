@@ -22,6 +22,7 @@ public class Hero extends People {
 
     public Hero(int gender, String name, String image, String description, int hp, int mp, int strength, int hpMax, int mpMax, int ability, int abilityMax, int strengthMax, Weapon currentWeapon, Item currentItem) {
         super(gender, name, image, description, hp, mp, strength);
+        this.image = "./src/main/resources/pix/people/hero/" + image;
         this.hpMax = hpMax;
         this.mpMax = mpMax;
         this.ability = ability;

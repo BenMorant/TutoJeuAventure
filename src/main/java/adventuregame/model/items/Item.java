@@ -8,6 +8,7 @@ public abstract class Item extends GenericEntity {
 
     public Item(int gender, String name, String image, String description, int weight) {
         super(gender, name, image, description);
+        this.image = "./src/main/resources/pix/items/" + image;
         this.weight = weight;
     }
 

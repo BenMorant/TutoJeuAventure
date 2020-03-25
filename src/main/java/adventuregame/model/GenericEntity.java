@@ -10,7 +10,7 @@ public abstract class GenericEntity {
     public GenericEntity(int gender, String name, String image, String description) {
         this.gender = gender;
         this.name = name;
-        this.image = image;
+        this.image = "./src/main/resources/pix/" + image;
         this.description = description;
     }
 
@@ -30,6 +30,7 @@ public abstract class GenericEntity {
         this.name = name;
     }
 
+    //TODO : check if it's the good path (maybe it's 2 "/" ...
     public String getImage() {
         return image;
     }

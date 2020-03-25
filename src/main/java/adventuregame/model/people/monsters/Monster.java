@@ -12,6 +12,7 @@ public abstract class Monster extends People {
 
     public Monster(int gender, String name, String image, String description, int hp, int mp, int strength, String attackMessage, int stealDifficulty, Item monsterItem) {
         super(gender, name, image, description, hp, mp, strength);
+        this.image = "./src/main/resources/pix/people/monsters/" + image;
         this.attackMessage = attackMessage;
         this.stealDifficulty = stealDifficulty;
         this.monsterItem = monsterItem;
