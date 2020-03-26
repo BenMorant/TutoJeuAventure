@@ -3,7 +3,7 @@
 //import adventuregame.model.items.weapons.Knife;
 //import adventuregame.model.items.weapons.LongSword;
 //import adventuregame.model.items.weapons.Weapon;
-//import adventuregame.model.people.hero.Hero;
+//import adventuregame.model.people.Hero;
 //import adventuregame.model.people.monsters.Goblin;
 //import adventuregame.model.people.monsters.Guard;
 //import adventuregame.model.people.monsters.LittleDragon;
