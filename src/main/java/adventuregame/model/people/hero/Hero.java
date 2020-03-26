@@ -1,7 +1,8 @@
-package adventuregame.model.people;
+package adventuregame.model.people.hero;
 
 import adventuregame.model.items.Item;
 import adventuregame.model.items.weapons.Weapon;
+import adventuregame.model.people.People;
 import adventuregame.model.utils.StatsListener;
 import adventuregame.model.utils.WordsListener;
 
