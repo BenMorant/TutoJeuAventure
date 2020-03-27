@@ -1,12 +1,14 @@
 package adventuregametest.model;
 
 import adventuregame.model.items.weapons.Knife;
+import adventuregame.model.items.weapons.LongSword;
 import adventuregame.model.items.weapons.Weapon;
 import org.junit.jupiter.api.Test;
 
 class WeaponTest {
 
     Weapon couteau = new Knife();
+    Weapon epee = new LongSword();
 
     @Test
     void getWeight() {
@@ -18,6 +20,9 @@ class WeaponTest {
 
     @Test
     void testToString() {
+        System.out.println(couteau.toString());
+        System.out.println(epee.toString());
+
     }
 
     @Test
@@ -83,10 +88,5 @@ class WeaponTest {
 
     @Test
     void setWear() {
-    }
-
-    @Test
-    void testToString2() {
-        System.out.println(couteau.toString());
     }
 }

@@ -1,24 +1,20 @@
 package adventuregame.model.items.weapons;
 
 import adventuregame.model.items.Item;
+import adventuregame.model.utils.EntityHelper;
 
 public abstract class Weapon extends Item {
 
     protected int damageMax = 0;
     protected int wearMax = 0;
     protected int wear = 0;
-
-    public Weapon() {
-        super();
-    }
-
-
-    public Weapon(int gender, String name, String image, String description, int weight, int damageMax, int wearMax, int wear) {
+    
+    public Weapon(int gender, String name, String image, String description, int weight, int damageMax, int wearMax) {
         super(gender, name, image, description, weight);
         this.image = "./src/main/resources/pix/items/weapons/" + image;
         this.damageMax = damageMax;
         this.wearMax = wearMax;
-        this.wear = wear;
+        this.wear = EntityHelper.getRandomNumberBetweenTwoBounds(0, wearMax - 1);
     }
 
     public static int giveDamage(int strength, int strengthMax, int weaponDamageMax) {
