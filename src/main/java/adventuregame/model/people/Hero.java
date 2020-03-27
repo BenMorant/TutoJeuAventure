@@ -1,7 +1,9 @@
 package adventuregame.model.people;
 
 import adventuregame.model.items.Item;
+import adventuregame.model.items.weapons.Knife;
 import adventuregame.model.items.weapons.Weapon;
+import adventuregame.model.utils.EntityHelper;
 import adventuregame.model.utils.StatsListener;
 import adventuregame.model.utils.WordsListener;
 
@@ -20,17 +22,37 @@ public class Hero extends People {
     private List<StatsListener> statsListeners = new ArrayList<>();
     private List<WordsListener> wordsListeners = new ArrayList<>();
 
-    public Hero(int gender, String name, String image, String description, int hp, int mp, int strength, int hpMax, int mpMax, int ability, int abilityMax, int strengthMax, Weapon currentWeapon, Item currentItem) {
-        super(gender, name, image, description, hp, mp, strength);
-        this.image = "./src/main/resources/pix/people/hero/" + image;
-        this.hpMax = hpMax;
-        this.mpMax = mpMax;
-        this.ability = ability;
-        this.abilityMax = abilityMax;
-        this.strengthMax = strengthMax;
-        this.currentWeapon = currentWeapon;
-        this.currentItem = currentItem;
+    public Hero() {
+        super();
+        this.gender = 2;
+        this.name = "Loup Ardent";
+        this.image = "./src/main/resources/pix/people/hero/rambo.jpg";
+        this.description = "Seriez vous l'Elu ?";
+        this.hp = this.hpMax;
+        this.mp = this.mpMax;
+        this.strength = strengthMax;
+        this.hpMax = EntityHelper.getRandomNumberBetweenTwoBounds(7, 15);
+        this.mpMax = EntityHelper.getRandomNumberBetweenTwoBounds(0, 0);
+        this.ability = this.abilityMax;
+        this.abilityMax = 10 - this.strengthMax;
+        this.strength = this.strengthMax;
+        this.strengthMax = EntityHelper.getRandomNumberBetweenTwoBounds(0, 10);
+        this.currentWeapon = new Knife();
+        this.currentItem = null;
+
     }
+
+//    public Hero(int gender, String name, String image, String description, int hp, int mp, int strength, int hpMax, int mpMax, int ability, int abilityMax, int strengthMax, Weapon currentWeapon, Item currentItem) {
+//        super(gender, name, image, description, hp, mp, strength);
+//        this.image = "./src/main/resources/pix/people/hero/" + image;
+//        this.hpMax = hpMax;
+//        this.mpMax = mpMax;
+//        this.ability = ability;
+//        this.abilityMax = abilityMax;
+//        this.strengthMax = strengthMax;
+//        this.currentWeapon = currentWeapon;
+//        this.currentItem = currentItem;
+//    }
 
     public void addStatListener(StatsListener statsListener) {
         statsListeners.add(statsListener);

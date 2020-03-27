@@ -1,8 +1,11 @@
 package adventuregametest.model;
 
+import adventuregame.model.items.weapons.Knife;
 import org.junit.jupiter.api.Test;
 
 class KnifeTest {
+
+    Knife couteau = new Knife();
 
     @Test
     void giveDamage() {
@@ -34,6 +37,7 @@ class KnifeTest {
 
     @Test
     void testToString() {
+        System.out.println(couteau.toString());
     }
 
     @Test
@@ -78,13 +82,5 @@ class KnifeTest {
 
     @Test
     void setDescription() {
-    }
-
-    @Test
-    void testToString2() {
-    }
-
-    @Test
-    void testToString3() {
     }
 }

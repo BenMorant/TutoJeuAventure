@@ -7,6 +7,10 @@ public abstract class GenericEntity {
     protected String image = null;
     protected String description = null;
 
+    public GenericEntity() {
+
+    }
+
     public GenericEntity(int gender, String name, String image, String description) {
         this.gender = gender;
         this.name = name;

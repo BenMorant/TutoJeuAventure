@@ -8,6 +8,10 @@ public abstract class Weapon extends Item {
     protected int wearMax = 0;
     protected int wear = 0;
 
+    public Weapon() {
+        super();
+    }
+
 
     public Weapon(int gender, String name, String image, String description, int weight, int damageMax, int wearMax, int wear) {
         super(gender, name, image, description, weight);

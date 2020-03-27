@@ -9,7 +9,7 @@ public class Board {
 
     public Board() {
         boardData = null;
-        hero
+        //Mhero
     }
 
     public String toString() {

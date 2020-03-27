@@ -1,8 +1,12 @@
 package adventuregametest.model;
 
+import adventuregame.model.items.weapons.Knife;
+import adventuregame.model.items.weapons.Weapon;
 import org.junit.jupiter.api.Test;
 
 class WeaponTest {
+
+    Weapon couteau = new Knife();
 
     @Test
     void getWeight() {
@@ -34,6 +38,7 @@ class WeaponTest {
 
     @Test
     void getImage() {
+        System.out.println(couteau.getImage());
     }
 
     @Test
@@ -82,5 +87,6 @@ class WeaponTest {
 
     @Test
     void testToString2() {
+        System.out.println(couteau.toString());
     }
 }
