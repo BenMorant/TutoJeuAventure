@@ -1,12 +1,20 @@
-package adventuregame.model.people;
+package adventuregametest.model;
 
+import adventuregame.model.items.weapons.Knife;
+import adventuregame.model.people.Hero;
 import org.junit.jupiter.api.Test;
 
 class HeroTest {
 
-    Hero heroTest = new Hero();
+    Hero heroTest = new Hero(2, "Loup Ardent", "rambo.jpg", "Seriez vous l'élu ?...", new Knife(), null);
 
     @Test
+    void testAllHeroAttributes() {
+        System.out.println(heroTest.toString());
+
+
+    }
+
     void getHp() {
     }
 
@@ -68,18 +76,6 @@ class HeroTest {
     }
 
     @Test
-    void testToString1() {
-    }
-
-    @Test
-    void addStatListener() {
-    }
-
-    @Test
-    void addWordListener() {
-    }
-
-    @Test
     void getHpMax() {
     }
 
@@ -133,10 +129,5 @@ class HeroTest {
 
     @Test
     void setCurrentItem() {
-    }
-
-    @Test
-    void testToString2() {
-
     }
 }

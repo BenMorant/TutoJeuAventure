@@ -9,8 +9,6 @@
 //import adventuregame.model.people.monsters.LittleDragon;
 //import adventuregame.model.people.monsters.Mandragore;
 //import adventuregame.model.people.monsters.Monster;
-//import adventuregame.model.utils.StatsListener;
-//import adventuregame.model.utils.WordsListener;
 //
 //import java.util.Random;
 //

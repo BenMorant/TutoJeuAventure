@@ -8,9 +8,6 @@ public abstract class People extends GenericEntity {
     protected int mp = 0;
     protected int strength = 0;
 
-    public People() {
-        super();
-    }
 
     public People(int gender, String name, String image, String description, int hp, int mp, int strength) {
         super(gender, name, image, description);

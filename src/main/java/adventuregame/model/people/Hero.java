@@ -1,46 +1,53 @@
 package adventuregame.model.people;
 
 import adventuregame.model.items.Item;
-import adventuregame.model.items.weapons.Knife;
 import adventuregame.model.items.weapons.Weapon;
 import adventuregame.model.utils.EntityHelper;
-import adventuregame.model.utils.StatsListener;
-import adventuregame.model.utils.WordsListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Hero extends People {
 
-    private int hpMax;
-    private int mpMax;
-    private int ability;
-    private int abilityMax;
-    private int strengthMax;
-    private Weapon currentWeapon;
-    private Item currentItem;
-    private List<StatsListener> statsListeners = new ArrayList<>();
-    private List<WordsListener> wordsListeners = new ArrayList<>();
+    private int hpMax = 0;
+    private int mpMax = 0;
+    private int ability = 0;
+    private int abilityMax = 0;
+    private int strengthMax = 0;
+    private Weapon currentWeapon = null;
+    private Item currentItem = null;
 
-    public Hero() {
-        super();
-        this.gender = 2;
-        this.name = "Loup Ardent";
-        this.image = "./src/main/resources/pix/people/hero/rambo.jpg";
-        this.description = "Seriez vous l'Elu ?";
-        this.hp = this.hpMax;
-        this.mp = this.mpMax;
-        this.strength = strengthMax;
+    public Hero(int gender, String name, String image, String description, Weapon currentWeapon, Item currentItem) {
+        super(gender, name, image, description, 0, 0, 0);
+        this.strengthMax = EntityHelper.getRandomNumberBetweenTwoBounds(0, 10);
         this.hpMax = EntityHelper.getRandomNumberBetweenTwoBounds(7, 15);
         this.mpMax = EntityHelper.getRandomNumberBetweenTwoBounds(0, 0);
-        this.ability = this.abilityMax;
         this.abilityMax = 10 - this.strengthMax;
+        this.hp = this.hpMax;
+        this.mp = this.mpMax;
         this.strength = this.strengthMax;
-        this.strengthMax = EntityHelper.getRandomNumberBetweenTwoBounds(0, 10);
-        this.currentWeapon = new Knife();
-        this.currentItem = null;
-
+        this.ability = this.abilityMax;
+        this.currentWeapon = currentWeapon;
+        this.currentItem = currentItem;
+        this.image = "./src/main/resources/pix/items/hero/" + image;
     }
+
+    //    public Hero() {
+//        super();
+//        this.gender = 2;
+//        this.name = "Loup Ardent";
+//        this.image = "./src/main/resources/pix/people/hero/rambo.jpg";
+//        this.description = "Seriez vous l'Elu ?";
+//        this.hp = this.hpMax;
+//        this.mp = this.mpMax;
+//        this.strength = strengthMax;
+//        this.hpMax = EntityHelper.getRandomNumberBetweenTwoBounds(7, 15);
+//        this.mpMax = EntityHelper.getRandomNumberBetweenTwoBounds(0, 0);
+//        this.ability = this.abilityMax;
+//        this.abilityMax = 10 - this.strengthMax;
+//        this.strength = this.strengthMax;
+//        this.strengthMax = EntityHelper.getRandomNumberBetweenTwoBounds(0, 10);
+//        this.currentWeapon = new Knife();
+//        this.currentItem = null;
+//
+//    }
 
 //    public Hero(int gender, String name, String image, String description, int hp, int mp, int strength, int hpMax, int mpMax, int ability, int abilityMax, int strengthMax, Weapon currentWeapon, Item currentItem) {
 //        super(gender, name, image, description, hp, mp, strength);
@@ -54,13 +61,7 @@ public class Hero extends People {
 //        this.currentItem = currentItem;
 //    }
 
-    public void addStatListener(StatsListener statsListener) {
-        statsListeners.add(statsListener);
-    }
 
-    public void addWordListener(WordsListener wordListener) {
-        wordsListeners.add(wordListener);
-    }
 
     public int getHpMax() {
         return hpMax;
@@ -128,8 +129,6 @@ public class Hero extends People {
                 ", strengthMax=" + strengthMax +
                 ", currentWeapon=" + currentWeapon +
                 ", currentItem=" + currentItem +
-                ", statsListeners=" + statsListeners +
-                ", wordsListeners=" + wordsListeners +
                 ", hp=" + hp +
                 ", mp=" + mp +
                 ", strength=" + strength +
