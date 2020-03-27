@@ -26,9 +26,9 @@ public class Hero extends People {
         this.ability = this.abilityMax;
         this.currentWeapon = currentWeapon;
         this.currentItem = currentItem;
-        this.image = "./src/main/resources/pix/items/hero/" + image;
+        this.image = "./src/main/resources/pix/people/hero/" + image;
     }
-    
+
     public int getHpMax() {
         return hpMax;
     }

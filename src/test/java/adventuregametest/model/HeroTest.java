@@ -15,7 +15,7 @@ class HeroTest {
 
     @Test
     @DisplayName("test for every Hero attribute at the beginning of the game")
-    void testAllHeroAttributes() {
+    void testHeroStart() {
         System.out.println(heroTest.toString());
         assertThat(heroTest.getHp()).as("Hp should be equal to HpMax").isEqualTo(heroTest.getHpMax());
         assertThat(heroTest.getMp()).as("Mp should be equal to MpMax").isEqualTo(heroTest.getMpMax());
@@ -28,6 +28,6 @@ class HeroTest {
         assertThat(heroTest.getCurrentWeapon()).as("currentWeapon should be Knife").isEqualTo(heroKnifeStart);
         //test currentweapon here
         assertThat(heroTest.getCurrentItem()).as("currentItem should be null").isEqualTo((null));
-        assertThat(heroTest.getImage()).as("image should begin with ./src/main/resources/pix/items/hero/").startsWith("./src/main/resources/pix/items/hero/");
+        assertThat(heroTest.getImage()).as("image should begin with ./src/main/resources/pix/people/hero/").startsWith("./src/main/resources/pix/people/hero/");
     }
 }

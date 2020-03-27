@@ -21,10 +21,6 @@
 //    public int goThroughTownGate, goThroughTalkGuard, goThroughAttackGuard, goThroughCrossRoad, goThroughNorth, goThroughEast, goThroughWest,
 //            goThroughFight, goThroughHeroAttack, goThroughMonsterAttack, goThroughSilverRing, goThroughDie, goThroughEnding, goThroughToTitle, goThroughStealMonster;
 //    private Monster monster;
-////    public int heroAbility, heroHp, heroHpMax, heroMp, heroMpMax, heroStrength, heroAbilityMax, heroStrengthMax, heroCurrentWeaponDamageMax, heroCurrentWeaponWearMax,
-////            heroCurrentWeaponWear;
-////    public String heroPicture, heroCurrentWeaponName;
-////    public Weapon heroCurrentWeapon;
 //
 //    public boolean hasSilverring;
 //    public boolean hasAlreadySword;
@@ -37,36 +33,6 @@
 //    }
 //
 //    public void defaultHeroSetup() {
-//
-//        hasSilverring = false;
-//        hasAlreadySword = false;
-//        heroHpMax = Game.getRandomNumberBetweenTwoBounds(7, 15);
-//        // TODO = 0 for now
-//        heroMpMax = Game.getRandomNumberBetweenTwoBounds(0, 0);
-//        heroHp = heroHpMax;
-//        // TODO choose picture
-//        heroPicture = "hero/rambo.jpg";
-//        heroMp = heroMpMax;
-//        //TODO weapon to choose
-//        heroCurrentWeapon = new Knife();
-//        heroStrengthMax = Game.getRandomNumberBetweenTwoBounds(0, 10);
-//        heroStrength = heroStrengthMax;
-//        //TODO : for now...
-//        heroAbilityMax = 10 - heroStrengthMax;
-//        heroAbility = heroAbilityMax;
-//
-//        heroPicture = displayHeroPicture(heroPicture);
-//        heroHpMax = displayHeroHpMax(heroHpMax);
-//        heroHp = displayHeroHp(heroHp);
-//        heroMpMax = displayHeroMpMax(heroMpMax);
-//        heroMp = displayHeroMp(heroMp);
-//        heroStrengthMax = displayHeroStrengthMax(heroStrengthMax);
-//        heroStrength = displayHeroStrength(heroStrength);
-//        heroAbilityMax = displayHeroAbilityMax(heroAbilityMax);
-//        heroAbility = displayHeroAbility(heroAbility);
-//        //weapon
-//        // TODO PROVISIONNAL !!!
-//        heroCurrentWeapon = displayHeroCurrentWeapon(heroCurrentWeapon);
 //
 //        goThroughTalkGuard = 0;
 //        goThroughTownGate = 0;
@@ -537,7 +503,6 @@
 //        game.nextPosition2 = "";
 //        game.nextPosition3 = "";
 //        game.nextPosition4 = "";
-//
 //    }
 //
 //    public void die() {
