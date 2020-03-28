@@ -1,6 +1,9 @@
 package adventuregame.model.uielements;
 
+import adventuregame.model.items.weapons.Knife;
 import adventuregame.model.people.Hero;
+
+import java.util.Arrays;
 
 public class Board {
 
@@ -9,10 +12,14 @@ public class Board {
 
     public Board() {
         boardData = null;
-        //Mhero
+        hero = new Hero(2, "Loup Ardent", "rambo.jpg", "Seriez vous l'élu ?", new Knife(), null);
     }
 
+    @Override
     public String toString() {
-        return null;
+        return "Board{" +
+                "boardData=" + Arrays.toString(boardData) +
+                ", hero=" + hero +
+                '}';
     }
 }
