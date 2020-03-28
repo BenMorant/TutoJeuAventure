@@ -26,7 +26,7 @@ public class RandomNumbersGeneratorTest {
         System.out.println("result = " + result);
         assertThat(result).as("result should be between min " + min + " & max " + max).isBetween(min, max);
     }
-    
+
     void testGiveDamageNumberGenerator(int strengthTest, int strengthMaxTest, int weaponDamageMaxTest) {
         assertThat(strengthTest).as("strength " + strengthTest + " should always be less than or equal to strengthMax " + strengthMaxTest).isLessThanOrEqualTo(strengthMaxTest);
         int result = Weapon.giveDamage(strengthTest, strengthMaxTest, weaponDamageMaxTest);
