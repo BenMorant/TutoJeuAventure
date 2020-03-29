@@ -1,33 +1,38 @@
 package adventuregame.view.board;
 
+import adventuregame.view.MasterPanel;
+import adventuregame.view.panels.mainpanel.MainPanel;
+import adventuregame.view.panels.titlepanel.TitlePanel;
+
 import javax.swing.*;
-import java.awt.*;
 
 import static adventuregame.model.uielements.Board.TITLE;
 
-
+//@SuppressWarnings("serial")
 public class GameBoard extends JFrame {
 
-    public static final int DEFAULT_WIDTH = 1280;
-    public static final int DEFAULT_HEIGHT = 960;
+    private MasterPanel titlePanel;
+    private MasterPanel mainPanel;
+
 
     public GameBoard() {
         super(TITLE);
-        this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.getContentPane().setBackground(Color.black);
-        this.setLayout(null);
-        this.setVisible(true);
+        titlePanel = new TitlePanel();
+        mainPanel = new MainPanel();
         start();
 
     }
 
     public void start() {
-        System.out.println("je suis là LOL! ");
-        buildUI();
+        System.out.println("je suis dans start");
+        setVisible(true);
+        buildGUI();
     }
 
-    private void buildUI() {
+    private void buildGUI() {
+        System.out.println("je suis dans buildGUI");
+        add(titlePanel);
+        add(mainPanel);
 //        add(titleNamePanel);
 //        add(startButtonPanel);
 //        add(mainTextPanel);
@@ -35,7 +40,7 @@ public class GameBoard extends JFrame {
 //        add(imagePanelHeroPicture);
 //        add(choiceButtonPanel);
 //        add(heroPanel);
-        System.out.println("je suis ici");
 
+        pack();
     }
 }

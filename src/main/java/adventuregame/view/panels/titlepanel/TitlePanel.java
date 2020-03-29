@@ -1,17 +1,27 @@
 package adventuregame.view.panels.titlepanel;
 
-import adventuregame.view.panels.genericpanels.MasterPanel;
+import adventuregame.view.MasterPanel;
 
 public class TitlePanel extends MasterPanel {
 
-//    private JPanel titleNamePanel = new TitleNamePanel();
-//    private JPanel startButtonPanel = new ButtonPanel();
-
+    private StartButtonPanel startButtonPanel = new StartButtonPanel();
+    private TitleNamePanel titleNamePanel = new TitleNamePanel();
 
     public TitlePanel() {
-        super();
-//        this.titleNamePanel;
-//        this.startButtonPanel;
+        System.out.println("je suis dans le constructeur de TitlePanel");
+        this.add(startButtonPanel);
+        this.add(titleNamePanel);
+    }
 
+    @Override
+    public String toString() {
+        return "TitlePanel{" +
+                "startButtonPanel=" + startButtonPanel +
+                ", titleNamePanel=" + titleNamePanel +
+                ", ui=" + ui +
+                ", listenerList=" + listenerList +
+                ", accessibleContext=" + accessibleContext +
+                '}';
     }
 }
+
