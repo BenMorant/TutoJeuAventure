@@ -11,7 +11,6 @@ public abstract class MasterPanel extends JPanel {
 
     public MasterPanel() {
         super();
-        setVisible(true);
         this.setPreferredSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
         this.setMinimumSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
         this.setVisible(true);
