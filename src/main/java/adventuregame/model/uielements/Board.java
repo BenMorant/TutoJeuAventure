@@ -7,6 +7,9 @@ import java.util.Arrays;
 
 public class Board {
 
+    public static final String TITLE = "L'aventure n'attend pas";
+
+
     private char[][] boardData = new char[20][20];
     private Hero hero;
 

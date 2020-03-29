@@ -5,13 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
+import static adventuregame.view.GamePanel.DEFAULT_HEIGHT;
+import static adventuregame.view.GamePanel.DEFAULT_WIDTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GamePanelTest {
-
-    private static final int DEFAULT_WIDTH = 800;
-    private static final int DEFAULT_HEIGHT = 600;
-
 
     private GamePanel gamePanelTest = new GamePanel();
 

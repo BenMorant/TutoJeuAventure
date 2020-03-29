@@ -2,13 +2,15 @@ package adventuregame.view;
 
 import javax.swing.*;
 
+import static adventuregame.model.uielements.Board.TITLE;
+
 //@SuppressWarnings("serial")
 public class GameBoard extends JFrame {
 
     private GamePanel gamePanel;
 
     public GameBoard() {
-        super("L'Aventure n'attend pas");
+        super(TITLE);
         gamePanel = new GamePanel();
         start();
 

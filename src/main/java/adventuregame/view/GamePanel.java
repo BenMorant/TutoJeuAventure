@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class GamePanel extends JPanel {
 
-    private static final int DEFAULT_WIDTH = 800;
-    private static final int DEFAULT_HEIGHT = 600;
+    public static final int DEFAULT_WIDTH = 1280;
+    public static final int DEFAULT_HEIGHT = 960;
 
     public GamePanel() {
         super();
