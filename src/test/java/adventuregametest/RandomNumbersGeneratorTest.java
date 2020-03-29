@@ -1,7 +1,7 @@
 package adventuregametest;
 
 import adventuregame.model.items.weapons.Weapon;
-import adventuregame.model.utils.EntityHelper;
+import adventuregame.model.utils.ModelHelper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,7 +22,7 @@ public class RandomNumbersGeneratorTest {
 
     void testRandomNumberGenerator(int min, int max) {
         assertThat(min).as("Minimum number " + min + " should be less than or equal to maximum number " + max).isLessThanOrEqualTo(max);
-        int result = EntityHelper.getRandomNumberBetweenTwoBounds(min, max);
+        int result = ModelHelper.getRandomNumberBetweenTwoBounds(min, max);
         System.out.println("result = " + result);
         assertThat(result).as("result should be between min " + min + " & max " + max).isBetween(min, max);
     }

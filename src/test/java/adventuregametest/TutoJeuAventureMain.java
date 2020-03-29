@@ -1,7 +1,7 @@
 package adventuregametest;
 
 import adventuregame.model.uielements.Board;
-import adventuregame.view.GameBoard;
+import adventuregame.view.board.GameBoard;
 
 public class TutoJeuAventureMain {
 
@@ -11,7 +11,7 @@ public class TutoJeuAventureMain {
         System.out.println(board);
 
         GameBoard gameBoard = new GameBoard();
-        gameBoard.start();
+        // gameBoard.start();
 
     }
 }

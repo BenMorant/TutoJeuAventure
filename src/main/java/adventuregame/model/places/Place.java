@@ -1,8 +1,8 @@
 package adventuregame.model.places;
 
-import adventuregame.model.GenericEntity;
+import adventuregame.model.GenericModel;
 
-public abstract class Place extends GenericEntity {
+public abstract class Place extends GenericModel {
 
 
     public Place(int gender, String name, String image, String description) {

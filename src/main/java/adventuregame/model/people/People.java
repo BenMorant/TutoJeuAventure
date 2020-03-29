@@ -1,8 +1,8 @@
 package adventuregame.model.people;
 
-import adventuregame.model.GenericEntity;
+import adventuregame.model.GenericModel;
 
-public abstract class People extends GenericEntity {
+public abstract class People extends GenericModel {
 
     protected int hp = 0;
     protected int mp = 0;

@@ -1,8 +1,8 @@
 package adventuregame.model.items;
 
-import adventuregame.model.GenericEntity;
+import adventuregame.model.GenericModel;
 
-public abstract class Item extends GenericEntity {
+public abstract class Item extends GenericModel {
 
     protected int weight = 0;
 

@@ -1,17 +1,17 @@
 package adventuregame.model;
 
-public abstract class GenericEntity {
+public abstract class GenericModel {
 
     protected int gender = 0;
     protected String name = null;
     protected String image = null;
     protected String description = null;
 
-    public GenericEntity() {
+    public GenericModel() {
 
     }
 
-    public GenericEntity(int gender, String name, String image, String description) {
+    public GenericModel(int gender, String name, String image, String description) {
         this.gender = gender;
         this.name = name;
         this.image = "./src/main/resources/pix/" + image;

@@ -1,10 +1,10 @@
 package adventuregame.model.items;
 
-import adventuregame.model.GenericEntity;
+import adventuregame.model.GenericModel;
 
 import java.util.List;
 
-public abstract class Inventory extends GenericEntity {
+public abstract class Inventory extends GenericModel {
 
     protected List<Item> Items = null;
     protected int capacity = 0;

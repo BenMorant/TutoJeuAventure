@@ -1,7 +1,7 @@
 package adventuregame.model.items.weapons;
 
 import adventuregame.model.items.Item;
-import adventuregame.model.utils.EntityHelper;
+import adventuregame.model.utils.ModelHelper;
 
 public abstract class Weapon extends Item {
 
@@ -14,7 +14,7 @@ public abstract class Weapon extends Item {
         this.image = "./src/main/resources/pix/items/weapons/" + image;
         this.damageMax = damageMax;
         this.wearMax = wearMax;
-        this.wear = EntityHelper.getRandomNumberBetweenTwoBounds(0, wearMax - 1);
+        this.wear = ModelHelper.getRandomNumberBetweenTwoBounds(0, wearMax - 1);
     }
 
     public static int giveDamage(int strength, int strengthMax, int weaponDamageMax) {
