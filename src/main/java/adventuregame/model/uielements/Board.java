@@ -2,6 +2,7 @@ package adventuregame.model.uielements;
 
 import adventuregame.model.items.weapons.Knife;
 import adventuregame.model.people.Hero;
+import adventuregame.model.people.People;
 
 import java.util.Arrays;
 
@@ -11,7 +12,7 @@ public class Board {
 
 
     private char[][] boardData = new char[20][20];
-    private Hero hero;
+    private People hero;
 
     public Board() {
 

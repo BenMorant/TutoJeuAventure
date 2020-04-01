@@ -12,13 +12,5 @@ public class GameLabel extends JLabel {
         this.setFont(font);
     }
 
-    @Override
-    public String toString() {
-        return "GenericLabel{" +
-                "labelFor=" + labelFor +
-                ", ui=" + ui +
-                ", listenerList=" + listenerList +
-                ", accessibleContext=" + accessibleContext +
-                '}';
-    }
+
 }

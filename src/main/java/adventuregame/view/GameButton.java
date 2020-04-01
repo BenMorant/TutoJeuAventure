@@ -3,7 +3,7 @@ package adventuregame.view;
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class GameButton extends JButton {
+public class GameButton extends JButton {
 
     ChoiceHandler choiceHandler;
     private Font normalFont = new Font("Times New Roman", Font.PLAIN, 26);
