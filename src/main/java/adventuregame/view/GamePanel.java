@@ -3,7 +3,7 @@ package adventuregame.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class GamePanel extends JPanel {
+public abstract class GamePanel extends JPanel {
 
     public GamePanel(int x, int y, int width, int height, LayoutManager layout) {
         super();
@@ -12,12 +12,4 @@ public class GamePanel extends JPanel {
         this.setLayout(layout);
     }
 
-    @Override
-    public String toString() {
-        return "GamePanel{" +
-                "ui=" + ui +
-                ", listenerList=" + listenerList +
-                ", accessibleContext=" + accessibleContext +
-                '}';
-    }
 }

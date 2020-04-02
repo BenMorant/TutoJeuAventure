@@ -3,7 +3,7 @@ package adventuregame.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class GameLabel extends JLabel {
+public abstract class GameLabel extends JLabel {
 
     public GameLabel(String label, Font font, Color foregroundColor) {
         super();

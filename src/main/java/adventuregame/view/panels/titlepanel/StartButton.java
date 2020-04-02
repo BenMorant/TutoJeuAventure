@@ -8,17 +8,6 @@ public class StartButton extends GameButton {
         super("C'est Parti !", "start");
     }
 
-    @Override
-    public String toString() {
-        return "StartButton{" +
-                "model=" + model +
-                ", changeListener=" + changeListener +
-                ", actionListener=" + actionListener +
-                ", itemListener=" + itemListener +
-                ", changeEvent=" + changeEvent +
-                ", ui=" + ui +
-                ", listenerList=" + listenerList +
-                ", accessibleContext=" + accessibleContext +
-                '}';
-    }
+
 }
+
