@@ -1,7 +1,9 @@
 package adventuregametest;
 
+import adventuregame.model.people.monsters.Mandragore;
+import adventuregame.model.people.monsters.Monster;
 import adventuregame.model.uielements.Board;
-import adventuregame.view.board.GameBoard;
+import adventuregame.view.GameBoard;
 
 public class TutoJeuAventureMain {
 
@@ -12,6 +14,10 @@ public class TutoJeuAventureMain {
 //front end
         GameBoard gameBoard = new GameBoard();
         gameBoard.start();
+
+        Monster mandragore = new Mandragore();
+        System.out.println(mandragore.toString());
+
 
     }
 }
