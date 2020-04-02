@@ -1,6 +1,6 @@
 package adventuregame.view.board;
 
-import adventuregame.view.panels.titlepanel.StartButtonPanel;
+import adventuregame.view.panels.titlepanel.TitleNamePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,22 +13,16 @@ public class GameBoard extends JFrame {
     public static final int DEFAULT_WIDTH = 1280;
     public static final int DEFAULT_HEIGHT = 960;
 
-
-    private StartButtonPanel startButtonPanel;
+    private TitleNamePanel titleNamePanel;
 
     public GameBoard() {
         super(TITLE);
-        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        setMinimumSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
+        setPreferredSize(new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.black);
         setLayout(null);
-
-
-// startButtonPanel = new StartButtonPanel();
-// startButtonPanel.setBackground(Color.white);
-//     System.out.println(startButtonPanel.getBounds());
-
-
+//titleNamePanel = new TitleNamePanel();
         start();
 
     }
@@ -40,7 +34,7 @@ public class GameBoard extends JFrame {
 
     private void buildGUI() {
 
-        //  this.add(startButtonPanel);
+//this.add(titleNamePanel);
         pack();
     }
 }
