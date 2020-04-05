@@ -253,7 +253,7 @@
 //
 //    public void setImage(JLabel imageLabelToDefine, String filename) {
 //        image = new ImageIcon(".//src//main//resources//pix//" + filename);
-//        imageLabelToDefine.setIcon(image);
+//        imageLabelToDefine.
 //    }
 //
 //    @Override
