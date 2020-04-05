@@ -11,19 +11,14 @@ public class GameBoard extends JFrame {
     public static final int DEFAULT_WIDTH = 1280;
     public static final int DEFAULT_HEIGHT = 960;
 
-//private GamePanel gamePanel;
 
     private TitleNamePanel titleNamePanel;
-
-//    private JPanel titleNamePanel;
-//    private JLabel titleNameLabel;
-//    private GamePanel startButtonPanel = new StartButtonPanel(500, 600, 250, 120, null);
-//    private GamePanel mainTextPanel = new MainTextPanel(40, 650, 750, 550, null);
-//    private GamePanel imagePanelMain = new ImagePanel(40, 70, 750, 550, null);
-//    private GamePanel imagePanelHeroPicture = new ImagePanel(960, 70, 140, 175, null);
-//    private GamePanel choiceButtonPanel = new ChoiceButtonPanel(850, 650, 400, 200, new GridLayout(4, 1));
-//    private GamePanel heroPanel = new HeroPanel(850, 260, 400, 320, new GridLayout(12, 2));
-
+    private StartButtonPanel startButtonPanel;
+    private MainTextPanel mainTextPanel;
+    private ImagePanelMain imagePanelMain;
+    private ImagePanelHeroPicture imagePanelHeroPicture;
+    private ChoiceButtonPanel choiceButtonPanel;
+    private HeroPanel heroPanel;
 
     public GameBoard() {
         super(TITLE);
@@ -32,37 +27,30 @@ public class GameBoard extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.black);
         setLayout(null);
-//     titleNamePanel = new GamePanel(null,250, 250, 800, 150);
-//     titleNamePanel.setBackground(Color.yellow);
-//                titleNameLabel = new JLabel("L'AVENTURE N'ATTEND PAS");
-//        titleNameLabel.setForeground(Color.white);
-//        titleNamePanel.add(titleNameLabel);
-//gamePanel = new GamePanel();
         titleNamePanel = new TitleNamePanel();
+        startButtonPanel = new StartButtonPanel();
+        mainTextPanel = new MainTextPanel();
+        imagePanelMain = new ImagePanelMain();
+        imagePanelHeroPicture = new ImagePanelHeroPicture();
+        choiceButtonPanel = new ChoiceButtonPanel();
+        heroPanel = new HeroPanel();
         start();
 
     }
 
     public void start() {
         setVisible(true);
-        buildGUI();
+        buildGameBoard();
     }
 
-    private void buildGUI() {
+    private void buildGameBoard() {
         add(titleNamePanel);
-        //  JPanel masterPanel = new JPanel();
-        //  masterPanel.add(gamePanel);
-        // add(masterPanel);
-//        add(gamePanel);
+        add(startButtonPanel);
+        add(mainTextPanel);
+        add(imagePanelMain);
+        add(imagePanelHeroPicture);
+        add(choiceButtonPanel);
+        add(heroPanel);
         pack();
-//this.add(titleNamePanel);
-//        System.out.println(titleNamePanel.toString());
-//this.add(startButtonPanel);
-//this.add(mainTextPanel);
-//this.add(imagePanelMain);
-//this.add(imagePanelHeroPicture);
-//this.add(choiceButtonPanel);
-//this.add(heroPanel);
-
     }
 }
