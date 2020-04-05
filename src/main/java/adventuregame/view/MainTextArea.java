@@ -10,7 +10,7 @@ public class MainTextArea extends JTextArea {
     public MainTextArea() {
         super("Yo");
         setBounds(40, 650, 750, 350);
-        setBackground(Color.gray);
+        setBackground(Color.black);
         setForeground(Color.white);
         setFont(normalFont);
         setLineWrap(true);

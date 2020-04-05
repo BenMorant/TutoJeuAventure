@@ -11,15 +11,6 @@ public class GameFrame extends JFrame {
     public static final int DEFAULT_WIDTH = 1280;
     public static final int DEFAULT_HEIGHT = 960;
 
-
-    private ChoiceHandler choiceHandler = new ChoiceHandler();
-
-
-//    private GamePanel titleNamePanel = new GamePanel(250,250,800,150);
-//    private GameLabel titleNameLabel = new GameLabel(TITLE.toUpperCase(), Color.white, titleFont);
-//    private GameButton startButton = new GameButton("C'EST PARTI !", "start");
-//    private GamePanel startButtonPanel = new GamePanel(500, 600, 250, 120);
-
     private GamePanel titleNamePanel;
     private GameLabel titleNameLabel;
     private GameButton startButton;
@@ -32,8 +23,39 @@ public class GameFrame extends JFrame {
     private ImageLabelMain imageLabelMain = new ImageLabelMain();
     private GamePanel imagePanelHeroPicture = new GamePanel(960, 70, 140, 175);
     private ImageLabelHeroPicture imageLabelHeroPicture = new ImageLabelHeroPicture();
-    private ChoiceButtonPanel choiceButtonPanel = new ChoiceButtonPanel();
-    private HeroPanel heroPanel = new HeroPanel();
+    private GamePanel choiceButtonPanel = new GamePanel(850, 650, 400, 200);
+    private GameButton choice1 = new GameButton("choix 1", "c1");
+    private GameButton choice2 = new GameButton("choix 2", "c2");
+    private GameButton choice3 = new GameButton("choix 3", "c3");
+    private GameButton choice4 = new GameButton("choix 4", "c4");
+    private GamePanel heroPanel = new GamePanel(850, 260, 400, 320);
+
+    private Font heroPanelFont = new Font("Times New Roman", Font.PLAIN, 22);
+
+    private GameLabel hpLabel = new GameLabel("HP : ", Color.white, heroPanelFont);
+    private GameLabel hpLabelNumber = new GameLabel("", Color.white, heroPanelFont);
+    private GameLabel hpMaxLabel = new GameLabel("HP Max : ", Color.yellow, heroPanelFont);
+    private GameLabel hpMaxLabelNumber = new GameLabel("", Color.yellow, heroPanelFont);
+    private GameLabel weaponLabel = new GameLabel("Arme : ", Color.white, heroPanelFont);
+    private GameLabel weaponLabelName = new GameLabel("", Color.white, heroPanelFont);
+    private GameLabel weaponLabelDamageMax = new GameLabel("Domage Max : ", Color.orange, heroPanelFont);
+    private GameLabel weaponLabelDamageMaxNumber = new GameLabel("", Color.orange, heroPanelFont);
+    private GameLabel abilityLabel = new GameLabel("Habileté : ", Color.white, heroPanelFont);
+    private GameLabel strengthLabel = new GameLabel("Force : ", Color.white, heroPanelFont);
+    private GameLabel mpLabel = new GameLabel("MP : ", Color.lightGray, heroPanelFont);
+    private GameLabel mpLabelNumber = new GameLabel("", Color.lightGray, heroPanelFont);
+    private GameLabel mpMaxLabel = new GameLabel("MP Max: ", Color.darkGray, heroPanelFont);
+    private GameLabel mpMaxLabelNumber = new GameLabel("", Color.darkGray, heroPanelFont);
+    private GameLabel strengthLabelNumber = new GameLabel("", Color.white, heroPanelFont);
+    private GameLabel abilityLabelNumber = new GameLabel("", Color.white, heroPanelFont);
+    private GameLabel strengthMaxLabel = new GameLabel("Force Max : ", Color.yellow, heroPanelFont);
+    private GameLabel strengthMaxLabelNumber = new GameLabel("", Color.yellow, heroPanelFont);
+    private GameLabel abilityMaxLabel = new GameLabel("Habileté Max: ", Color.yellow, heroPanelFont);
+    private GameLabel abilityMaxLabelNumber = new GameLabel("", Color.yellow, heroPanelFont);
+    private GameLabel weaponLabelWear = new GameLabel("Usure : ", Color.white, heroPanelFont);
+    private GameLabel weaponLabelWearNumber = new GameLabel("", Color.white, heroPanelFont);
+    private GameLabel weaponLabelWearMaxLabel = new GameLabel("Usure Max : ", Color.white, heroPanelFont);
+    private GameLabel weaponLabelWearMaxLabelNumber = new GameLabel("", Color.white, heroPanelFont);
 
     public GameFrame() {
         super(TITLE);
@@ -43,25 +65,57 @@ public class GameFrame extends JFrame {
         getContentPane().setBackground(Color.black);
         setLayout(null);
 
-        createTitleScreen(choiceHandler);
+        createTitleScreen();
 
-
-        mainTextPanel.setBackground(Color.red);
         mainTextPanel.add(mainTextArea);
-        imagePanelMain.setBackground(Color.orange);
         imagePanelMain.add(imageLabelMain);
-        imagePanelHeroPicture.setBackground(Color.pink);
         imagePanelHeroPicture.add(imageLabelHeroPicture);
+        choiceButtonPanel.setLayout(new GridLayout(4, 1));
+        choiceButtonPanel.add(choice1);
+        choiceButtonPanel.add(choice2);
+        choiceButtonPanel.add(choice3);
+        choiceButtonPanel.add(choice4);
+
+        heroPanel.setLayout(new GridLayout(12, 2));
+        heroPanel.add(hpLabel);
+        heroPanel.add(hpLabelNumber);
+        heroPanel.add(hpMaxLabel);
+        heroPanel.add(hpMaxLabelNumber);
+        heroPanel.add(mpLabel);
+        heroPanel.add(mpLabelNumber);
+        heroPanel.add(mpMaxLabel);
+        heroPanel.add(mpMaxLabelNumber);
+        heroPanel.add(weaponLabel);
+        heroPanel.add(weaponLabelName);
+        heroPanel.add(weaponLabelDamageMax);
+        heroPanel.add(weaponLabelDamageMaxNumber);
+        heroPanel.add(weaponLabelWear);
+        heroPanel.add(weaponLabelWearNumber);
+        heroPanel.add(weaponLabelWearMaxLabel);
+        heroPanel.add(weaponLabelWearMaxLabelNumber);
+        heroPanel.add(strengthLabel);
+        heroPanel.add(strengthLabelNumber);
+        heroPanel.add(strengthMaxLabel);
+        heroPanel.add(strengthMaxLabelNumber);
+        heroPanel.add(abilityLabel);
+        heroPanel.add(abilityLabelNumber);
+        heroPanel.add(abilityMaxLabel);
+        heroPanel.add(abilityMaxLabelNumber);
+
         createGameFrame();
     }
 
-
-    public void createTitleScreen(ChoiceHandler choiceHandler) {
+    public void createTitleScreen() {
         setVisible(true);
+        BuildTitleScreen();
+    }
+
+    private void BuildTitleScreen() {
+
         Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
         titleNamePanel = new GamePanel(250, 250, 800, 150);
         titleNameLabel = new GameLabel(TITLE.toUpperCase(), Color.white, titleFont);
-        startButton = new GameButton("C'EST PARTI !", choiceHandler, "start");
+        startButton = new GameButton("C'EST PARTI !", "start");
         startButtonPanel = new GamePanel(500, 600, 250, 120);
         titleNamePanel.add(titleNameLabel);
         startButtonPanel.add(startButton);
@@ -81,109 +135,5 @@ public class GameFrame extends JFrame {
         add(choiceButtonPanel);
         add(heroPanel);
         pack();
-    }
-
-    public static int getDefaultWidth() {
-        return DEFAULT_WIDTH;
-    }
-
-    public static int getDefaultHeight() {
-        return DEFAULT_HEIGHT;
-    }
-
-    public GamePanel getTitleNamePanel() {
-        return titleNamePanel;
-    }
-
-    public void setTitleNamePanel(GamePanel titleNamePanel) {
-        this.titleNamePanel = titleNamePanel;
-    }
-
-    public GameLabel getTitleNameLabel() {
-        return titleNameLabel;
-    }
-
-    public void setTitleNameLabel(GameLabel titleNameLabel) {
-        this.titleNameLabel = titleNameLabel;
-    }
-
-    public GameButton getStartButton() {
-        return startButton;
-    }
-
-    public void setStartButton(GameButton startButton) {
-        this.startButton = startButton;
-    }
-
-    public GamePanel getStartButtonPanel() {
-        return startButtonPanel;
-    }
-
-    public void setStartButtonPanel(GamePanel startButtonPanel) {
-        this.startButtonPanel = startButtonPanel;
-    }
-
-    public GamePanel getMainTextPanel() {
-        return mainTextPanel;
-    }
-
-    public void setMainTextPanel(GamePanel mainTextPanel) {
-        this.mainTextPanel = mainTextPanel;
-    }
-
-    public MainTextArea getMainTextArea() {
-        return mainTextArea;
-    }
-
-    public void setMainTextArea(MainTextArea mainTextArea) {
-        this.mainTextArea = mainTextArea;
-    }
-
-    public GamePanel getImagePanelMain() {
-        return imagePanelMain;
-    }
-
-    public void setImagePanelMain(GamePanel imagePanelMain) {
-        this.imagePanelMain = imagePanelMain;
-    }
-
-    public ImageLabelMain getImageLabelMain() {
-        return imageLabelMain;
-    }
-
-    public void setImageLabelMain(ImageLabelMain imageLabelMain) {
-        this.imageLabelMain = imageLabelMain;
-    }
-
-    public GamePanel getImagePanelHeroPicture() {
-        return imagePanelHeroPicture;
-    }
-
-    public void setImagePanelHeroPicture(GamePanel imagePanelHeroPicture) {
-        this.imagePanelHeroPicture = imagePanelHeroPicture;
-    }
-
-    public ImageLabelHeroPicture getImageLabelHeroPicture() {
-        return imageLabelHeroPicture;
-    }
-
-    public void setImageLabelHeroPicture(ImageLabelHeroPicture imageLabelHeroPicture) {
-        this.imageLabelHeroPicture = imageLabelHeroPicture;
-    }
-
-    public ChoiceButtonPanel getChoiceButtonPanel() {
-        return choiceButtonPanel;
-    }
-
-    public void setChoiceButtonPanel(ChoiceButtonPanel choiceButtonPanel) {
-        this.choiceButtonPanel = choiceButtonPanel;
-    }
-
-    public HeroPanel getHeroPanel() {
-        return heroPanel;
-    }
-
-    public void setHeroPanel(HeroPanel heroPanel) {
-        this.heroPanel = heroPanel;
     }
 }
