@@ -10,8 +10,9 @@ public class TutoJeuAventureMain {
         Board board = new Board();
         System.out.println(board);
 //front end
-        Game game = new Game();
-        game.start();
+//        Game game = new Game();
+//        game.start();
+        new Game();
 
     }
 }

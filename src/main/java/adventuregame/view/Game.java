@@ -10,7 +10,7 @@ public class Game {
 
     }
 
-    public void start() {
+    private void start() {
         gameBoard.setVisible(true);
     }
 }
