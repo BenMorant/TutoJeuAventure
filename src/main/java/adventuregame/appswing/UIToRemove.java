@@ -235,26 +235,8 @@ package adventuregame.appswing;
 //
 //    }
 //
-//    public void createWindow() {
-//        window = new JFrame();
-//        window.setSize(1280, 960);
-//        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        window.getContentPane().setBackground(Color.black);
-//        window.setLayout(null);
-//        window.add(titleNamePanel);
-//        window.add(startButtonPanel);
-//        window.add(mainTextPanel);
-//        window.add(imagePanelMain);
-//        window.add(imagePanelHeroPicture);
-//        window.add(choiceButtonPanel);
-//        window.add(heroPanel);
-//        window.setVisible(true);
-//    }
-//
-//    public void setImage(JLabel imageLabelToDefine, String filename) {
-//        image = new ImageIcon(".//src//main//resources//pix//" + filename);
-//        imageLabelToDefine.
-//    }
+
+
 //
 //    @Override
 //    public void onStatsChange(Stats stat, int newValue) {

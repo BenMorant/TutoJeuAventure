@@ -2,11 +2,11 @@ package adventuregame.view;
 
 import javax.swing.*;
 
-public class ImageLabelPicture extends JLabel {
+public class ImageLabelHeroPicture extends JLabel {
 
     private ImageIcon image;
 
-    public ImageLabelPicture() {
+    public ImageLabelHeroPicture() {
         super("");
         image = new ImageIcon();
         setIcon(image);

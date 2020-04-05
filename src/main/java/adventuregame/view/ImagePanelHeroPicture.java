@@ -5,13 +5,13 @@ import java.awt.*;
 
 public class ImagePanelHeroPicture extends JPanel {
 
-    private ImageLabelPicture imageLabelPicture;
+    private ImageLabelHeroPicture imageLabelPicture;
 
     public ImagePanelHeroPicture() {
         super();
         setBounds(960, 70, 140, 175);
         setBackground(Color.pink);
-        imageLabelPicture = new ImageLabelPicture();
+        imageLabelPicture = new ImageLabelHeroPicture();
         add(imageLabelPicture);
     }
 
