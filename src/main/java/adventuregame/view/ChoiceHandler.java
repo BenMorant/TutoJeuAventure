@@ -14,7 +14,7 @@ public class ChoiceHandler implements ActionListener {
 
         switch (yourChoice) {
             case "start":
-                vm.fromTitlePanelToMainPanel();
+                //    vm.fromTitlePanelToMainPanel();
                 //          story.townGate();
                 break;
             case "c1":

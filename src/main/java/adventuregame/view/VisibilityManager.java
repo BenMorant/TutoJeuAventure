@@ -2,7 +2,7 @@ package adventuregame.view;
 
 public class VisibilityManager {
 
-    private GameFrame gFrame;
+  private GameFrame gFrame;
 
     public VisibilityManager(GameFrame gameFrame) {
 

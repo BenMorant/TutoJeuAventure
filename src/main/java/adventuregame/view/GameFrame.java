@@ -12,6 +12,9 @@ public class GameFrame extends JFrame {
     public static final int DEFAULT_HEIGHT = 960;
 
 
+    private ChoiceHandler choiceHandler = new ChoiceHandler();
+
+
 //    private GamePanel titleNamePanel = new GamePanel(250,250,800,150);
 //    private GameLabel titleNameLabel = new GameLabel(TITLE.toUpperCase(), Color.white, titleFont);
 //    private GameButton startButton = new GameButton("C'EST PARTI !", "start");
@@ -40,7 +43,7 @@ public class GameFrame extends JFrame {
         getContentPane().setBackground(Color.black);
         setLayout(null);
 
-        createTitleScreen();
+        createTitleScreen(choiceHandler);
 
 
         mainTextPanel.setBackground(Color.red);
@@ -52,16 +55,13 @@ public class GameFrame extends JFrame {
         createGameFrame();
     }
 
-    public void createTitleScreen() {
-        setVisible(true);
-        buildTitleScreen();
-    }
 
-    private void buildTitleScreen() {
+    public void createTitleScreen(ChoiceHandler choiceHandler) {
+        setVisible(true);
         Font titleFont = new Font("Times New Roman", Font.BOLD, 52);
         titleNamePanel = new GamePanel(250, 250, 800, 150);
         titleNameLabel = new GameLabel(TITLE.toUpperCase(), Color.white, titleFont);
-        startButton = new GameButton("C'EST PARTI !", "start");
+        startButton = new GameButton("C'EST PARTI !", choiceHandler, "start");
         startButtonPanel = new GamePanel(500, 600, 250, 120);
         titleNamePanel.add(titleNameLabel);
         startButtonPanel.add(startButton);

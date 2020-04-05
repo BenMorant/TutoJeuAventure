@@ -2,18 +2,19 @@ package adventuregame.view;
 
 public class Game {
 
-    private GameFrame gameBoard;
+    private GameFrame gameFrame;
     private VisibilityManager visibilityManager;
+    //   private ChoiceHandler choiceHandler = new ChoiceHandler();
 
     public Game() {
-        gameBoard = new GameFrame();
-        visibilityManager = new VisibilityManager(gameBoard);
+        gameFrame = new GameFrame();
+        visibilityManager = new VisibilityManager(gameFrame);
         start();
 
     }
 
     private void start() {
-        gameBoard.setVisible(true);
+        gameFrame.setVisible(true);
         visibilityManager.showTitleScreen();
     }
 }
