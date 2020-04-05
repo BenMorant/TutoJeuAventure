@@ -34,14 +34,15 @@ public class GameBoard extends JFrame {
         imagePanelHeroPicture = new ImagePanelHeroPicture();
         choiceButtonPanel = new ChoiceButtonPanel();
         heroPanel = new HeroPanel();
-        start();
-
-    }
-
-    public void start() {
-        setVisible(true);
+        //       start();
         buildGameBoard();
+
     }
+
+//    public void start() {
+//        setVisible(true);
+//        buildGameBoard();
+//    }
 
     private void buildGameBoard() {
         add(titleNamePanel);
