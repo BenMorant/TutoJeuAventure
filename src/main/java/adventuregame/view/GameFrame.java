@@ -18,11 +18,11 @@ public class GameFrame extends JFrame {
 
 
     private GamePanel mainTextPanel = new GamePanel(40, 650, 750, 550);
-    private MainTextArea mainTextArea = new MainTextArea();
+    private GameTextArea mainTextArea = new GameTextArea("yo", 40, 650, 750, 350);
     private GamePanel imagePanelMain = new GamePanel(40, 70, 750, 550);
-    private ImageLabelMain imageLabelMain = new ImageLabelMain();
+    private GameImageLabel imageLabelMain = new GameImageLabel();
     private GamePanel imagePanelHeroPicture = new GamePanel(960, 70, 140, 175);
-    private ImageLabelHeroPicture imageLabelHeroPicture = new ImageLabelHeroPicture();
+    private GameImageLabel imageLabelHeroPicture = new GameImageLabel();
     private GamePanel choiceButtonPanel = new GamePanel(850, 650, 400, 200);
     private GameButton choice1 = new GameButton("choix 1", "c1");
     private GameButton choice2 = new GameButton("choix 2", "c2");
