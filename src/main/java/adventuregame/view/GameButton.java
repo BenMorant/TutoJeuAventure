@@ -11,7 +11,7 @@ public class GameButton extends JButton {
     public GameButton(String text, String actionCommand) {
         super(text);
         setBackground(Color.black);
-        setForeground(Color.green);
+        setForeground(Color.white);
         setFont(normalFont);
         setFocusPainted(false);
         addActionListener(choiceHandler);

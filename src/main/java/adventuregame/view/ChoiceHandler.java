@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 public class ChoiceHandler implements ActionListener {
 
+    private VisibilityManager vm;
+
     @Override
     public void actionPerformed(ActionEvent event) {
 
@@ -12,8 +14,8 @@ public class ChoiceHandler implements ActionListener {
 
         switch (yourChoice) {
             case "start":
-                //         vm.fromTitlePanelToMainPanel();
-                //             story.townGate();
+                vm.fromTitlePanelToMainPanel();
+                //          story.townGate();
                 break;
             case "c1":
 //                    story.selectNextPosition(nextPosition1);

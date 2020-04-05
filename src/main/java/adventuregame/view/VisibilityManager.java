@@ -1,49 +1,40 @@
 package adventuregame.view;
-//
-//public class VisibilityManager {
-//
-//    UI ui;
-//
-//    public VisibilityManager(UI userInterface) {
-//
-//        ui = userInterface;
-//
-//    }
-//
-//    public void showTitleScreen() {
-//
-//        //montre l'écran tître
-//        ui.titleNamePanel.setVisible(true);
-//        ui.startButtonPanel.setVisible(true);
-//
-//        //cache l'écran du jeu
-//
-//        ui.mainTextPanel.setVisible(false);
-//        ui.choiceButtonPanel.setVisible(false);
-//        ui.heroPanel.setVisible(false);
-//
-//        //cache les images
-//
-//        ui.imageLabelPrincipal.setVisible(false);
-//        ui.imageLabelPicture.setVisible(false);
-//    }
-//
-//    public void titleToTown() {
-//
-//        //cache l'écran tître
-//        ui.titleNamePanel.setVisible(false);
-//        ui.startButtonPanel.setVisible(false);
-//
-//        //montre l'écran du jeu
-//
-//        ui.mainTextPanel.setVisible(true);
-//        ui.choiceButtonPanel.setVisible(true);
-//        ui.heroPanel.setVisible(true);
-//
-//        //montre les images
-//
-//        ui.imageLabelPrincipal.setVisible(true);
-//        ui.imageLabelPicture.setVisible(true);
-//
-//    }
-//}
+
+public class VisibilityManager {
+
+    private GameFrame gFrame;
+
+    public VisibilityManager(GameFrame gameFrame) {
+
+        this.gFrame = gameFrame;
+
+    }
+
+    public void showTitleScreen() {
+
+        gFrame.getTitleNamePanel().setVisible(true);
+        gFrame.getStartButtonPanel().setVisible(true);
+
+        gFrame.getMainTextPanel().setVisible(false);
+        gFrame.getChoiceButtonPanel().setVisible(false);
+        gFrame.getHeroPanel().setVisible(false);
+
+        gFrame.getImagePanelMain().setVisible(false);
+        gFrame.getImagePanelHeroPicture().setVisible(false);
+    }
+
+    public void fromTitlePanelToMainPanel() {
+
+        gFrame.getTitleNamePanel().setVisible(false);
+        gFrame.getStartButtonPanel().setVisible(false);
+
+
+        gFrame.getMainTextPanel().setVisible(true);
+        gFrame.getChoiceButtonPanel().setVisible(true);
+        gFrame.getHeroPanel().setVisible(true);
+
+        gFrame.getImagePanelMain().setVisible(true);
+        gFrame.getImagePanelHeroPicture().setVisible(true);
+
+    }
+}
