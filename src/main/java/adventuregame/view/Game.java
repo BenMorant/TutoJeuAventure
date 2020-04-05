@@ -2,10 +2,10 @@ package adventuregame.view;
 
 public class Game {
 
-    private GameBoard gameBoard;
+    private GameFrame gameBoard;
 
     public Game() {
-        gameBoard = new GameBoard();
+        gameBoard = new GameFrame();
         start();
 
     }

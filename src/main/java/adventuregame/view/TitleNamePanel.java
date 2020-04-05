@@ -10,7 +10,7 @@ public class TitleNamePanel extends JPanel {
     public TitleNamePanel() {
         super();
         setBounds(250, 250, 800, 150);
-        setBackground(Color.yellow);
+        this.setBackground(Color.black);
         titleNameLabel = new TitleNameLabel();
         add(titleNameLabel);
     }

@@ -3,7 +3,7 @@ package adventuregametest;
 import adventuregame.model.uielements.Board;
 import adventuregame.view.Game;
 
-public class TutoJeuAventureMain {
+public class Launcher {
 
     public static void main(String[] args) {
 //Back end, for test purposes only
